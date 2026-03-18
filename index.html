@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>D.PEDRO SOLUÇÕES – Orçamento Online</title>
+    <title>D.PEDRO SOLUÇÕES – Tecnologia, Segurança & Energia</title>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
@@ -187,16 +187,42 @@
             transform: translateY(-2px);
         }
         .hero-visual {
-            flex: 0 0 240px;
-            background: #cbd5e1;
+            flex: 0 0 280px;
+            height: 200px;
             border-radius: 2rem;
-            height: 180px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .hero-slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-slide i {
             display: flex;
             align-items: center;
             justify-content: center;
-            color: #1e293b;
-            background-image: radial-gradient(circle at 20px 20px, #94a3b8 1px, transparent 1px);
-            background-size: 30px 30px;
+            width: 100%;
+            height: 100%;
+            font-size: 4rem;
+            color: white;
+            background: rgba(37, 99, 235, 0.3);
+            backdrop-filter: blur(2px);
         }
 
         /* Títulos */
@@ -216,55 +242,95 @@
             border-radius: 50%;
         }
 
-        /* Grade de serviços */
+        /* Grade de serviços com imagens */
         .services-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 1.2rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
             margin: 1.5rem 0;
         }
         .service-card {
             background: white;
             border-radius: 1.5rem;
-            padding: 1.5rem 1rem;
+            overflow: hidden;
             border: 1px solid #e2e8f0;
-            transition: all 0.2s;
+            transition: all 0.3s;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            text-align: center;
             box-shadow: 0 1px 3px rgba(0,0,0,0.02);
-            cursor: pointer;
         }
         .service-card:hover {
             border-color: #2563eb;
             box-shadow: 0 10px 20px -10px #2563eb30;
             transform: translateY(-4px);
         }
-        .service-icon {
-            font-size: 2.2rem;
-            color: #2563eb;
-            margin-bottom: 0.8rem;
+
+        .service-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-color: #f1f5f9;
         }
-        .service-card h3 {
-            font-size: 1rem;
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5));
+        }
+        .service-image i {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 2rem;
+            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .service-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .service-content h3 {
+            font-size: 1.2rem;
             font-weight: 700;
-            margin-bottom: 0.5rem;
+            margin-bottom: 0.3rem;
             color: #0f172a;
         }
         .service-desc {
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             color: #475569;
             margin-bottom: 1rem;
+            line-height: 1.5;
             flex: 1;
+        }
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .service-feature {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
         }
         .btn-budget {
             background: #22c55e;
             color: white;
             border: none;
-            padding: 0.4rem 0.8rem;
+            padding: 0.7rem 1rem;
             border-radius: 40px;
-            font-size: 0.75rem;
+            font-size: 0.85rem;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
@@ -273,12 +339,13 @@
             justify-content: center;
             gap: 0.3rem;
             transition: 0.2s;
+            margin-top: auto;
         }
         .btn-budget:hover {
             background: #16a34a;
         }
 
-        /* Player de vídeo YouTube */
+        /* Player de vídeo YouTube - com autoplay e loop */
         .video-container {
             position: relative;
             width: 100%;
@@ -287,6 +354,7 @@
             overflow: hidden;
             border-radius: 1rem;
             margin: 1rem 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
         }
         .video-container iframe {
             position: absolute;
@@ -295,18 +363,42 @@
             width: 100%;
             height: 100%;
             border: none;
+            border-radius: 1rem;
         }
 
-        /* Parceiros */
-        .partners {
+        /* Parceiros com carrossel */
+        .partners-carousel {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            margin: 2rem 0 2.5rem;
+            overflow: hidden;
+            border-radius: 2rem;
+            background: transparent;
+        }
+        .partners-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .partners-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
             display: flex;
-            flex-wrap: wrap;
             align-items: center;
             justify-content: center;
             gap: 2rem;
-            margin: 2rem 0 2.5rem;
-            padding: 1rem;
-            background: transparent;
+            flex-wrap: wrap;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            pointer-events: none;
+        }
+        .partners-slide.active {
+            opacity: 1;
+            pointer-events: auto;
         }
         .partner-item {
             display: flex;
@@ -321,11 +413,21 @@
             object-fit: contain;
             margin-bottom: 0.3rem;
             filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            transition: transform 0.3s;
+        }
+        .partner-logo-img:hover {
+            transform: scale(1.1);
         }
         .partner-name {
             font-size: 0.7rem;
             font-weight: 600;
             color: #334155;
+        }
+        .partner-logo-dp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: transparent;
         }
         .dp-logo-img {
             width: 60px;
@@ -339,44 +441,218 @@
             font-weight: 700;
             font-size: 1.2rem;
             margin-bottom: 0.3rem;
+            transition: transform 0.3s;
+        }
+        .dp-logo-img:hover {
+            transform: scale(1.1);
+            background: #2563eb;
         }
 
-        /* Benefícios */
+        /* Vantagens integradas com informações expandidas */
         .benefits-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
             margin: 2rem 0;
         }
         .benefit-item {
             background: white;
-            padding: 0.7rem 1rem;
-            border-radius: 40px;
+            padding: 1.8rem 1.5rem;
+            border-radius: 1.8rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.05), transparent);
+            transition: left 0.5s;
+        }
+        .benefit-item:hover {
+            border-color: #2563eb;
+            background: #f8fafc;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1);
+        }
+        .benefit-item:hover::before {
+            left: 100%;
+        }
+
+        .benefit-header {
             display: flex;
             align-items: center;
-            gap: 0.6rem;
-            border: 1px solid #e2e8f0;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
         }
-        .benefit-item i {
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: #e0e7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #2563eb;
+            transition: all 0.3s;
+        }
+        .benefit-item:hover .benefit-icon {
+            background: #2563eb;
+            color: white;
+            transform: rotate(360deg);
+        }
+        .benefit-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .benefit-description {
+            color: #475569;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .benefit-stats {
+            display: flex;
+            gap: 1rem;
+            margin: 1.2rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
             color: #2563eb;
         }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
 
-        /* Tags */
-        .tags {
+        .benefit-features {
             display: flex;
             flex-wrap: wrap;
-            gap: 0.8rem;
-            margin: 2rem 0;
+            gap: 0.5rem;
         }
-        .tag {
-            background: white;
-            padding: 0.5rem 1.5rem;
+        .benefit-feature {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 0.3rem 1rem;
             border-radius: 40px;
-            border: 1px solid #e2e8f0;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
+            font-weight: 500;
         }
 
-        /* Contacto direto */
+        /* Aplicações práticas com carrossel */
+        .applications-carousel {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 2rem;
+        }
+        .applications-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .application-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: flex-end;
+            padding: 2.5rem;
+        }
+        .application-slide.active {
+            opacity: 1;
+        }
+        .application-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        }
+        .application-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 700px;
+        }
+        .application-content h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .application-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+        .application-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .application-tag {
+            background: rgba(37, 99, 235, 0.9);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 2.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 3;
+        }
+        .indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .indicator.active {
+            background: #2563eb;
+            transform: scale(1.3);
+        }
+
+        /* Bloco de contacto */
         .contact-block {
             background: #dbeafe;
             border-radius: 2.5rem;
@@ -455,6 +731,29 @@
             color: #ef4444;
         }
 
+        .service-info {
+            background: #e0e7ff;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid #2563eb;
+        }
+        .service-info i {
+            font-size: 2rem;
+            color: #2563eb;
+        }
+        .service-info h3 {
+            color: #0f172a;
+            margin-bottom: 0.2rem;
+        }
+        .service-info p {
+            color: #475569;
+            font-size: 0.85rem;
+        }
+
         .form-group {
             margin-bottom: 1.2rem;
         }
@@ -498,29 +797,6 @@
             border-color: #2563eb;
             background: white;
             box-shadow: 0 0 0 3px #2563eb20;
-        }
-
-        .service-info {
-            background: #e0e7ff;
-            padding: 1rem;
-            border-radius: 1rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            border: 1px solid #2563eb;
-        }
-        .service-info i {
-            font-size: 2rem;
-            color: #2563eb;
-        }
-        .service-info h3 {
-            color: #0f172a;
-            margin-bottom: 0.2rem;
-        }
-        .service-info p {
-            color: #475569;
-            font-size: 0.85rem;
         }
 
         .send-buttons {
@@ -590,6 +866,13 @@
             justify-content: space-between;
             flex-wrap: wrap;
         }
+        .footer-bottom span {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .footer-bottom span:hover {
+            color: #2563eb;
+        }
 
         /* Botões flutuantes */
         .whatsapp-float {
@@ -608,6 +891,10 @@
             box-shadow: 0 8px 16px rgba(0,0,0,0.15);
             z-index: 100;
             text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
         }
         .top-arrow {
             position: fixed;
@@ -629,6 +916,40 @@
         }
         .top-arrow:hover {
             opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-visual {
+                flex: 0 0 100%;
+                height: 200px;
+            }
+            .partners-slide {
+                gap: 1rem;
+            }
+            .partner-item {
+                width: 70px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .applications-carousel {
+                height: 400px;
+            }
+            .application-content h3 {
+                font-size: 1.8rem;
+            }
+            .application-content p {
+                font-size: 1rem;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .benefit-header {
+                flex-direction: column;
+                text-align: center;
+            }
         }
     </style>
 </head>
@@ -644,29 +965,33 @@
     <div class="social-links">
         <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
         <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
-        <a href="https://www.linkedin.com/in/daniel-pedro-bb03872b5/"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.linkedin.com/in/daniel-pedro-bb03872b5/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/dpedro_solucoes/"><i class="fab fa-instagram"></i></a>
     </div>
 </div>
 
 <!-- Navegação -->
 <nav>
     <div class="logo">
-        <div class="logo-mark">DP</div>
-        <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+            <div class="logo-mark">DP</div>
+            <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+        </a>
     </div>
     <div class="nav-links">
-        <a href="sobre_nos.html">Quem somos</a>
-        <a href="#" onclick="alert('Mercados Verticais (simulação)')">Mercados Verticais</a>
-        <a href="#" onclick="alert('Soluções (simulação)')">Soluções</a>
-        <a href="#" onclick="alert('Catálogo (simulação)')">Catálogo</a>
-        <a href="#" onclick="alert('Recrutamento (simulação)')">Recrutamento</a>
-        <button class="btn-app" onclick="alert('Baixar aplicativo (simulação)')"><i class="fas fa-download"></i> Baixar App</button>
-        <a href="#" onclick="alert('Contactos (simulação)')">Contactos</a>
+        <a href="index.html" class="active">Início</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="mercados-verticais.html">Mercados Verticais</a>
+        <a href="solucoes.html">Soluções</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="recrutamento.html">Recrutamento</a>
+        <a href="contactos.html">Contactos</a>
+        <a href="login.html" class="btn-app"><i class="fas fa-user"></i> Login</a>
     </div>
 </nav>
 
 <main class="container">
-    <!-- Hero -->
+    <!-- Hero com carrossel de imagens -->
     <div class="hero">
         <div class="hero-content">
             <div class="hero-badge"><i class="fas fa-certificate"></i> Especialistas em soluções integradas</div>
@@ -676,16 +1001,27 @@
             <button class="btn-primary" id="btnOrcamento"><i class="fas fa-calculator"></i> Pedir orçamento</button>
         </div>
         <div class="hero-visual">
-            <i class="fas fa-camera" style="font-size: 4rem; opacity: 0.3;"></i>
+            <div class="hero-slider" id="heroSlider">
+                <!-- Slides serão adicionados via JavaScript -->
+            </div>
         </div>
     </div>
 
-    <!-- Câmaras IP com vídeo do YouTube -->
+    <!-- Câmaras IP com vídeo do YouTube em loop e autoplay -->
     <h2 class="section-title"><i class="fas fa-video"></i> Câmaras IP</h2>
     <div class="video-container">
-        <iframe src="https://www.youtube.com/embed?listType=search&list=câmeras+ip+segurança" allowfullscreen></iframe>
+        <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube-nocookie.com/embed/YaVfnptcz9c?si=Lg3koBLfYcrPkrcz&amp;start=83&autoplay=1&mute=1&loop=1&playlist=YaVfnptcz9c&controls=1&modestbranding=1&rel=0" 
+            title="Demonstração de Câmaras IP - D.PEDRO SOLUÇÕES" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
     </div>
-    <p style="text-align: center; margin-bottom: 2rem;">Veja no YouTube como funcionam nossas câmaras IP</p>
+    <p style="text-align: center; margin-bottom: 2rem;">Demonstração de Sistema de Segurança - O vídeo inicia automaticamente e se repete em loop</p>
 
     <!-- Grade de serviços -->
     <h2 class="section-title"><i class="fas fa-cube"></i> Soluções disponíveis</h2>
@@ -694,33 +1030,27 @@
         <!-- Os cards serão populados via JavaScript -->
     </div>
 
-    <!-- Parceiros -->
+    <!-- Parceiros com carrossel -->
     <h2 class="section-title"><i class="fas fa-handshake"></i> Principais Parceiros</h2>
-    <div class="partners" id="partnersGrid">
-        <!-- Parceiros serão populados via JavaScript -->
+    <div class="partners-carousel">
+        <div class="partners-slider" id="partnersSlider">
+            <!-- Slides serão adicionados via JavaScript -->
+        </div>
     </div>
 
-    <!-- Benefícios -->
+    <!-- Vantagens integradas com informações expandidas -->
     <h2 class="section-title"><i class="fas fa-chart-line"></i> Vantagens integradas</h2>
-    <div class="benefits-grid">
-        <div class="benefit-item"><i class="fas fa-users"></i> Contagem pessoas</div>
-        <div class="benefit-item"><i class="fas fa-bell"></i> Integração alarme</div>
-        <div class="benefit-item"><i class="fas fa-robot"></i> Reconhecimento IA</div>
-        <div class="benefit-item"><i class="fas fa-ban"></i> Deteção intrusão</div>
-        <div class="benefit-item"><i class="fas fa-exclamation-triangle"></i> Alertas automáticos</div>
-        <div class="benefit-item"><i class="fas fa-shield-alt"></i> Segurança 24/7</div>
+    <div class="benefits-grid" id="benefitsGrid">
+        <!-- Benefícios serão populados via JavaScript -->
     </div>
 
-    <!-- Aplicações -->
+    <!-- Aplicações práticas com carrossel -->
     <h2 class="section-title"><i class="fas fa-building"></i> Aplicações práticas</h2>
-    <div class="tags">
-        <span class="tag">Infraestruturas críticas</span>
-        <span class="tag">Condomínios</span>
-        <span class="tag">Indústria</span>
-        <span class="tag">Saúde</span>
-        <span class="tag">Comércio</span>
-        <span class="tag">Energia off grid</span>
-        <span class="tag">Gráfica</span>
+    <div class="applications-carousel" id="applicationsCarousel">
+        <div class="applications-slider" id="applicationsSlider">
+            <!-- Slides serão adicionados via JavaScript -->
+        </div>
+        <div class="carousel-indicators" id="carouselIndicators"></div>
     </div>
 
     <!-- Contacto direto -->
@@ -803,22 +1133,29 @@
         <div class="footer-col">
             <strong>Sede</strong>
             <p>Viana, Vila Flor, Luanda</p>
+            <p>Rua Direita da Engevia</p>
         </div>
         <div class="footer-col">
             <strong>Contactos</strong>
-            <p>+244 946 299 834<br>+244 959 777 301<br>dpedroservice@gmail.com</p>
+            <p>+244 946 299 834</p>
+            <p>+244 959 777 301</p>
+            <p>dpedroservice@gmail.com</p>
         </div>
         <div class="footer-col">
             <strong>Links</strong>
-            <a href="#" onclick="alert('Quem somos')">Quem somos</a>
-            <a href="#" onclick="alert('Mercados Verticais')">Mercados Verticais</a>
-            <a href="#" onclick="alert('Soluções')">Soluções</a>
-            <a href="#" onclick="alert('Catálogo')">Catálogo</a>
+            <a href="index.html">Início</a>
+            <a href="quem-somos.html">Quem somos</a>
+            <a href="solucoes.html">Soluções</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="contactos.html">Contactos</a>
         </div>
     </div>
     <div class="footer-bottom">
         <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
-        <div><i class="fas fa-cookie-bite"></i> cookies | <i class="fas fa-file-contract"></i> termos</div>
+        <div>
+            <span onclick="mostrarCookies()"><i class="fas fa-cookie-bite"></i> cookies</span> | 
+            <span onclick="mostrarTermos()"><i class="fas fa-file-contract"></i> termos</span>
+        </div>
     </div>
 </footer>
 
@@ -827,48 +1164,292 @@
 <div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
 
 <script>
-    // Lista de serviços
+    // Lista de serviços com imagens e informações detalhadas
     const servicos = [
-        { icone: 'fa-video', nome: 'Câmaras CFTV', descricao: 'Vídeo vigilância IP/analógica' },
-        { icone: 'fa-bell', nome: 'Alarmes intrusão', descricao: 'Anti-roubo, centrais' },
-        { icone: 'fa-walking', nome: 'Sensores presença', descricao: 'Deteção de movimento' },
-        { icone: 'fa-fingerprint', nome: 'Controlo acesso', descricao: 'Biométrico, cartão, senha' },
-        { icone: 'fa-phone-alt', nome: 'Vídeo-porteiros', descricao: 'Interfones com câmara' },
-        { icone: 'fa-fire-extinguisher', nome: 'Detecção incêndio', descricao: 'Sensores fumo, centrais' },
-        { icone: 'fa-bolt', nome: 'Cerca elétrica', descricao: 'Proteção perimetral' },
-        { icone: 'fa-shield-alt', nome: 'Proteção perimetral', descricao: 'Barreiras, sensores' },
-        { icone: 'fa-wind', nome: 'Detecção gases', descricao: 'Gás, CO, alarmes' },
-        { icone: 'fa-hdd', nome: 'Gravadores digitais', descricao: 'DVR, NVR, armazenamento' },
-        { icone: 'fa-satellite-dish', nome: 'Monitoramento remoto', descricao: 'Acesso via app' },
-        { icone: 'fa-image', nome: 'Gestão imagens VMS', descricao: 'Software de vídeo' },
-        { icone: 'fa-satellite', nome: 'Antena parabólica', descricao: 'Instalação, alinhamento' },
-        { icone: 'fa-solar-panel', nome: 'Sistema Off Grid', descricao: 'Painéis, inversores, baterias' },
-        { icone: 'fa-print', nome: 'Gráfica & Brindes', descricao: 'Offset/digital, cartões, faixas' },
-        { icone: 'fa-map-pin', nome: 'GPS Moto/Carro', descricao: 'Rastreamento veicular' },
-        { icone: 'fa-microchip', nome: 'Hardware/Software', descricao: 'Sistematização, venda' },
-        { icone: 'fa-shield-virus', nome: 'Biossegurança', descricao: 'Equipamentos de proteção' },
-        { icone: 'fa-lock', nome: 'Cofres alta segurança', descricao: 'À prova de fogo' },
-        { icone: 'fa-pen-fancy', nome: 'Design gráfico', descricao: 'Logotipos, identidade' }
+        { 
+            icone: 'fa-video', 
+            nome: 'Câmaras CFTV', 
+            descricao: 'Sistemas de videovigilância com tecnologia IP e analógica para monitoramento 24/7.',
+            features: ['4K', 'Visão noturna', 'IA', 'PoE'],
+            imagem: 'images/servicos/cftv.jpg'
+        },
+        { 
+            icone: 'fa-bell', 
+            nome: 'Alarmes intrusão', 
+            descricao: 'Sistemas de alarme com deteção perimetral, sensores de abertura e movimento.',
+            features: ['Wireless', 'APP', 'GSM'],
+            imagem: 'images/servicos/alarmes.jpg'
+        },
+        { 
+            icone: 'fa-walking', 
+            nome: 'Sensores presença', 
+            descricao: 'Sensores de movimento com tecnologia PIR e micro-ondas para ambientes internos e externos.',
+            features: ['12m', 'Anti-mascara', 'Pet friendly'],
+            imagem: 'images/servicos/sensores.jpg'
+        },
+        { 
+            icone: 'fa-fingerprint', 
+            nome: 'Controlo acesso', 
+            descricao: 'Soluções biométricas, RFID e cartão de proximidade para gestão de entradas.',
+            features: ['Biometria', 'RFID', 'Facial'],
+            imagem: 'images/servicos/controlo-acesso.jpg'
+        },
+        { 
+            icone: 'fa-phone-alt', 
+            nome: 'Vídeo-porteiros', 
+            descricao: 'Sistemas de comunicação com vídeo e abertura remota para condomínios.',
+            features: ['7"', 'APP', 'IP67'],
+            imagem: 'images/servicos/video-porteiro.jpg'
+        },
+        { 
+            icone: 'fa-fire-extinguisher', 
+            nome: 'Detecção incêndio', 
+            descricao: 'Centrais de incêndio, detetores de fumo, temperatura e CO.',
+            features: ['Fumo', 'Calor', 'CO'],
+            imagem: 'images/servicos/incendio.jpg'
+        },
+        { 
+            icone: 'fa-bolt', 
+            nome: 'Cerca elétrica', 
+            descricao: 'Cercas elétricas de alta tensão com sensores de corte e alarme.',
+            features: ['10kV', 'Sensor', 'Perimetral'],
+            imagem: 'images/servicos/cerca-eletrica.jpg'
+        },
+        { 
+            icone: 'fa-shield-alt', 
+            nome: 'Proteção perimetral', 
+            descricao: 'Barreiras de infravermelhos, sensores de vibração e concertina.',
+            features: ['IV', 'Vibração', 'Concertina'],
+            imagem: 'images/servicos/protecao-perimetral.jpg'
+        },
+        { 
+            icone: 'fa-wind', 
+            nome: 'Detecção gases', 
+            descricao: 'Sensores para deteção de GLP, GN, CO e outros gases tóxicos.',
+            features: ['GLP', 'GN', 'CO'],
+            imagem: 'images/servicos/gases.jpg'
+        },
+        { 
+            icone: 'fa-hdd', 
+            nome: 'Gravadores digitais', 
+            descricao: 'DVR e NVR com suporte para múltiplas câmaras e análise inteligente.',
+            features: ['16 canais', '4K', 'H.265'],
+            imagem: 'images/servicos/gravadores.jpg'
+        },
+        { 
+            icone: 'fa-satellite-dish', 
+            nome: 'Monitoramento remoto', 
+            descricao: 'Acesso remoto via aplicativo para visualização de câmaras e receção de alertas.',
+            features: ['APP', 'Alertas', 'Cloud'],
+            imagem: 'images/servicos/monitoramento.jpg'
+        },
+        { 
+            icone: 'fa-image', 
+            nome: 'Gestão imagens VMS', 
+            descricao: 'Software de gestão de vídeo com análise inteligente e integração.',
+            features: ['VMS', 'IA', 'Relatórios'],
+            imagem: 'images/servicos/vms.jpg'
+        },
+        { 
+            icone: 'fa-satellite', 
+            nome: 'Antena parabólica', 
+            descricao: 'Instalação e alinhamento de antenas para TV e internet rural.',
+            features: ['TV', 'Internet', 'Alinhamento'],
+            imagem: 'images/servicos/antena.jpg'
+        },
+        { 
+            icone: 'fa-solar-panel', 
+            nome: 'Sistema Off Grid', 
+            descricao: 'Painéis solares, inversores e baterias para independência energética.',
+            features: ['Solar', 'Inversor', 'Bateria'],
+            imagem: 'images/servicos/off-grid.jpg'
+        },
+        { 
+            icone: 'fa-print', 
+            nome: 'Gráfica & Brindes', 
+            descricao: 'Impressão offset/digital, cartões, flyers, faixas e brindes personalizados.',
+            features: ['Offset', 'Digital', 'Brindes'],
+            imagem: 'images/servicos/grafica.jpg'
+        },
+        { 
+            icone: 'fa-map-pin', 
+            nome: 'GPS Moto/Carro', 
+            descricao: 'Rastreadores veiculares com corte de motor e cerca eletrónica.',
+            features: ['Corte', 'Cerca', 'APP'],
+            imagem: 'images/servicos/gps.jpg'
+        },
+        { 
+            icone: 'fa-microchip', 
+            nome: 'Hardware/Software', 
+            descricao: 'Venda de equipamentos e desenvolvimento de software personalizado.',
+            features: ['Hardware', 'Software', 'Sistemas'],
+            imagem: 'images/servicos/hardware.jpg'
+        },
+        { 
+            icone: 'fa-shield-virus', 
+            nome: 'Biossegurança', 
+            descricao: 'Equipamentos de proteção e controlo de acesso sanitário.',
+            features: ['EPI', 'Controlo', 'Higiene'],
+            imagem: 'images/servicos/biosseguranca.jpg'
+        },
+        { 
+            icone: 'fa-lock', 
+            nome: 'Cofres alta segurança', 
+            descricao: 'Cofres à prova de fogo e arrombamento com fechadura biométrica.',
+            features: ['Fogo', 'Biometria', 'Digital'],
+            imagem: 'images/servicos/cofres.jpg'
+        },
+        { 
+            icone: 'fa-pen-fancy', 
+            nome: 'Design gráfico', 
+            descricao: 'Criação de logotipos, identidade visual e materiais promocionais.',
+            features: ['Logotipo', 'Branding', 'Editorial'],
+            imagem: 'images/servicos/design.jpg'
+        }
+    ];
+
+    // Lista de vantagens com informações expandidas
+    const vantagens = [
+        {
+            icone: 'fa-users',
+            titulo: 'Contagem de Pessoas',
+            descricao: 'Sistema avançado de contagem e análise de fluxo de pessoas em tempo real, ideal para lojas, shoppings e eventos.',
+            features: ['Precisão 98%', 'Multi-direcional', 'Relatórios'],
+            stats: [
+                { valor: '98%', label: 'Precisão' },
+                { valor: '1k/s', label: 'Capacidade' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-bell',
+            titulo: 'Integração com Alarmes',
+            descricao: 'Integração total com centrais de alarme, permitindo acionamento automático e notificações em tempo real.',
+            features: ['Sem fio', 'APP', '24/7'],
+            stats: [
+                { valor: '0.5s', label: 'Resposta' },
+                { valor: '32', label: 'Zonas' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-robot',
+            titulo: 'Reconhecimento IA',
+            descricao: 'Tecnologia de inteligência artificial para reconhecimento facial, de objetos e comportamentos suspeitos.',
+            features: ['Facial', 'Placas', 'Objetos'],
+            stats: [
+                { valor: '99%', label: 'Precisão' },
+                { valor: '100ms', label: 'Detecção' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-ban',
+            titulo: 'Deteção de Intrusão',
+            descricao: 'Sistema perimetral inteligente que detecta e alerta sobre invasões em áreas restritas.',
+            features: ['Perimetral', 'Zonas', 'Alertas'],
+            stats: [
+                { valor: '100m', label: 'Alcance' },
+                { valor: '24/7', label: 'Monitoramento' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-exclamation-triangle',
+            titulo: 'Alertas Automáticos',
+            descricao: 'Notificações automáticas via SMS, WhatsApp, email e APP para eventos críticos de segurança.',
+            features: ['SMS', 'WhatsApp', 'Email'],
+            stats: [
+                { valor: '3s', label: 'Entrega' },
+                { valor: '99%', label: 'Confiabilidade' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-shield-alt',
+            titulo: 'Segurança 24/7',
+            descricao: 'Monitoramento contínuo com equipamentos redundantes e central de monitoramento operando ininterruptamente.',
+            features: ['Redundância', 'Backup', 'Tempo real'],
+            stats: [
+                { valor: '24h', label: 'Cobertura' },
+                { valor: '365d', label: 'Ano todo' }
+            ],
+            cor: '#2563eb'
+        }
     ];
 
     // Lista de parceiros
     const parceiros = [
-        { nome: 'HIKVISION', logo: 'https://www.hikvision.com/content/dam/hikvision/en/common/logo/logo.png', fallback: 'HIK' },
-        { nome: 'Dahua', logo: 'https://www.dahuasecurity.com/themes/dahua/images/logo.svg', fallback: 'Dahua' },
-        { nome: 'Axis', logo: 'https://www.axis.com/dam/images/logos/axis-logo.svg', fallback: 'Axis' },
-        { nome: 'Bosch', logo: 'https://www.boschsecurity.com/xc/themes/bosch-responsive-static/images/logo.svg', fallback: 'Bosch' },
-        { nome: 'JVC', logo: 'https://www.jvc.com/images/logo.png', fallback: 'JVC' },
-        { nome: 'Panasonic', logo: 'https://www.panasonic.com/content/dam/panasonic/global/logo.png', fallback: 'Panasonic' },
-        { nome: 'Sony', logo: 'https://www.sony.com.br/image/logo.svg', fallback: 'Sony' },
-        { nome: 'Vivotek', logo: 'https://www.vivotek.com/images/logo.svg', fallback: 'Vivotek' },
-        { nome: 'Intelbras', logo: 'https://www.intelbras.com.br/local/common/images/logo.svg', fallback: 'Intelbras' },
-        { nome: 'Mobotix', logo: 'https://www.mobotix.com/images/logo.png', fallback: 'Mobotix' }
+        { nome: 'HIKVISION', logo: 'images/parceiros/hikvision.png', fallback: 'HIK' },
+        { nome: 'Dahua', logo: 'images/parceiros/dahua.png', fallback: 'Dahua' },
+        { nome: 'Axis', logo: 'images/parceiros/axis.png', fallback: 'Axis' },
+        { nome: 'Bosch', logo: 'images/parceiros/bosch.png', fallback: 'Bosch' },
+        { nome: 'JVC', logo: 'images/parceiros/jvc.png', fallback: 'JVC' },
+        { nome: 'Panasonic', logo: 'images/parceiros/panasonic.png', fallback: 'Panasonic' },
+        { nome: 'Sony', logo: 'images/parceiros/sony.png', fallback: 'Sony' },
+        { nome: 'Vivotek', logo: 'images/parceiros/vivotek.png', fallback: 'Vivotek' },
+        { nome: 'Intelbras', logo: 'images/parceiros/intelbras.png', fallback: 'Intelbras' },
+        { nome: 'Mobotix', logo: 'images/parceiros/mobotix.png', fallback: 'Mobotix' }
     ];
 
-    // Serviço selecionado atualmente
+    // Lista de aplicações práticas para o carrossel
+    const aplicacoes = [
+        {
+            titulo: 'Infraestruturas Críticas',
+            descricao: 'Soluções de alta segurança para aeroportos, portos, barragens e centrais elétricas com monitoramento 24/7 e redundância total.',
+            tags: ['CFTV', 'Perimetral', 'Biometria'],
+            imagem: 'images/aplicacoes/infraestruturas.jpg'
+        },
+        {
+            titulo: 'Condomínios',
+            descricao: 'Segurança residencial completa com controle de acesso, câmaras, porteiros eletrónicos e automação.',
+            tags: ['Portaria', 'Acesso', 'CFTV'],
+            imagem: 'images/aplicacoes/condominios.jpg'
+        },
+        {
+            titulo: 'Indústria',
+            descricao: 'Monitoramento de produção, controle de acesso de funcionários e segurança patrimonial industrial.',
+            tags: ['Produção', 'Acesso', 'PTZ'],
+            imagem: 'images/aplicacoes/industria.jpg'
+        },
+        {
+            titulo: 'Saúde',
+            descricao: 'Soluções para hospitais e clínicas com biossegurança, controle de acesso e deteção de gases.',
+            tags: ['Biossegurança', 'Acesso', 'Gases'],
+            imagem: 'images/aplicacoes/saude.jpg'
+        },
+        {
+            titulo: 'Comércio',
+            descricao: 'Proteção contra furtos, gestão de clientes, contagem de pessoas e monitoramento de lojas.',
+            tags: ['Anti-furto', 'PDV', 'CFTV'],
+            imagem: 'images/aplicacoes/comercio.jpg'
+        },
+        {
+            titulo: 'Energia Off Grid',
+            descricao: 'Sistemas solares e eólicos para locais remotos sem acesso à rede elétrica, com autonomia total.',
+            tags: ['Solar', 'Eólico', 'Baterias'],
+            imagem: 'images/aplicacoes/offgrid.jpg'
+        },
+        {
+            titulo: 'Gráfica',
+            descricao: 'Impressão de materiais promocionais, livros, revistas e comunicação visual para empresas.',
+            tags: ['Offset', 'Digital', 'Design'],
+            imagem: 'images/aplicacoes/grafica.jpg'
+        }
+    ];
+
+    // Lista de imagens para o carrossel do hero
+    const heroImages = [
+        'url("images/hero/seguranca.jpg")',
+        'url("images/hero/energia.jpg")',
+        'url("images/hero/automacao.jpg")',
+        'url("images/hero/grafica.jpg")',
+        'url("images/hero/cftv.jpg")'
+    ];
+
     let servicoSelecionado = null;
 
-    // Popular grade de serviços
+    // Popular grade de serviços com imagens e informações
     function popularServicos() {
         const grid = document.getElementById('servicesGrid');
         grid.innerHTML = '';
@@ -876,42 +1457,221 @@
         servicos.forEach(servico => {
             const card = document.createElement('div');
             card.className = 'service-card';
+            
+            // Imagem com fallback
+            const imagemHtml = servico.imagem ? 
+                `style="background-image: url('${servico.imagem}');"` : 
+                `style="background: linear-gradient(135deg, #1e3a8a, #2563eb);"`;
+            
+            const iconHtml = servico.imagem ? 
+                `<i class="fas ${servico.icone}"></i>` : 
+                `<i class="fas ${servico.icone}" style="font-size: 3rem; color: white;"></i>`;
+            
+            // Features
+            const featuresHtml = servico.features.map(f => 
+                `<span class="service-feature">${f}</span>`
+            ).join('');
+            
             card.innerHTML = `
-                <i class="fas ${servico.icone} service-icon"></i>
-                <h3>${servico.nome}</h3>
-                <div class="service-desc">${servico.descricao}</div>
-                <button class="btn-budget" onclick="abrirModalOrcamento('${servico.icone}', '${servico.nome}', '${servico.descricao}')">
-                    <i class="fas fa-calculator"></i> Peça orçamento
-                </button>
+                <div class="service-image" ${imagemHtml}>
+                    ${iconHtml}
+                </div>
+                <div class="service-content">
+                    <h3>${servico.nome}</h3>
+                    <div class="service-desc">${servico.descricao}</div>
+                    <div class="service-features">
+                        ${featuresHtml}
+                    </div>
+                    <button class="btn-budget" onclick="abrirModalOrcamento('${servico.icone}', '${servico.nome}', '${servico.descricao}')">
+                        <i class="fas fa-calculator"></i> Peça orçamento
+                    </button>
+                </div>
             `;
             grid.appendChild(card);
         });
     }
 
-    // Popular parceiros
-    function popularParceiros() {
-        const grid = document.getElementById('partnersGrid');
+    // Popular grid de vantagens
+    function popularVantagens() {
+        const grid = document.getElementById('benefitsGrid');
         grid.innerHTML = '';
         
-        parceiros.forEach(parceiro => {
+        vantagens.forEach(vantagem => {
             const item = document.createElement('div');
-            item.className = 'partner-item';
+            item.className = 'benefit-item';
+            item.onclick = () => mostrarDetalheVantagem(vantagem.titulo, vantagem.descricao);
+            
+            const statsHtml = vantagem.stats.map(stat => 
+                `<div class="stat">
+                    <div class="stat-value">${stat.valor}</div>
+                    <div class="stat-label">${stat.label}</div>
+                </div>`
+            ).join('');
+            
+            const featuresHtml = vantagem.features.map(f => 
+                `<span class="benefit-feature">${f}</span>`
+            ).join('');
+            
             item.innerHTML = `
-                <img class="partner-logo-img" src="${parceiro.logo}" alt="${parceiro.nome}" 
-                     onerror="this.src='https://placehold.co/60x60/2563eb/white?text=${parceiro.fallback}'">
-                <span class="partner-name">${parceiro.nome}</span>
+                <div class="benefit-header">
+                    <div class="benefit-icon">
+                        <i class="fas ${vantagem.icone}"></i>
+                    </div>
+                    <h3 class="benefit-title">${vantagem.titulo}</h3>
+                </div>
+                <p class="benefit-description">${vantagem.descricao}</p>
+                <div class="benefit-stats">
+                    ${statsHtml}
+                </div>
+                <div class="benefit-features">
+                    ${featuresHtml}
+                </div>
             `;
             grid.appendChild(item);
         });
+    }
 
-        // Adicionar D.PEDRO
-        const dpItem = document.createElement('div');
-        dpItem.className = 'partner-item partner-logo-dp';
-        dpItem.innerHTML = `
-            <div class="dp-logo-img">DP</div>
-            <span class="partner-name">D.PEDRO</span>
-        `;
-        grid.appendChild(dpItem);
+    // Mostrar detalhe da vantagem
+    function mostrarDetalheVantagem(titulo, descricao) {
+        alert(`📊 ${titulo}\n\n${descricao}\n\nEntre em contacto para saber mais!`);
+    }
+
+    // Popular carrossel de aplicações práticas
+    function popularAplicacoesCarrossel() {
+        const slider = document.getElementById('applicationsSlider');
+        const indicators = document.getElementById('carouselIndicators');
+        slider.innerHTML = '';
+        indicators.innerHTML = '';
+        
+        aplicacoes.forEach((app, index) => {
+            // Slide
+            const slide = document.createElement('div');
+            slide.className = `application-slide${index === 0 ? ' active' : ''}`;
+            
+            // Imagem com fallback
+            const imagem = app.imagem || `url("https://images.unsplash.com/photo-1557597774-9d273d0c0c0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80")`;
+            slide.style.backgroundImage = imagem;
+            
+            // Tags
+            const tagsHtml = app.tags.map(t => 
+                `<span class="application-tag">${t}</span>`
+            ).join('');
+            
+            slide.innerHTML = `
+                <div class="application-content">
+                    <h3>${app.titulo}</h3>
+                    <p>${app.descricao}</p>
+                    <div class="application-tags">
+                        ${tagsHtml}
+                    </div>
+                </div>
+            `;
+            slider.appendChild(slide);
+            
+            // Indicador
+            const indicator = document.createElement('span');
+            indicator.className = `indicator${index === 0 ? ' active' : ''}`;
+            indicator.onclick = () => irParaSlide(index);
+            indicators.appendChild(indicator);
+        });
+
+        // Iniciar carrossel de aplicações (2 segundos)
+        let currentAppIndex = 0;
+        setInterval(() => {
+            const slides = document.querySelectorAll('.application-slide');
+            const inds = document.querySelectorAll('.indicator');
+            
+            slides[currentAppIndex].classList.remove('active');
+            inds[currentAppIndex].classList.remove('active');
+            
+            currentAppIndex = (currentAppIndex + 1) % slides.length;
+            
+            slides[currentAppIndex].classList.add('active');
+            inds[currentAppIndex].classList.add('active');
+        }, 2000);
+    }
+
+    // Ir para slide específico
+    function irParaSlide(index) {
+        const slides = document.querySelectorAll('.application-slide');
+        const inds = document.querySelectorAll('.indicator');
+        
+        slides.forEach(s => s.classList.remove('active'));
+        inds.forEach(i => i.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        inds[index].classList.add('active');
+    }
+
+    // Popular carrossel do hero
+    function popularHeroCarrossel() {
+        const slider = document.getElementById('heroSlider');
+        slider.innerHTML = '';
+        
+        heroImages.forEach((img, index) => {
+            const slide = document.createElement('div');
+            slide.className = `hero-slide${index === 0 ? ' active' : ''}`;
+            slide.style.backgroundImage = img;
+            slide.innerHTML = '<i class="fas fa-camera"></i>';
+            slider.appendChild(slide);
+        });
+
+        // Iniciar carrossel
+        let currentHeroIndex = 0;
+        setInterval(() => {
+            const slides = document.querySelectorAll('.hero-slide');
+            slides[currentHeroIndex].classList.remove('active');
+            currentHeroIndex = (currentHeroIndex + 1) % slides.length;
+            slides[currentHeroIndex].classList.add('active');
+        }, 3000);
+    }
+
+    // Popular carrossel de parceiros
+    function popularParceirosCarrossel() {
+        const slider = document.getElementById('partnersSlider');
+        slider.innerHTML = '';
+        
+        // Criar 3 slides com diferentes combinações de parceiros
+        for (let i = 0; i < 3; i++) {
+            const slide = document.createElement('div');
+            slide.className = `partners-slide${i === 0 ? ' active' : ''}`;
+            
+            // Distribuir parceiros nos slides
+            const startIndex = i * 4;
+            for (let j = 0; j < 4; j++) {
+                const index = (startIndex + j) % parceiros.length;
+                const parceiro = parceiros[index];
+                
+                const item = document.createElement('div');
+                item.className = 'partner-item';
+                item.innerHTML = `
+                    <img class="partner-logo-img" src="${parceiro.logo}" alt="${parceiro.nome}" 
+                         onerror="this.src='https://placehold.co/60x60/2563eb/white?text=${parceiro.fallback}'">
+                    <span class="partner-name">${parceiro.nome}</span>
+                `;
+                slide.appendChild(item);
+            }
+            
+            // Adicionar D.PEDRO
+            const dpItem = document.createElement('div');
+            dpItem.className = 'partner-item partner-logo-dp';
+            dpItem.innerHTML = `
+                <div class="dp-logo-img">DP</div>
+                <span class="partner-name">D.PEDRO</span>
+            `;
+            slide.appendChild(dpItem);
+            
+            slider.appendChild(slide);
+        }
+
+        // Iniciar carrossel de parceiros
+        let currentPartnerIndex = 0;
+        setInterval(() => {
+            const slides = document.querySelectorAll('.partners-slide');
+            slides[currentPartnerIndex].classList.remove('active');
+            currentPartnerIndex = (currentPartnerIndex + 1) % slides.length;
+            slides[currentPartnerIndex].classList.add('active');
+        }, 3000);
     }
 
     // Abrir modal de orçamento
@@ -965,7 +1725,7 @@
         const mensagem = gerarMensagem();
         if (!mensagem) return;
         
-        const telefone = '244946299834'; // Número da empresa
+        const telefone = '244946299834';
         const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
         window.open(url, '_blank');
         fecharModal();
@@ -983,10 +1743,23 @@
         fecharModal();
     }
 
+    // Mostrar cookies
+    function mostrarCookies() {
+        alert('🍪 Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de cookies.');
+    }
+
+    // Mostrar termos
+    function mostrarTermos() {
+        alert('📜 Termos e Condições de Uso:\n\n1. Ao utilizar este site, você concorda com nossos termos.\n2. Todos os direitos reservados.\n3. Proibida reprodução sem autorização.\n\nPara mais informações, contacte-nos.');
+    }
+
     // Inicializar
     document.addEventListener('DOMContentLoaded', function() {
         popularServicos();
-        popularParceiros();
+        popularHeroCarrossel();
+        popularParceirosCarrossel();
+        popularAplicacoesCarrossel();
+        popularVantagens();
 
         // Modal do botão principal
         const modal = document.getElementById('budgetModal');

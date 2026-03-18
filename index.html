@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.PEDRO SOLUÇÕES – Orçamento Online</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafd;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* Top bar compacto */
+        .top-bar {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .top-bar .contact-info span {
+            margin-right: 1.8rem;
+        }
+        .top-bar .contact-info i {
+            color: #60a5fa;
+            width: 1.2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Navegação */
+        nav {
+            background: white;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-mark {
+            background: #1e3a8a;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a, .nav-links button {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover,
+        .nav-links button:hover,
+        .nav-links a.active {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+        .btn-app {
+            background: #22c55e !important;
+            color: white !important;
+        }
+        .btn-app:hover {
+            background: #16a34a !important;
+            color: white !important;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            border-radius: 2.5rem;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+        }
+        .hero-content {
+            flex: 1 1 300px;
+        }
+        .hero-badge {
+            background: #1e3a8a;
+            color: white;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .hero p {
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px -2px #2563eb50;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .hero-visual {
+            flex: 0 0 240px;
+            background: #cbd5e1;
+            border-radius: 2rem;
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1e293b;
+            background-image: radial-gradient(circle at 20px 20px, #94a3b8 1px, transparent 1px);
+            background-size: 30px 30px;
+        }
+
+        /* Títulos */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* Grade de serviços */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .service-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem 1rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+            cursor: pointer;
+        }
+        .service-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 10px 20px -10px #2563eb30;
+            transform: translateY(-4px);
+        }
+        .service-icon {
+            font-size: 2.2rem;
+            color: #2563eb;
+            margin-bottom: 0.8rem;
+        }
+        .service-card h3 {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        .service-desc {
+            font-size: 0.75rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+        .btn-budget {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 0.4rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            transition: 0.2s;
+        }
+        .btn-budget:hover {
+            background: #16a34a;
+        }
+
+        /* Player de vídeo YouTube */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            margin: 1rem 0;
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Parceiros */
+        .partners {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0 2.5rem;
+            padding: 1rem;
+            background: transparent;
+        }
+        .partner-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100px;
+        }
+        .partner-logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 0.3rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+        }
+        .partner-name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #334155;
+        }
+        .dp-logo-img {
+            width: 60px;
+            height: 60px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+        }
+
+        /* Benefícios */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .benefit-item {
+            background: white;
+            padding: 0.7rem 1rem;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            gap: 0.6rem;
+            border: 1px solid #e2e8f0;
+        }
+        .benefit-item i {
+            color: #2563eb;
+        }
+
+        /* Tags */
+        .tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 2rem 0;
+        }
+        .tag {
+            background: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            border: 1px solid #e2e8f0;
+            font-size: 0.9rem;
+        }
+
+        /* Contacto direto */
+        .contact-block {
+            background: #dbeafe;
+            border-radius: 2.5rem;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .contact-highlight {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Modal de orçamento */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .modal-header h2 i {
+            color: #2563eb;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover {
+            background: #f1f5f9;
+            color: #ef4444;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.9rem;
+        }
+        .form-group label i {
+            color: #2563eb;
+            width: 1.2rem;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            color: #64748b;
+        }
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px #2563eb20;
+        }
+
+        .service-info {
+            background: #e0e7ff;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid #2563eb;
+        }
+        .service-info i {
+            font-size: 2rem;
+            color: #2563eb;
+        }
+        .service-info h3 {
+            color: #0f172a;
+            margin-bottom: 0.2rem;
+        }
+        .service-info p {
+            color: #475569;
+            font-size: 0.85rem;
+        }
+
+        .send-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .btn-send {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .btn-send.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .btn-send.whatsapp:hover {
+            background: #20b859;
+            transform: translateY(-2px);
+        }
+        .btn-send.email {
+            background: #2563eb;
+            color: white;
+        }
+        .btn-send.email:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 3rem;
+            border-radius: 3rem 3rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Botões flutuantes */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            text-decoration: none;
+        }
+        .top-arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #2563eb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .top-arrow:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 946 299 834 | 959 777 301</span>
+        <span><i class="fas fa-map-marker-alt"></i> Luanda, Viana, Vila Flor</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+    </div>
+    <div class="social-links">
+        <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/daniel-pedro-bb03872b5/"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+
+<!-- Navegação -->
+<nav>
+    <div class="logo">
+        <div class="logo-mark">DP</div>
+        <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+    </div>
+    <div class="nav-links">
+        <a href="#" onclick="alert('Página Quem somos (simulação)')">Quem somos</a>
+        <a href="#" onclick="alert('Mercados Verticais (simulação)')">Mercados Verticais</a>
+        <a href="#" onclick="alert('Soluções (simulação)')">Soluções</a>
+        <a href="#" onclick="alert('Catálogo (simulação)')">Catálogo</a>
+        <a href="#" onclick="alert('Recrutamento (simulação)')">Recrutamento</a>
+        <button class="btn-app" onclick="alert('Baixar aplicativo (simulação)')"><i class="fas fa-download"></i> Baixar App</button>
+        <a href="#" onclick="alert('Contactos (simulação)')">Contactos</a>
+    </div>
+</nav>
+
+<main class="container">
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-certificate"></i> Especialistas em soluções integradas</div>
+            <h1>D.PEDRO SOLUÇÕES</h1>
+            <p>Comércio e prestação de serviços em segurança eletrónica, CFTV, controlo de acessos, deteção de incêndio, energia off grid, gráfica e muito mais.</p>
+            <p><strong>Sede:</strong> Viana, Vila Flor, Luanda</p>
+            <button class="btn-primary" id="btnOrcamento"><i class="fas fa-calculator"></i> Pedir orçamento</button>
+        </div>
+        <div class="hero-visual">
+            <i class="fas fa-camera" style="font-size: 4rem; opacity: 0.3;"></i>
+        </div>
+    </div>
+
+    <!-- Câmaras IP com vídeo do YouTube -->
+    <h2 class="section-title"><i class="fas fa-video"></i> Câmaras IP</h2>
+    <div class="video-container">
+        <iframe src="https://www.youtube.com/embed?listType=search&list=câmeras+ip+segurança" allowfullscreen></iframe>
+    </div>
+    <p style="text-align: center; margin-bottom: 2rem;">Veja no YouTube como funcionam nossas câmaras IP</p>
+
+    <!-- Grade de serviços -->
+    <h2 class="section-title"><i class="fas fa-cube"></i> Soluções disponíveis</h2>
+    <p style="margin-bottom: 0.5rem;">Clique em "Peça orçamento" para solicitar um orçamento personalizado:</p>
+    <div class="services-grid" id="servicesGrid">
+        <!-- Os cards serão populados via JavaScript -->
+    </div>
+
+    <!-- Parceiros -->
+    <h2 class="section-title"><i class="fas fa-handshake"></i> Principais Parceiros</h2>
+    <div class="partners" id="partnersGrid">
+        <!-- Parceiros serão populados via JavaScript -->
+    </div>
+
+    <!-- Benefícios -->
+    <h2 class="section-title"><i class="fas fa-chart-line"></i> Vantagens integradas</h2>
+    <div class="benefits-grid">
+        <div class="benefit-item"><i class="fas fa-users"></i> Contagem pessoas</div>
+        <div class="benefit-item"><i class="fas fa-bell"></i> Integração alarme</div>
+        <div class="benefit-item"><i class="fas fa-robot"></i> Reconhecimento IA</div>
+        <div class="benefit-item"><i class="fas fa-ban"></i> Deteção intrusão</div>
+        <div class="benefit-item"><i class="fas fa-exclamation-triangle"></i> Alertas automáticos</div>
+        <div class="benefit-item"><i class="fas fa-shield-alt"></i> Segurança 24/7</div>
+    </div>
+
+    <!-- Aplicações -->
+    <h2 class="section-title"><i class="fas fa-building"></i> Aplicações práticas</h2>
+    <div class="tags">
+        <span class="tag">Infraestruturas críticas</span>
+        <span class="tag">Condomínios</span>
+        <span class="tag">Indústria</span>
+        <span class="tag">Saúde</span>
+        <span class="tag">Comércio</span>
+        <span class="tag">Energia off grid</span>
+        <span class="tag">Gráfica</span>
+    </div>
+
+    <!-- Contacto direto -->
+    <div class="contact-block">
+        <span class="contact-highlight"><i class="fas fa-phone-alt"></i> 946 299 834 / 959 777 301</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+        <span><i class="fas fa-globe"></i> www.dpedrosolucoes.shop</span>
+    </div>
+</main>
+
+<!-- Modal de orçamento -->
+<div class="modal" id="budgetModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-calculator"></i> <span id="modalTitle">Pedir Orçamento</span></h2>
+            <button class="modal-close" onclick="fecharModal()"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="service-info" id="serviceInfo">
+            <i class="fas fa-tools" id="serviceIcon"></i>
+            <div>
+                <h3 id="serviceName">Serviço</h3>
+                <p id="serviceDescription">Descrição do serviço</p>
+            </div>
+        </div>
+
+        <form id="budgetForm" onsubmit="event.preventDefault();">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Nome completo *</label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nomeCliente" placeholder="Seu nome completo" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Telefone *</label>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="telefoneCliente" placeholder="(244) 000-000-000" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="emailCliente" placeholder="seu@email.com">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-comment"></i> Mensagem / Detalhes adicionais</label>
+                <div class="input-group">
+                    <i class="fas fa-comment"></i>
+                    <textarea id="mensagemCliente" rows="4" placeholder="Descreva suas necessidades específicas..."></textarea>
+                </div>
+            </div>
+
+            <div class="send-buttons">
+                <button type="button" class="btn-send whatsapp" onclick="enviarWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button type="button" class="btn-send email" onclick="enviarEmail()">
+                    <i class="fas fa-envelope"></i> Email
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <strong>D.PEDRO SOLUÇÕES</strong>
+            <p>Comércio e Prestação de Serviços, Lda.</p>
+            <p>Luanda, Angola</p>
+        </div>
+        <div class="footer-col">
+            <strong>Sede</strong>
+            <p>Viana, Vila Flor, Luanda</p>
+        </div>
+        <div class="footer-col">
+            <strong>Contactos</strong>
+            <p>+244 946 299 834<br>+244 959 777 301<br>dpedroservice@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <strong>Links</strong>
+            <a href="#" onclick="alert('Quem somos')">Quem somos</a>
+            <a href="#" onclick="alert('Mercados Verticais')">Mercados Verticais</a>
+            <a href="#" onclick="alert('Soluções')">Soluções</a>
+            <a href="#" onclick="alert('Catálogo')">Catálogo</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
+        <div><i class="fas fa-cookie-bite"></i> cookies | <i class="fas fa-file-contract"></i> termos</div>
+    </div>
+</footer>
+
+<!-- Botões flutuantes -->
+<a href="https://wa.me/244946299834" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+    // Lista de serviços
+    const servicos = [
+        { icone: 'fa-video', nome: 'Câmaras CFTV', descricao: 'Vídeo vigilância IP/analógica' },
+        { icone: 'fa-bell', nome: 'Alarmes intrusão', descricao: 'Anti-roubo, centrais' },
+        { icone: 'fa-walking', nome: 'Sensores presença', descricao: 'Deteção de movimento' },
+        { icone: 'fa-fingerprint', nome: 'Controlo acesso', descricao: 'Biométrico, cartão, senha' },
+        { icone: 'fa-phone-alt', nome: 'Vídeo-porteiros', descricao: 'Interfones com câmara' },
+        { icone: 'fa-fire-extinguisher', nome: 'Detecção incêndio', descricao: 'Sensores fumo, centrais' },
+        { icone: 'fa-bolt', nome: 'Cerca elétrica', descricao: 'Proteção perimetral' },
+        { icone: 'fa-shield-alt', nome: 'Proteção perimetral', descricao: 'Barreiras, sensores' },
+        { icone: 'fa-wind', nome: 'Detecção gases', descricao: 'Gás, CO, alarmes' },
+        { icone: 'fa-hdd', nome: 'Gravadores digitais', descricao: 'DVR, NVR, armazenamento' },
+        { icone: 'fa-satellite-dish', nome: 'Monitoramento remoto', descricao: 'Acesso via app' },
+        { icone: 'fa-image', nome: 'Gestão imagens VMS', descricao: 'Software de vídeo' },
+        { icone: 'fa-satellite', nome: 'Antena parabólica', descricao: 'Instalação, alinhamento' },
+        { icone: 'fa-solar-panel', nome: 'Sistema Off Grid', descricao: 'Painéis, inversores, baterias' },
+        { icone: 'fa-print', nome: 'Gráfica & Brindes', descricao: 'Offset/digital, cartões, faixas' },
+        { icone: 'fa-map-pin', nome: 'GPS Moto/Carro', descricao: 'Rastreamento veicular' },
+        { icone: 'fa-microchip', nome: 'Hardware/Software', descricao: 'Sistematização, venda' },
+        { icone: 'fa-shield-virus', nome: 'Biossegurança', descricao: 'Equipamentos de proteção' },
+        { icone: 'fa-lock', nome: 'Cofres alta segurança', descricao: 'À prova de fogo' },
+        { icone: 'fa-pen-fancy', nome: 'Design gráfico', descricao: 'Logotipos, identidade' }
+    ];
+
+    // Lista de parceiros
+    const parceiros = [
+        { nome: 'HIKVISION', logo: 'https://www.hikvision.com/content/dam/hikvision/en/common/logo/logo.png', fallback: 'HIK' },
+        { nome: 'Dahua', logo: 'https://www.dahuasecurity.com/themes/dahua/images/logo.svg', fallback: 'Dahua' },
+        { nome: 'Axis', logo: 'https://www.axis.com/dam/images/logos/axis-logo.svg', fallback: 'Axis' },
+        { nome: 'Bosch', logo: 'https://www.boschsecurity.com/xc/themes/bosch-responsive-static/images/logo.svg', fallback: 'Bosch' },
+        { nome: 'JVC', logo: 'https://www.jvc.com/images/logo.png', fallback: 'JVC' },
+        { nome: 'Panasonic', logo: 'https://www.panasonic.com/content/dam/panasonic/global/logo.png', fallback: 'Panasonic' },
+        { nome: 'Sony', logo: 'https://www.sony.com.br/image/logo.svg', fallback: 'Sony' },
+        { nome: 'Vivotek', logo: 'https://www.vivotek.com/images/logo.svg', fallback: 'Vivotek' },
+        { nome: 'Intelbras', logo: 'https://www.intelbras.com.br/local/common/images/logo.svg', fallback: 'Intelbras' },
+        { nome: 'Mobotix', logo: 'https://www.mobotix.com/images/logo.png', fallback: 'Mobotix' }
+    ];
+
+    // Serviço selecionado atualmente
+    let servicoSelecionado = null;
+
+    // Popular grade de serviços
+    function popularServicos() {
+        const grid = document.getElementById('servicesGrid');
+        grid.innerHTML = '';
+        
+        servicos.forEach(servico => {
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            card.innerHTML = `
+                <i class="fas ${servico.icone} service-icon"></i>
+                <h3>${servico.nome}</h3>
+                <div class="service-desc">${servico.descricao}</div>
+                <button class="btn-budget" onclick="abrirModalOrcamento('${servico.icone}', '${servico.nome}', '${servico.descricao}')">
+                    <i class="fas fa-calculator"></i> Peça orçamento
+                </button>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Popular parceiros
+    function popularParceiros() {
+        const grid = document.getElementById('partnersGrid');
+        grid.innerHTML = '';
+        
+        parceiros.forEach(parceiro => {
+            const item = document.createElement('div');
+            item.className = 'partner-item';
+            item.innerHTML = `
+                <img class="partner-logo-img" src="${parceiro.logo}" alt="${parceiro.nome}" 
+                     onerror="this.src='https://placehold.co/60x60/2563eb/white?text=${parceiro.fallback}'">
+                <span class="partner-name">${parceiro.nome}</span>
+            `;
+            grid.appendChild(item);
+        });
+
+        // Adicionar D.PEDRO
+        const dpItem = document.createElement('div');
+        dpItem.className = 'partner-item partner-logo-dp';
+        dpItem.innerHTML = `
+            <div class="dp-logo-img">DP</div>
+            <span class="partner-name">D.PEDRO</span>
+        `;
+        grid.appendChild(dpItem);
+    }
+
+    // Abrir modal de orçamento
+    function abrirModalOrcamento(icone, nome, descricao) {
+        servicoSelecionado = { icone, nome, descricao };
+        
+        document.getElementById('serviceIcon').className = `fas ${icone}`;
+        document.getElementById('serviceName').textContent = nome;
+        document.getElementById('serviceDescription').textContent = descricao;
+        document.getElementById('modalTitle').textContent = `Orçamento - ${nome}`;
+        
+        document.getElementById('budgetModal').classList.add('active');
+    }
+
+    // Fechar modal
+    function fecharModal() {
+        document.getElementById('budgetModal').classList.remove('active');
+        document.getElementById('budgetForm').reset();
+        servicoSelecionado = null;
+    }
+
+    // Gerar mensagem para WhatsApp/Email
+    function gerarMensagem() {
+        const nome = document.getElementById('nomeCliente').value;
+        const telefone = document.getElementById('telefoneCliente').value;
+        const email = document.getElementById('emailCliente').value;
+        const mensagem = document.getElementById('mensagemCliente').value;
+        
+        if (!nome || !telefone) {
+            alert('Por favor, preencha nome e telefone!');
+            return null;
+        }
+
+        let texto = `*ORÇAMENTO - D.PEDRO SOLUÇÕES*\n\n`;
+        texto += `*Serviço:* ${servicoSelecionado.nome}\n`;
+        texto += `*Descrição:* ${servicoSelecionado.descricao}\n\n`;
+        texto += `*Dados do Cliente:*\n`;
+        texto += `Nome: ${nome}\n`;
+        texto += `Telefone: ${telefone}\n`;
+        if (email) texto += `Email: ${email}\n`;
+        if (mensagem) texto += `\n*Mensagem:*\n${mensagem}\n\n`;
+        texto += `\n*D.PEDRO SOLUÇÕES*\n`;
+        texto += `📍 Viana, Vila Flor, Luanda\n`;
+        texto += `📞 946 299 834 / 959 777 301`;
+
+        return texto;
+    }
+
+    // Enviar WhatsApp
+    function enviarWhatsApp() {
+        const mensagem = gerarMensagem();
+        if (!mensagem) return;
+        
+        const telefone = '244946299834'; // Número da empresa
+        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, '_blank');
+        fecharModal();
+    }
+
+    // Enviar Email
+    function enviarEmail() {
+        const mensagem = gerarMensagem();
+        if (!mensagem) return;
+        
+        const emailEmpresa = 'dpedroservice@gmail.com';
+        const assunto = `Orçamento - ${servicoSelecionado.nome}`;
+        const url = `mailto:${emailEmpresa}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
+        window.location.href = url;
+        fecharModal();
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+        popularServicos();
+        popularParceiros();
+
+        // Modal do botão principal
+        const modal = document.getElementById('budgetModal');
+        const btn = document.getElementById('btnOrcamento');
+        btn.onclick = () => {
+            servicoSelecionado = { icone: 'fa-tools', nome: 'Orçamento Geral', descricao: 'Solicitação de orçamento personalizado' };
+            document.getElementById('serviceIcon').className = 'fas fa-tools';
+            document.getElementById('serviceName').textContent = 'Orçamento Geral';
+            document.getElementById('serviceDescription').textContent = 'Solicitação de orçamento personalizado';
+            document.getElementById('modalTitle').textContent = 'Pedir Orçamento';
+            modal.classList.add('active');
+        };
+
+        // Fechar modal ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                fecharModal();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

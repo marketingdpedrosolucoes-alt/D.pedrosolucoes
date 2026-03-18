@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.PEDRO SOLUÇÕES – Mercados Verticais</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafd;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .top-bar .contact-info span {
+            margin-right: 1.8rem;
+        }
+        .top-bar .contact-info i {
+            color: #60a5fa;
+            width: 1.2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Navegação */
+        nav {
+            background: white;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-mark {
+            background: #1e3a8a;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        /* Cabeçalho da página */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        .page-header h1 i {
+            color: #2563eb;
+            margin-right: 0.5rem;
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Introdução */
+        .intro-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .intro-card p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Grid de mercados verticais */
+        .markets-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .market-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        .market-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(37,99,235,0.2);
+            border-color: #2563eb;
+        }
+
+        .market-header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 1.8rem 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .market-header i {
+            font-size: 2.5rem;
+            opacity: 0.9;
+        }
+        .market-header h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+
+        .market-content {
+            padding: 1.8rem;
+        }
+
+        .market-desc {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .solutions-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .solutions-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .solutions-list li:last-child {
+            border-bottom: none;
+        }
+        .solutions-list li i {
+            color: #2563eb;
+            font-size: 0.9rem;
+            width: 1.2rem;
+        }
+        .solutions-list li span {
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .market-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+        .feature-tag {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .btn-market {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+            margin-top: 1rem;
+        }
+        .btn-market:hover {
+            background: #1d4ed8;
+        }
+
+        /* Seção de casos de sucesso */
+        .cases-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        .cases-section h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .cases-section h2 i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+        .cases-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .case-card {
+            background: #f8fafc;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        .case-card h3 {
+            color: #2563eb;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+        .case-card p {
+            color: #475569;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+        .case-tags {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .case-tags span {
+            background: white;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            border: 1px solid #cbd5e1;
+        }
+
+        /* Contacto rápido */
+        .quick-contact {
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        .quick-contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .quick-contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .contact-btn {
+            background: white;
+            color: #2563eb;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .contact-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+        .contact-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .contact-btn.whatsapp:hover {
+            background: #20b859;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 3rem;
+            border-radius: 3rem 3rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Botões flutuantes */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            text-decoration: none;
+        }
+        .top-arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #2563eb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .top-arrow:hover {
+            opacity: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .markets-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 946 299 834 | 959 777 301</span>
+        <span><i class="fas fa-map-marker-alt"></i> Luanda, Viana, Vila Flor</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+    </div>
+    <div class="social-links">
+        <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+
+<!-- Navegação -->
+<nav>
+    <div class="logo">
+        <div class="logo-mark">DP</div>
+        <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+    </div>
+    <div class="nav-links">
+        <a href="#" onclick="alert('Página inicial (simulação)')">Início</a>
+        <a href="#" onclick="alert('Quem somos (simulação)')">Quem somos</a>
+        <a href="#" class="active">Mercados Verticais</a>
+        <a href="#" onclick="alert('Soluções (simulação)')">Soluções</a>
+        <a href="#" onclick="alert('Catálogo (simulação)')">Catálogo</a>
+        <a href="#" onclick="alert('Recrutamento (simulação)')">Recrutamento</a>
+        <a href="#" onclick="alert('Contactos (simulação)')">Contactos</a>
+    </div>
+</nav>
+
+<main class="container">
+    <!-- Cabeçalho da página -->
+    <div class="page-header">
+        <h1><i class="fas fa-chart-pie"></i> Mercados Verticais</h1>
+        <p>Soluções especializadas para cada segmento do mercado</p>
+    </div>
+
+    <!-- Introdução -->
+    <div class="intro-card">
+        <p>A D.PEDRO SOLUÇÕES atende diferentes setores da economia com soluções personalizadas, combinando tecnologia de ponta, expertise técnica e conhecimento específico de cada segmento. Conheça nossos mercados verticais e descubra como podemos ajudar o seu negócio.</p>
+    </div>
+
+    <!-- Grid de mercados verticais -->
+    <div class="markets-grid">
+        <!-- 1. Residencial e Condomínios -->
+        <div class="market-card">
+            <div class="market-header">
+                <i class="fas fa-home"></i>
+                <h2>Residencial & Condomínios</h2>
+            </div>
+            <div class="market-content">
+                <p class="market-desc">Soluções completas para segurança e conforto de residências e condomínios, garantindo tranquilidade para moradores e síndicos.</p>
+                <ul class="solutions-list">
+                    <li><i class="fas fa-check"></i> <span>Câmaras CFTV com acesso remoto</span></li>
+                    <li><i class="fas fa-check"></i> <span>Vídeo-porteiros e interfones</span></li>
+                    <li><i class="fas fa-check"></i> <span>Controlo de acesso biométrico</span></li>
+                    <li><i class="fas fa-check"></i> <span>Cerca elétrica e concertina</span></li>
+                    <li><i class="fas fa-check"></i> <span>Automação residencial</span></li>
+                    <li><i class="fas fa-check"></i> <span>Sistemas de energia solar</span></li>
+                </ul>
+                <div class="market-features">
+                    <span class="feature-tag">Acesso remoto</span>
+                    <span class="feature-tag">24/7</span>
+                    <span class="feature-tag">Integração</span>
+                </div>
+                <button class="btn-market" onclick="alert('Orçamento para Residencial e Condomínios')"><i class="fas fa-calculator"></i> Solicitar orçamento</button>
+            </div>
+        </div>
+
+        <!-- 2. Comércio e Retalho -->
+        <div class="market-card">
+            <div class="market-header">
+                <i class="fas fa-store"></i>
+                <h2>Comércio & Retalho</h2>
+            </div>
+            <div class="market-content">
+                <p class="market-desc">Proteja seu negócio contra furtos, otimize a gestão e melhore a experiência dos clientes com nossas soluções integradas.</p>
+                <ul class="solutions-list">
+                    <li><i class="fas fa-check"></i> <span>CFTV com análise inteligente</span></li>
+                    <li><i class="fas fa-check"></i> <span>Alarmes anti-furto</span></li>
+                    <li><i class="fas fa-check"></i> <span>Sensores de presença</span></li>
+                    <li><i class="fas fa-check"></i> <span>Sistema Ponto de Venda (PDV)</span></li>
+                    <li><i class="fas fa-check"></i> <span>Controlo de acesso funcionários</span></li>
+                    <li><i class="fas fa-check"></i> <span>Monitoramento remoto</span></li>
+                </ul>
+                <div class="market-features">
+                    <span class="feature-tag">Anti-furto</span>
+                    <span class="feature-tag">Gestão</span>
+                    <span class="feature-tag">Analytics</span>
+                </div>
+                <button class="btn-market" onclick="alert('Orçamento para Comércio e Retalho')"><i class="fas fa-calculator"></i> Solicitar orçamento</button>
+            </div>
+        </div>
+
+        <!-- 3. Indústria e Logística -->
+        <div class="market-card">
+            <div class="market-header">
+                <i class="fas fa-industry"></i>
+                <h2>Indústria & Logística</h2>
+            </div>
+            <div class="market-content">
+                <p class="market-desc">Soluções robustas para ambientes industriais, garantindo segurança patrimonial, controle de acesso e eficiência operacional.</p>
+                <ul class="solutions-list">
+                    <li><i class="fas fa-check"></i> <span>Câmaras industriais PTZ</span></li>
+                    <li><i class="fas fa-check"></i> <span>Controlo de acesso avançado</span></li>
+                    <li><i class="fas fa-check"></i> <span>Deteção de intrusão perimetral</span></li>
+                    <li><i class="fas fa-check"></i> <span>Sistemas de combate a incêndio</span></li>
+                    <li><i class="fas fa-check"></i> <span>Monitoramento de produção</span></li>
+                    <li><i class="fas fa-check"></i> <span>Rastreamento de frotas</span></li>
+                </ul>
+                <div class="market-features">
+                    <span class="feature-tag">PTZ</span>
+                    <span class="feature-tag">Industrial</span>
+                    <span class="feature-tag">Incêndio</span>
+                </div>
+                <button class="btn-market" onclick="alert('Orçamento para Indústria e Logística')"><i class="fas fa-calculator"></i> Solicitar orçamento</button>
+            </div>
+        </div>
+
+        <!-- 4. Saúde -->
+        <div class="market-card">
+            <div class="market-header">
+                <i class="fas fa-hospital"></i>
+                <h2>Saúde</h2>
+            </div>
+            <div class="market-content">
+                <p class="market-desc">Soluções para hospitais, clínicas e laboratórios, garantindo segurança de pacientes, profissionais e informações sensíveis.</p>
+                <ul class="solutions-list">
+                    <li><i class="fas fa-check"></i> <span>CFTV em áreas controladas</span></li>
+                    <li><i class="fas fa-check"></i> <span>Controlo de acesso por biometria</span></li>
+                    <li><i class="fas fa-check"></i> <span>Sistemas de deteção de gases</span></li>
+                    <li><i class="fas fa-check"></i> <span>Combate a incêndio</span></li>
+                    <li><i class="fas fa-check"></i> <span>Biossegurança</span></li>
+                    <li><i class="fas fa-check"></i> <span>Monitoramento remoto</span></li>
+                </ul>
+                <div class="market-features">
+                    <span class="feature-tag">Biossegurança</span>
+                    <span class="feature-tag">Gases</span>
+                    <span class="feature-tag">Incêndio</span>
+                </div>
+                <button class="btn-market" onclick="alert('Orçamento para Saúde')"><i class="fas fa-calculator"></i> Solicitar orçamento</button>
+            </div>
+        </div>
+
+        <!-- 5. Educação -->
+        <div class="market-card">
+            <div class="market-header">
+                <i class="fas fa-school"></i>
+                <h2>Educação</h2>
+            </div>
+            <div class="market-content">
+                <p class="market-desc">Escolas, universidades e centros de ensino protegidos com tecnologia de ponta para alunos, professores e funcionários.</p>
+                <ul class="solutions-list">
+                    <li><i class="fas fa-check"></i> <span>Câmaras em áreas comuns</span></li>
+                    <li><i class="fas fa-check"></i> <span>Controlo de acesso por cartão</span></li>
+                    <li><i class="fas fa-check"></i> <span>Sistemas de assiduidade</span></li>
+                    <li><i class="fas fa-check"></i> <span>Interfones e comunicação</span></li>
+                    <li><i class="fas fa-check"></i> <span>Alarmes de intrusão</span></li>
+                    <li><i class="fas fa-check"></i> <span>Projetores e multimédia</span></li>
+                </ul>
+                <div class="market-features">
+                    <span class="feature-tag">Assiduidade</span>
+                    <span class="feature-tag">Cartão</span>
+                    <span class="feature-tag">Multimédia</span>
+                </div>
+                <button class="btn-market" onclick="alert('Orçamento para Educação')"><i class="fas fa-calculator"></i> Solicitar orçamento</button>
+            </div>
+        </div>
+
+        <!-- 6. Energia e Off Grid -->
+        <div class="market-card">
+            <div class="market-header">
+                <i class="fas fa-solar-panel"></i>
+                <h2>Energia & Off Grid</h2>
+            </div>
+            <div class="market-content">
+                <p class="market-desc">Soluções energéticas sustentáveis para residências, empresas e locais remotos, com independência da rede elétrica.</p>
+                <ul class="solutions-list">
+                    <li><i class="fas fa-check"></i> <span>Painéis solares fotovoltaicos</span></li>
+                    <li><i class="fas fa-check"></i> <span>Inversores e controladores</span></li>
+                    <li><i class="fas fa-check"></i> <span>Baterias de armazenamento</span></li>
+                    <li><i class="fas fa-check"></i> <span>Geradores eólicos portáteis</span></li>
+                    <li><i class="fas fa-check"></i> <span>Sistemas híbridos</span></li>
+                    <li><i class="fas fa-check"></i> <span>Iluminação solar</span></li>
+                </ul>
+                <div class="market-features">
+                    <span class="feature-tag">Off Grid</span>
+                    <span class="feature-tag">Solar</span>
+                    <span class="feature-tag">Eólico</span>
+                </div>
+                <button class="btn-market" onclick="alert('Orçamento para Energia e Off Grid')"><i class="fas fa-calculator"></i> Solicitar orçamento</button>
+            </div>
+        </div>
+
+        <!-- 7. Governo e Infraestruturas Críticas -->
+        <div class="market-card">
+            <div class="market-header">
+                <i class="fas fa-landmark"></i>
+                <h2>Governo & Infraestruturas</h2>
+            </div>
+            <div class="market-content">
+                <p class="market-desc">Proteção para órgãos públicos, infraestruturas críticas e espaços de grande circulação com soluções de alta segurança.</p>
+                <ul class="solutions-list">
+                    <li><i class="fas fa-check"></i> <span>CFTV com reconhecimento facial</span></li>
+                    <li><i class="fas fa-check"></i> <span>Controlo de acesso biométrico</span></li>
+                    <li><i class="fas fa-check"></i> <span>Cancelas e catracas</span></li>
+                    <li><i class="fas fa-check"></i> <span>Proteção perimetral</span></li>
+                    <li><i class="fas fa-check"></i> <span>Centrais de monitoramento</span></li>
+                    <li><i class="fas fa-check"></i> <span>Integração com forças de segurança</span></li>
+                </ul>
+                <div class="market-features">
+                    <span class="feature-tag">Biometria</span>
+                    <span class="feature-tag">Facial</span>
+                    <span class="feature-tag">Catracas</span>
+                </div>
+                <button class="btn-market" onclick="alert('Orçamento para Governo e Infraestruturas')"><i class="fas fa-calculator"></i> Solicitar orçamento</button>
+            </div>
+        </div>
+
+        <!-- 8. Gráfica e Comunicação Visual -->
+        <div class="market-card">
+            <div class="market-header">
+                <i class="fas fa-print"></i>
+                <h2>Gráfica & Comunicação</h2>
+            </div>
+            <div class="market-content">
+                <p class="market-desc">Soluções de impressão e comunicação visual para empresas que precisam de materiais promocionais de qualidade.</p>
+                <ul class="solutions-list">
+                    <li><i class="fas fa-check"></i> <span>Impressão offset (livros, revistas)</span></li>
+                    <li><i class="fas fa-check"></i> <span>Impressão digital (cartões, flyers)</span></li>
+                    <li><i class="fas fa-check"></i> <span>Grandes formatos (faixas, painéis)</span></li>
+                    <li><i class="fas fa-check"></i> <span>Design gráfico e logotipos</span></li>
+                    <li><i class="fas fa-check"></i> <span>Brindes personalizados</span></li>
+                    <li><i class="fas fa-check"></i> <span>Acabamentos especiais</span></li>
+                </ul>
+                <div class="market-features">
+                    <span class="feature-tag">Offset</span>
+                    <span class="feature-tag">Digital</span>
+                    <span class="feature-tag">Design</span>
+                </div>
+                <button class="btn-market" onclick="alert('Orçamento para Gráfica e Comunicação')"><i class="fas fa-calculator"></i> Solicitar orçamento</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Casos de sucesso -->
+    <div class="cases-section">
+        <h2><i class="fas fa-trophy"></i> Casos de Sucesso</h2>
+        <div class="cases-grid">
+            <div class="case-card">
+                <h3>Condomínio Vista Alegre</h3>
+                <p>Implementação de CFTV com acesso remoto e controlo de acesso biométrico para 120 unidades.</p>
+                <div class="case-tags">
+                    <span>Condomínio</span>
+                    <span>CFTV</span>
+                    <span>Biometria</span>
+                </div>
+            </div>
+            <div class="case-card">
+                <h3>Grupo Industrial Angolano</h3>
+                <p>Sistema integrado de segurança com 32 câmaras, deteção de intrusão e controlo de acesso.</p>
+                <div class="case-tags">
+                    <span>Indústria</span>
+                    <span>Perimetral</span>
+                    <span>PTZ</span>
+                </div>
+            </div>
+            <div class="case-card">
+                <h3>Clínica Multiperfil</h3>
+                <p>Instalação de sistema de biossegurança, deteção de gases e CFTV em áreas críticas.</p>
+                <div class="case-tags">
+                    <span>Saúde</span>
+                    <span>Gases</span>
+                    <span>Biossegurança</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto rápido -->
+    <div class="quick-contact">
+        <h2>Precisa de uma solução para o seu segmento?</h2>
+        <p>Nossa equipa está preparada para atender às necessidades específicas do seu mercado</p>
+        <div class="contact-buttons">
+            <a href="tel:946299834" class="contact-btn"><i class="fas fa-phone-alt"></i> 946 299 834</a>
+            <a href="https://wa.me/244946299834" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:dpedroservice@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <strong>D.PEDRO SOLUÇÕES</strong>
+            <p>Comércio e Prestação de Serviços, Lda.</p>
+            <p>Luanda, Angola</p>
+        </div>
+        <div class="footer-col">
+            <strong>Sede</strong>
+            <p>Viana, Vila Flor, Luanda</p>
+            <p>Rua Direita da Engevia</p>
+        </div>
+        <div class="footer-col">
+            <strong>Contactos</strong>
+            <p>+244 946 299 834<br>+244 959 777 301<br>dpedroservice@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <strong>Links rápidos</strong>
+            <a href="#" onclick="alert('Quem somos')">Quem somos</a>
+            <a href="#" onclick="alert('Mercados Verticais')">Mercados Verticais</a>
+            <a href="#" onclick="alert('Soluções')">Soluções</a>
+            <a href="#" onclick="alert('Contactos')">Contactos</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
+        <div><i class="fas fa-cookie-bite"></i> cookies | <i class="fas fa-file-contract"></i> termos</div>
+    </div>
+</footer>
+
+<!-- Botões flutuantes -->
+<a href="https://wa.me/244946299834" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+</body>
+</html>

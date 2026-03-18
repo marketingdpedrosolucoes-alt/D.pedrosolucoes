@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.PEDRO SOLUÇÕES – Recrutamento</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafd;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .top-bar .contact-info span {
+            margin-right: 1.8rem;
+        }
+        .top-bar .contact-info i {
+            color: #60a5fa;
+            width: 1.2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Navegação */
+        nav {
+            background: white;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-mark {
+            background: #1e3a8a;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        /* Cabeçalho da página */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        .page-header h1 i {
+            color: #2563eb;
+            margin-right: 0.5rem;
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Introdução - Cultura da empresa */
+        .culture-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        .culture-title {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .culture-title i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .culture-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 1.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        .culture-item i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        .culture-item h3 {
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        .culture-item p {
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        /* Benefícios */
+        .benefits-section {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin: 3rem 0;
+            color: white;
+        }
+        .benefits-section h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        .benefit-card {
+            text-align: center;
+            padding: 1.5rem;
+            background: rgba(255,255,255,0.1);
+            border-radius: 1.5rem;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .benefit-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #fbbf24;
+        }
+        .benefit-card h3 {
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+        .benefit-card p {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Vagas disponíveis */
+        .jobs-section {
+            margin: 3rem 0;
+        }
+        .jobs-section h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .jobs-section h2 i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .job-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+        }
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 30px -10px rgba(37,99,235,0.15);
+            border-color: #2563eb;
+        }
+
+        .job-header {
+            background: #f1f5f9;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .job-header i {
+            font-size: 2rem;
+            color: #2563eb;
+        }
+        .job-header h3 {
+            font-size: 1.3rem;
+            color: #0f172a;
+        }
+
+        .job-content {
+            padding: 1.5rem;
+        }
+
+        .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            font-size: 0.9rem;
+            color: #475569;
+        }
+        .job-meta-item i {
+            color: #2563eb;
+            width: 1rem;
+        }
+
+        .job-description {
+            margin-bottom: 1.5rem;
+        }
+        .job-description p {
+            color: #475569;
+            margin-bottom: 1rem;
+        }
+        .job-requirements {
+            margin-bottom: 1.5rem;
+        }
+        .job-requirements h4 {
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .job-requirements ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .job-requirements li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.3rem 0;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+        .job-requirements li i {
+            color: #2563eb;
+            font-size: 0.8rem;
+        }
+
+        .job-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1.5rem;
+            padding-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+        }
+        .job-type {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .btn-apply {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: 0.2s;
+        }
+        .btn-apply:hover {
+            background: #1d4ed8;
+        }
+
+        /* Formulário de candidatura */
+        .application-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        .application-section h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .application-section h2 i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .application-form {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+        }
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+        .form-group label {
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.95rem;
+        }
+        .form-group label i {
+            color: #2563eb;
+            margin-right: 0.3rem;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 0.8rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px #2563eb20;
+        }
+
+        .file-upload {
+            border: 2px dashed #cbd5e1;
+            border-radius: 1rem;
+            padding: 2rem;
+            text-align: center;
+            background: #f8fafc;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .file-upload:hover {
+            border-color: #2563eb;
+            background: #e0e7ff;
+        }
+        .file-upload i {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 0.5rem;
+        }
+        .file-upload p {
+            color: #475569;
+        }
+        .file-upload small {
+            color: #94a3b8;
+            font-size: 0.8rem;
+        }
+
+        .form-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .form-checkbox input {
+            width: auto;
+        }
+
+        .btn-submit {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+            grid-column: span 2;
+            justify-content: center;
+        }
+        .btn-submit:hover {
+            background: #1d4ed8;
+        }
+
+        /* Contacto rápido */
+        .quick-contact {
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        .quick-contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .quick-contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .contact-btn {
+            background: white;
+            color: #2563eb;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .contact-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+        .contact-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .contact-btn.whatsapp:hover {
+            background: #20b859;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 3rem;
+            border-radius: 3rem 3rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Botões flutuantes */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            text-decoration: none;
+        }
+        .top-arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #2563eb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .top-arrow:hover {
+            opacity: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .application-form {
+                grid-template-columns: 1fr;
+            }
+            .form-group.full-width {
+                grid-column: span 1;
+            }
+            .btn-submit {
+                grid-column: span 1;
+            }
+            .jobs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 946 299 834 | 959 777 301</span>
+        <span><i class="fas fa-map-marker-alt"></i> Luanda, Viana, Vila Flor</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+    </div>
+    <div class="social-links">
+        <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+
+<!-- Navegação -->
+<nav>
+    <div class="logo">
+        <div class="logo-mark">DP</div>
+        <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+    </div>
+    <div class="nav-links">
+        <a href="#" onclick="alert('Página inicial (simulação)')">Início</a>
+        <a href="#" onclick="alert('Quem somos (simulação)')">Quem somos</a>
+        <a href="#" onclick="alert('Mercados Verticais (simulação)')">Mercados Verticais</a>
+        <a href="#" onclick="alert('Soluções (simulação)')">Soluções</a>
+        <a href="#" onclick="alert('Catálogo (simulação)')">Catálogo</a>
+        <a href="#" class="active">Recrutamento</a>
+        <a href="#" onclick="alert('Contactos (simulação)')">Contactos</a>
+    </div>
+</nav>
+
+<main class="container">
+    <!-- Cabeçalho da página -->
+    <div class="page-header">
+        <h1><i class="fas fa-users"></i> Recrutamento</h1>
+        <p>Faça parte da equipa D.PEDRO SOLUÇÕES e construa o futuro connosco</p>
+    </div>
+
+    <!-- Cultura da empresa -->
+    <div class="culture-section">
+        <h2 class="culture-title"><i class="fas fa-heart"></i> Por que trabalhar connosco?</h2>
+        <div class="culture-grid">
+            <div class="culture-item">
+                <i class="fas fa-rocket"></i>
+                <h3>Inovação</h3>
+                <p>Trabalhamos com as mais recentes tecnologias do mercado</p>
+            </div>
+            <div class="culture-item">
+                <i class="fas fa-users"></i>
+                <h3>Equipa Unida</h3>
+                <p>Ambiente colaborativo e focado no crescimento conjunto</p>
+            </div>
+            <div class="culture-item">
+                <i class="fas fa-chart-line"></i>
+                <h3>Crescimento</h3>
+                <p>Oportunidades reais de desenvolvimento profissional</p>
+            </div>
+            <div class="culture-item">
+                <i class="fas fa-hand-holding-heart"></i>
+                <h3>Valorização</h3>
+                <p>Reconhecemos e valorizamos o talento de cada colaborador</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Benefícios -->
+    <div class="benefits-section">
+        <h2>Benefícios para colaboradores</h2>
+        <div class="benefits-grid">
+            <div class="benefit-card">
+                <i class="fas fa-medal"></i>
+                <h3>Seguro de Saúde</h3>
+                <p>Cobertura médica para si e familiares</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-graduation-cap"></i>
+                <h3>Formação Contínua</h3>
+                <p>Cursos e certificações pagas pela empresa</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-clock"></i>
+                <h3>Horário Flexível</h3>
+                <p>Conciliamos trabalho e vida pessoal</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-home"></i>
+                <h3>Trabalho Híbrido</h3>
+                <p>Modelo presencial e remoto conforme a função</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-umbrella-beach"></i>
+                <h3>Férias Remuneradas</h3>
+                <p>30 dias de férias + subsídio</p>
+            </div>
+            <div class="benefit-card">
+                <i class="fas fa-birthday-cake"></i>
+                <h3>Dia de Aniversário</h3>
+                <p>Folga no seu aniversário</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vagas disponíveis -->
+    <div class="jobs-section">
+        <h2><i class="fas fa-briefcase"></i> Vagas Disponíveis</h2>
+        <div class="jobs-grid">
+            <!-- Vaga 1: Técnico de CFTV -->
+            <div class="job-card">
+                <div class="job-header">
+                    <i class="fas fa-video"></i>
+                    <h3>Técnico de CFTV</h3>
+                </div>
+                <div class="job-content">
+                    <div class="job-meta">
+                        <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Luanda, Viana</span>
+                        <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo Integral</span>
+                        <span class="job-meta-item"><i class="fas fa-calendar"></i> 2026-04-15</span>
+                    </div>
+                    <div class="job-description">
+                        <p>Responsável pela instalação, configuração e manutenção de sistemas de CFTV, alarmes e controlo de acessos.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Experiência mínima de 2 anos</li>
+                            <li><i class="fas fa-check"></i> Conhecimento em câmaras IP e analógicas</li>
+                            <li><i class="fas fa-check"></i> Disponibilidade para trabalho de campo</li>
+                            <li><i class="fas fa-check"></i> Curso técnico em eletrónica/eletricidade</li>
+                        </ul>
+                    </div>
+                    <div class="job-footer">
+                        <span class="job-type">Técnico</span>
+                        <button class="btn-apply" onclick="candidatarVaga('Técnico de CFTV')"><i class="fas fa-paper-plane"></i> Candidatar-me</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vaga 2: Instalador de Energia Solar -->
+            <div class="job-card">
+                <div class="job-header">
+                    <i class="fas fa-solar-panel"></i>
+                    <h3>Instalador de Energia Solar</h3>
+                </div>
+                <div class="job-content">
+                    <div class="job-meta">
+                        <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Luanda</span>
+                        <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo Integral</span>
+                        <span class="job-meta-item"><i class="fas fa-calendar"></i> 2026-04-20</span>
+                    </div>
+                    <div class="job-description">
+                        <p>Instalação e manutenção de sistemas fotovoltaicos on-grid e off-grid, inversores e baterias.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Formação em energia solar</li>
+                            <li><i class="fas fa-check"></i> Experiência com instalações</li>
+                            <li><i class="fas fa-check"></i> Conhecimento em dimensionamento</li>
+                            <li><i class="fas fa-check"></i> Disponibilidade para viagens</li>
+                        </ul>
+                    </div>
+                    <div class="job-footer">
+                        <span class="job-type">Técnico</span>
+                        <button class="btn-apply" onclick="candidatarVaga('Instalador de Energia Solar')"><i class="fas fa-paper-plane"></i> Candidatar-me</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vaga 3: Designer Gráfico -->
+            <div class="job-card">
+                <div class="job-header">
+                    <i class="fas fa-pen-fancy"></i>
+                    <h3>Designer Gráfico</h3>
+                </div>
+                <div class="job-content">
+                    <div class="job-meta">
+                        <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Luanda (híbrido)</span>
+                        <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo Integral</span>
+                        <span class="job-meta-item"><i class="fas fa-calendar"></i> 2026-04-10</span>
+                    </div>
+                    <div class="job-description">
+                        <p>Criação de materiais gráficos, identidade visual, embalagens e conteúdos para redes sociais.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Domínio de Photoshop, Illustrator, InDesign</li>
+                            <li><i class="fas fa-check"></i> Portfólio consistente</li>
+                            <li><i class="fas fa-check"></i> Criatividade e atenção aos detalhes</li>
+                            <li><i class="fas fa-check"></i> Experiência mínima de 2 anos</li>
+                        </ul>
+                    </div>
+                    <div class="job-footer">
+                        <span class="job-type">Design</span>
+                        <button class="btn-apply" onclick="candidatarVaga('Designer Gráfico')"><i class="fas fa-paper-plane"></i> Candidatar-me</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vaga 4: Consultor Comercial -->
+            <div class="job-card">
+                <div class="job-header">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Consultor Comercial</h3>
+                </div>
+                <div class="job-content">
+                    <div class="job-meta">
+                        <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Luanda</span>
+                        <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo Integral</span>
+                        <span class="job-meta-item"><i class="fas fa-calendar"></i> 2026-04-12</span>
+                    </div>
+                    <div class="job-description">
+                        <p>Prospecção e venda de soluções de segurança, energia e gráfica para empresas e particulares.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Experiência em vendas B2B</li>
+                            <li><i class="fas fa-check"></i> Conhecimento técnico desejável</li>
+                            <li><i class="fas fa-check"></i> Boa comunicação e negociação</li>
+                            <li><i class="fas fa-check"></i> Carta de condução</li>
+                        </ul>
+                    </div>
+                    <div class="job-footer">
+                        <span class="job-type">Comercial</span>
+                        <button class="btn-apply" onclick="candidatarVaga('Consultor Comercial')"><i class="fas fa-paper-plane"></i> Candidatar-me</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vaga 5: Técnico de Redes e Informática -->
+            <div class="job-card">
+                <div class="job-header">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Técnico de Redes</h3>
+                </div>
+                <div class="job-content">
+                    <div class="job-meta">
+                        <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Luanda</span>
+                        <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo Integral</span>
+                        <span class="job-meta-item"><i class="fas fa-calendar"></i> 2026-04-18</span>
+                    </div>
+                    <div class="job-description">
+                        <p>Configuração de redes, servidores, firewalls e suporte a sistemas de segurança.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Formação em TI ou áreas afins</li>
+                            <li><i class="fas fa-check"></i> Conhecimento em TCP/IP, VPN, firewall</li>
+                            <li><i class="fas fa-check"></i> Certificações (desejável)</li>
+                            <li><i class="fas fa-check"></i> Experiência com CFTV IP</li>
+                        </ul>
+                    </div>
+                    <div class="job-footer">
+                        <span class="job-type">Técnico</span>
+                        <button class="btn-apply" onclick="candidatarVaga('Técnico de Redes')"><i class="fas fa-paper-plane"></i> Candidatar-me</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Vaga 6: Assistente Administrativo -->
+            <div class="job-card">
+                <div class="job-header">
+                    <i class="fas fa-file-invoice"></i>
+                    <h3>Assistente Administrativo</h3>
+                </div>
+                <div class="job-content">
+                    <div class="job-meta">
+                        <span class="job-meta-item"><i class="fas fa-map-marker-alt"></i> Luanda, Viana</span>
+                        <span class="job-meta-item"><i class="fas fa-clock"></i> Tempo Integral</span>
+                        <span class="job-meta-item"><i class="fas fa-calendar"></i> 2026-04-05</span>
+                    </div>
+                    <div class="job-description">
+                        <p>Apoio administrativo, atendimento a clientes, gestão de documentos e agendamentos.</p>
+                    </div>
+                    <div class="job-requirements">
+                        <h4>Requisitos:</h4>
+                        <ul>
+                            <li><i class="fas fa-check"></i> Domínio do Pacote Office</li>
+                            <li><i class="fas fa-check"></i> Organização e proatividade</li>
+                            <li><i class="fas fa-check"></i> Experiência em rotinas administrativas</li>
+                            <li><i class="fas fa-check"></i> Ensino médio completo</li>
+                        </ul>
+                    </div>
+                    <div class="job-footer">
+                        <span class="job-type">Administrativo</span>
+                        <button class="btn-apply" onclick="candidatarVaga('Assistente Administrativo')"><i class="fas fa-paper-plane"></i> Candidatar-me</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Formulário de candidatura -->
+    <div class="application-section">
+        <h2><i class="fas fa-file-signature"></i> Candidate-se</h2>
+        <form class="application-form" onsubmit="event.preventDefault(); enviarCandidatura()">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Nome completo *</label>
+                <input type="text" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email *</label>
+                <input type="email" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Telefone *</label>
+                <input type="tel" required>
+            </div>
+            <div class="form-group">
+                <label><i class="fas fa-briefcase"></i> Vaga de interesse *</label>
+                <select required>
+                    <option value="">Selecione...</option>
+                    <option>Técnico de CFTV</option>
+                    <option>Instalador de Energia Solar</option>
+                    <option>Designer Gráfico</option>
+                    <option>Consultor Comercial</option>
+                    <option>Técnico de Redes</option>
+                    <option>Assistente Administrativo</option>
+                    <option>Candidatura espontânea</option>
+                </select>
+            </div>
+            <div class="form-group full-width">
+                <label><i class="fas fa-file-pdf"></i> Anexar CV (PDF, DOC) *</label>
+                <div class="file-upload" onclick="document.getElementById('cvFile').click()">
+                    <i class="fas fa-cloud-upload-alt"></i>
+                    <p>Clique para selecionar o arquivo</p>
+                    <small>Máx. 5MB</small>
+                    <input type="file" id="cvFile" style="display: none;" accept=".pdf,.doc,.docx">
+                </div>
+            </div>
+            <div class="form-group full-width">
+                <label><i class="fas fa-comment"></i> Mensagem (opcional)</label>
+                <textarea rows="4" placeholder="Conte-nos um pouco sobre você..."></textarea>
+            </div>
+            <div class="form-checkbox full-width">
+                <input type="checkbox" id="privacy" required>
+                <label for="privacy">Li e aceito a <a href="#" style="color: #2563eb;">Política de Privacidade</a> e autorizo o tratamento dos meus dados</label>
+            </div>
+            <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar candidatura</button>
+        </form>
+    </div>
+
+    <!-- Contacto rápido -->
+    <div class="quick-contact">
+        <h2>Dúvidas sobre recrutamento?</h2>
+        <p>Fale diretamente com o nosso departamento de RH</p>
+        <div class="contact-buttons">
+            <a href="tel:946299834" class="contact-btn"><i class="fas fa-phone-alt"></i> 946 299 834</a>
+            <a href="https://wa.me/244946299834" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:rh@dpedrosolucoes.ao" class="contact-btn"><i class="fas fa-envelope"></i> rh@dpedro.ao</a>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <strong>D.PEDRO SOLUÇÕES</strong>
+            <p>Comércio e Prestação de Serviços, Lda.</p>
+            <p>Luanda, Angola</p>
+        </div>
+        <div class="footer-col">
+            <strong>Sede</strong>
+            <p>Viana, Vila Flor, Luanda</p>
+            <p>Rua Direita da Engevia</p>
+        </div>
+        <div class="footer-col">
+            <strong>Contactos</strong>
+            <p>+244 946 299 834<br>+244 959 777 301<br>rh@dpedro.ao</p>
+        </div>
+        <div class="footer-col">
+            <strong>Links rápidos</strong>
+            <a href="#" onclick="alert('Quem somos')">Quem somos</a>
+            <a href="#" onclick="alert('Recrutamento')">Recrutamento</a>
+            <a href="#" onclick="alert('Soluções')">Soluções</a>
+            <a href="#" onclick="alert('Contactos')">Contactos</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
+        <div><i class="fas fa-cookie-bite"></i> cookies | <i class="fas fa-file-contract"></i> termos</div>
+    </div>
+</footer>
+
+<!-- Botões flutuantes -->
+<a href="https://wa.me/244946299834" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+    // Funções de simulação
+    function candidatarVaga(vaga) {
+        alert(`Você escolheu candidatar-se para: ${vaga}\nPreencha o formulário abaixo para concluir sua candidatura.`);
+        document.querySelector('.application-section').scrollIntoView({ behavior: 'smooth' });
+        
+        // Pré-selecionar a vaga no select
+        const select = document.querySelector('select');
+        for(let option of select.options) {
+            if(option.text.includes(vaga)) {
+                option.selected = true;
+                break;
+            }
+        }
+    }
+
+    function enviarCandidatura() {
+        alert('Candidatura enviada com sucesso! Entraremos em contacto em breve. (Simulação)');
+        document.querySelector('form').reset();
+    }
+
+    // Simulação de upload
+    document.getElementById('cvFile')?.addEventListener('change', function(e) {
+        if(this.files.length > 0) {
+            const fileName = this.files[0].name;
+            const uploadArea = document.querySelector('.file-upload p');
+            uploadArea.innerHTML = `<i class="fas fa-check-circle" style="color: #22c55e;"></i> ${fileName}`;
+        }
+    });
+</script>
+
+</body>
+</html>

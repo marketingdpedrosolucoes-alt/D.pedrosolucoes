@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.PEDRO SOLUÇÕES – Catálogo de Produtos</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafd;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .top-bar .contact-info span {
+            margin-right: 1.8rem;
+        }
+        .top-bar .contact-info i {
+            color: #60a5fa;
+            width: 1.2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Navegação */
+        nav {
+            background: white;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-mark {
+            background: #1e3a8a;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        /* Cabeçalho da página */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        .page-header h1 i {
+            color: #2563eb;
+            margin-right: 0.5rem;
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Barra de pesquisa e filtros */
+        .catalog-toolbar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 3rem;
+            border: 1px solid #e2e8f0;
+        }
+        .search-box {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: #f1f5f9;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+        }
+        .search-box i {
+            color: #64748b;
+        }
+        .search-box input {
+            border: none;
+            background: transparent;
+            outline: none;
+            width: 100%;
+            font-size: 0.95rem;
+        }
+        .filter-buttons {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+        .filter-btn {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            border: 1px solid #e2e8f0;
+            background: white;
+            color: #475569;
+            font-weight: 500;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .filter-btn:hover,
+        .filter-btn.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        /* Categorias do catálogo */
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin-bottom: 3rem;
+        }
+        .category-card {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem 0.5rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+        .category-card:hover {
+            border-color: #2563eb;
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px -10px #2563eb40;
+        }
+        .category-card i {
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 0.8rem;
+        }
+        .category-card h3 {
+            font-size: 1rem;
+            color: #0f172a;
+            margin-bottom: 0.3rem;
+        }
+        .category-card span {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        /* Grid de produtos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+            cursor: pointer;
+        }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(37,99,235,0.2);
+            border-color: #2563eb;
+        }
+
+        .product-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-color: #f1f5f9;
+        }
+        .product-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3));
+        }
+        .product-image i {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 2rem;
+            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #2563eb;
+            color: white;
+            padding: 0.2rem 1rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            z-index: 3;
+        }
+        .product-badge.novo {
+            background: #22c55e;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+        .product-category {
+            font-size: 0.7rem;
+            color: #2563eb;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.3rem;
+        }
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .product-desc {
+            font-size: 0.85rem;
+            color: #64748b;
+            margin-bottom: 1rem;
+            line-height: 1.4;
+        }
+        .product-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .product-spec {
+            background: #f1f5f9;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            color: #334155;
+        }
+
+        .product-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+        }
+        .product-price {
+            font-weight: 700;
+            color: #0f172a;
+        }
+        .btn-product {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            transition: 0.2s;
+        }
+        .btn-product:hover {
+            background: #1d4ed8;
+        }
+
+        /* Modal de detalhes do produto */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .modal-header h2 i {
+            color: #2563eb;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover {
+            background: #f1f5f9;
+            color: #ef4444;
+        }
+
+        .modal-product-image {
+            width: 100%;
+            height: 250px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+        .modal-product-image i {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 2rem;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .modal-product-info {
+            margin-bottom: 1.5rem;
+        }
+        .modal-product-info h3 {
+            font-size: 1.3rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .modal-product-info .category {
+            color: #2563eb;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        .modal-product-info .description {
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .modal-specs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .modal-spec {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .modal-form {
+            margin-top: 1.5rem;
+        }
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.9rem;
+        }
+        .form-group label i {
+            color: #2563eb;
+            width: 1.2rem;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            color: #64748b;
+        }
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px #2563eb20;
+        }
+
+        .send-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .btn-send {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .btn-send.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .btn-send.whatsapp:hover {
+            background: #20b859;
+            transform: translateY(-2px);
+        }
+        .btn-send.email {
+            background: #2563eb;
+            color: white;
+        }
+        .btn-send.email:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Catálogos para download */
+        .download-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        .download-section h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .download-section h2 i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+        .download-item {
+            background: #f8fafc;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .download-icon {
+            width: 60px;
+            height: 60px;
+            background: #e0e7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #2563eb;
+        }
+        .download-info {
+            flex: 1;
+        }
+        .download-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+        }
+        .download-info p {
+            font-size: 0.8rem;
+            color: #64748b;
+            margin-bottom: 0.5rem;
+        }
+        .btn-download-catalog {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.4rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.3rem;
+            text-decoration: none;
+        }
+        .btn-download-catalog:hover {
+            background: #1d4ed8;
+        }
+
+        /* Contacto rápido */
+        .quick-contact {
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        .quick-contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .quick-contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .contact-btn {
+            background: white;
+            color: #2563eb;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .contact-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+        .contact-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .contact-btn.whatsapp:hover {
+            background: #20b859;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 3rem;
+            border-radius: 3rem 3rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-bottom span {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .footer-bottom span:hover {
+            color: #2563eb;
+        }
+
+        /* Botões flutuantes */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            text-decoration: none;
+        }
+        .top-arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #2563eb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .top-arrow:hover {
+            opacity: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+            .catalog-toolbar {
+                flex-direction: column;
+            }
+            .search-box {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 946 299 834 | 959 777 301</span>
+        <span><i class="fas fa-map-marker-alt"></i> Luanda, Viana, Vila Flor</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+    </div>
+    <div class="social-links">
+        <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+</div>
+
+<!-- Navegação -->
+<nav>
+    <div class="logo">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+            <div class="logo-mark">DP</div>
+            <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="mercados-verticais.html">Mercados Verticais</a>
+        <a href="solucoes.html">Soluções</a>
+        <a href="catalogo.html" class="active">Catálogo</a>
+        <a href="recrutamento.html">Recrutamento</a>
+        <a href="contactos.html">Contactos</a>
+    </div>
+</nav>
+
+<main class="container">
+    <!-- Cabeçalho da página -->
+    <div class="page-header">
+        <h1><i class="fas fa-book-open"></i> Catálogo de Produtos</h1>
+        <p>Conheça nossa linha completa de produtos e equipamentos</p>
+    </div>
+
+    <!-- Barra de pesquisa e filtros -->
+    <div class="catalog-toolbar">
+        <div class="search-box">
+            <i class="fas fa-search"></i>
+            <input type="text" placeholder="Pesquisar produtos..." id="searchInput">
+        </div>
+        <div class="filter-buttons">
+            <button class="filter-btn active" onclick="filtrarCategoria('todos')">Todos</button>
+            <button class="filter-btn" onclick="filtrarCategoria('seguranca')">Segurança</button>
+            <button class="filter-btn" onclick="filtrarCategoria('acesso')">Controlo de Acesso</button>
+            <button class="filter-btn" onclick="filtrarCategoria('energia')">Energia</button>
+            <button class="filter-btn" onclick="filtrarCategoria('grafica')">Gráfica</button>
+            <button class="filter-btn" onclick="filtrarCategoria('automacao')">Automação</button>
+        </div>
+    </div>
+
+    <!-- Categorias rápidas -->
+    <div class="categories-grid">
+        <div class="category-card" onclick="filtrarCategoria('seguranca')">
+            <i class="fas fa-video"></i>
+            <h3>CFTV</h3>
+            <span>24 produtos</span>
+        </div>
+        <div class="category-card" onclick="filtrarCategoria('acesso')">
+            <i class="fas fa-fingerprint"></i>
+            <h3>Controlo de Acesso</h3>
+            <span>18 produtos</span>
+        </div>
+        <div class="category-card" onclick="filtrarCategoria('energia')">
+            <i class="fas fa-solar-panel"></i>
+            <h3>Energia Solar</h3>
+            <span>15 produtos</span>
+        </div>
+        <div class="category-card" onclick="filtrarCategoria('seguranca')">
+            <i class="fas fa-bell"></i>
+            <h3>Alarmes</h3>
+            <span>12 produtos</span>
+        </div>
+        <div class="category-card" onclick="filtrarCategoria('grafica')">
+            <i class="fas fa-print"></i>
+            <h3>Impressão</h3>
+            <span>20 produtos</span>
+        </div>
+        <div class="category-card" onclick="filtrarCategoria('automacao')">
+            <i class="fas fa-robot"></i>
+            <h3>Automação</h3>
+            <span>9 produtos</span>
+        </div>
+    </div>
+
+    <!-- Grid de produtos -->
+    <div class="products-grid" id="productsGrid">
+        <!-- Os produtos serão populados via JavaScript -->
+    </div>
+
+    <!-- Seção de catálogos para download -->
+    <div class="download-section">
+        <h2><i class="fas fa-download"></i> Catálogos para Download</h2>
+        <div class="download-grid">
+            <div class="download-item">
+                <div class="download-icon"><i class="fas fa-video"></i></div>
+                <div class="download-info">
+                    <h3>Catálogo de CFTV</h3>
+                    <p>Câmaras, gravadores e acessórios</p>
+                    <a href="catalogos/catalogo-cftv.pdf" class="btn-download-catalog" download><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+            </div>
+            <div class="download-item">
+                <div class="download-icon"><i class="fas fa-fingerprint"></i></div>
+                <div class="download-info">
+                    <h3>Catálogo de Acessos</h3>
+                    <p>Biometria, catracas e controlo</p>
+                    <a href="catalogos/catalogo-acessos.pdf" class="btn-download-catalog" download><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+            </div>
+            <div class="download-item">
+                <div class="download-icon"><i class="fas fa-solar-panel"></i></div>
+                <div class="download-info">
+                    <h3>Catálogo de Energia</h3>
+                    <p>Painéis, inversores e baterias</p>
+                    <a href="catalogos/catalogo-energia.pdf" class="btn-download-catalog" download><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+            </div>
+            <div class="download-item">
+                <div class="download-icon"><i class="fas fa-print"></i></div>
+                <div class="download-info">
+                    <h3>Catálogo Gráfico</h3>
+                    <p>Impressão, design e brindes</p>
+                    <a href="catalogos/catalogo-grafico.pdf" class="btn-download-catalog" download><i class="fas fa-download"></i> Download PDF</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto rápido -->
+    <div class="quick-contact">
+        <h2>Precisa de um produto específico?</h2>
+        <p>Entre em contacto para informações e orçamentos personalizados</p>
+        <div class="contact-buttons">
+            <a href="tel:946299834" class="contact-btn"><i class="fas fa-phone-alt"></i> 946 299 834</a>
+            <a href="https://wa.me/244946299834" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:dpedroservice@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+</main>
+
+<!-- Modal de detalhes do produto -->
+<div class="modal" id="productModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-box"></i> <span id="modalTitle">Detalhes do Produto</span></h2>
+            <button class="modal-close" onclick="fecharModal()"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div id="modalContent"></div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <strong>D.PEDRO SOLUÇÕES</strong>
+            <p>Comércio e Prestação de Serviços, Lda.</p>
+            <p>Luanda, Angola</p>
+        </div>
+        <div class="footer-col">
+            <strong>Sede</strong>
+            <p>Viana, Vila Flor, Luanda</p>
+            <p>Rua Direita da Engevia</p>
+        </div>
+        <div class="footer-col">
+            <strong>Contactos</strong>
+            <p>+244 946 299 834<br>+244 959 777 301<br>dpedroservice@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <strong>Links rápidos</strong>
+            <a href="index.html">Início</a>
+            <a href="quem-somos.html">Quem somos</a>
+            <a href="mercados-verticais.html">Mercados Verticais</a>
+            <a href="solucoes.html">Soluções</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="contactos.html">Contactos</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
+        <div>
+            <span onclick="mostrarCookies()"><i class="fas fa-cookie-bite"></i> cookies</span> | 
+            <span onclick="mostrarTermos()"><i class="fas fa-file-contract"></i> termos</span>
+        </div>
+    </div>
+</footer>
+
+<!-- Botões flutuantes -->
+<a href="https://wa.me/244946299834" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+    // Lista de produtos expandida
+    const produtos = [
+        // CFTV (24 produtos)
+        { id: 1, categoria: 'seguranca', icone: 'fa-video', titulo: 'Câmara IP Hikvision 4MP', descricao: 'Câmara IP dome com resolução 4MP, visão noturna até 30m, PoE e análise inteligente.', specs: ['4MP', 'PoE', 'IR 30m', 'IP67'], badge: 'novo', imagem: 'images/catalogo/camara-ip.jpg', categoriaNome: 'CFTV' },
+        { id: 2, categoria: 'seguranca', icone: 'fa-video', titulo: 'Câmara IP Hikvision 8MP', descricao: 'Câmara IP bullet 8MP com zoom óptico, visão noturna colorida e análise IA.', specs: ['8MP', 'Zoom 4x', 'ColorNight', 'IP66'], badge: null, imagem: 'images/catalogo/camara-ip-8mp.jpg', categoriaNome: 'CFTV' },
+        { id: 3, categoria: 'seguranca', icone: 'fa-video', titulo: 'Câmara PTZ 2MP', descricao: 'Câmara PTZ com zoom 25x, rastreamento automático e 360° de cobertura.', specs: ['2MP', 'Zoom 25x', '360°', 'Auto-tracking'], badge: null, imagem: 'images/catalogo/camara-ptz.jpg', categoriaNome: 'CFTV' },
+        { id: 4, categoria: 'seguranca', icone: 'fa-hdd', titulo: 'DVR Hikvision 16 canais', descricao: 'Gravador digital 16 canais com suporte para 2 HDDs e análise inteligente.', specs: ['16 canais', '2 HDD', 'H.265+', 'HDMI 4K'], badge: null, imagem: 'images/catalogo/dvr-16.jpg', categoriaNome: 'CFTV' },
+        { id: 5, categoria: 'seguranca', icone: 'fa-hdd', titulo: 'NVR Dahua 32 canais', descricao: 'Gravador de rede 32 canais com suporte para 4 HDDs e vigilância facial.', specs: ['32 canais', '4 HDD', 'Facial', 'RAID'], badge: 'novo', imagem: 'images/catalogo/nvr-32.jpg', categoriaNome: 'CFTV' },
+        { id: 6, categoria: 'seguranca', icone: 'fa-database', titulo: 'HDD 2TB para Vigilância', descricao: 'HDD específico para vigilância, 24/7, com alta durabilidade.', specs: ['2TB', '7200rpm', '24/7', '3 anos'], badge: null, imagem: 'images/catalogo/hdd-2tb.jpg', categoriaNome: 'CFTV' },
+        { id: 7, categoria: 'seguranca', icone: 'fa-database', titulo: 'HDD 4TB para Vigilância', descricao: 'HDD de alta capacidade para gravação contínua em sistemas CFTV.', specs: ['4TB', '7200rpm', '24/7', '3 anos'], badge: null, imagem: 'images/catalogo/hdd-4tb.jpg', categoriaNome: 'CFTV' },
+        { id: 8, categoria: 'seguranca', icone: 'fa-video', titulo: 'Câmara Térmica Hikvision', descricao: 'Câmara térmica para deteção de temperatura e incêndios.', specs: ['Térmica', '160x120', 'IP67', 'Alerta'], badge: 'novo', imagem: 'images/catalogo/camara-termica.jpg', categoriaNome: 'CFTV' },
+        { id: 9, categoria: 'seguranca', icone: 'fa-wifi', titulo: 'Câmara WiFi 360°', descricao: 'Câmara WiFi com rotação 360°, áudio bidirecional e visão noturna.', specs: ['2MP', 'WiFi', '360°', 'Áudio'], badge: null, imagem: 'images/catalogo/camara-wifi.jpg', categoriaNome: 'CFTV' },
+        { id: 10, categoria: 'seguranca', icone: 'fa-video', titulo: 'Câmara Bullet 4K', descricao: 'Câmara bullet com resolução 4K, visão noturna até 50m.', specs: ['4K', 'IR 50m', 'IP67', 'PoE+'], badge: null, imagem: 'images/catalogo/camara-bullet-4k.jpg', categoriaNome: 'CFTV' },
+        
+        // Controlo de Acesso (18 produtos)
+        { id: 11, categoria: 'acesso', icone: 'fa-fingerprint', titulo: 'Biométrico ZKTeco', descricao: 'Leitor biométrico com capacidade para 3000 impressões digitais, RFID e senha.', specs: ['3000 users', 'RFID', 'TCP/IP'], badge: null, imagem: 'images/catalogo/biometrico.jpg', categoriaNome: 'Controlo de Acesso' },
+        { id: 12, categoria: 'acesso', icone: 'fa-fingerprint', titulo: 'Biométrico Facial ZKTeco', descricao: 'Leitor com reconhecimento facial e biométrico, 5000 faces.', specs: ['5000 faces', 'Biometria', '2.8"', 'WiFi'], badge: 'novo', imagem: 'images/catalogo/biometrico-facial.jpg', categoriaNome: 'Controlo de Acesso' },
+        { id: 13, categoria: 'acesso', icone: 'fa-id-card', titulo: 'Leitor RFID Proximidade', descricao: 'Leitor de proximidade para cartões RFID 125kHz.', specs: ['125kHz', 'Wiegand', 'IP65'], badge: null, imagem: 'images/catalogo/leitor-rfid.jpg', categoriaNome: 'Controlo de Acesso' },
+        { id: 14, categoria: 'acesso', icone: 'fa-rotate-left', titulo: 'Catraca Eletrónica', descricao: 'Catraca de aço inoxidável com leitor biométrico e RFID integrado.', specs: ['Biometria', 'RFID'], badge: null, imagem: 'images/catalogo/catraca.jpg', categoriaNome: 'Controlo de Acesso' },
+        { id: 15, categoria: 'acesso', icone: 'fa-rotate-left', titulo: 'Catraca Speed Gate', descricao: 'Catraca de vidro temperado para alto fluxo, com abertura rápida.', specs: ['Vidro', 'Fluxo', 'Rápida'], badge: 'novo', imagem: 'images/catalogo/catraca-speed.jpg', categoriaNome: 'Controlo de Acesso' },
+        { id: 16, categoria: 'acesso', icone: 'fa-phone-alt', titulo: 'Kit Vídeo-porteiro 7"', descricao: 'Monitor colorido de 7", câmara externa com visão noturna, abertura por APP.', specs: ['7"', 'APP', 'IR'], badge: null, imagem: 'images/catalogo/video-porteiro.jpg', categoriaNome: 'Vídeo-porteiros' },
+        { id: 17, categoria: 'acesso', icone: 'fa-phone-alt', titulo: 'Kit Vídeo-porteiro 10"', descricao: 'Monitor 10" com toque, câmara externa Full HD e reconhecimento facial.', specs: ['10"', 'Facial', 'APP'], badge: 'novo', imagem: 'images/catalogo/video-porteiro-10.jpg', categoriaNome: 'Vídeo-porteiros' },
+        { id: 18, categoria: 'acesso', icone: 'fa-lock', titulo: 'Fechadura Biométrica', descricao: 'Fechadura eletrónica com leitor biométrico e cartão RFID.', specs: ['Biometria', 'RFID', 'Senha'], badge: null, imagem: 'images/catalogo/fechadura-biometrica.jpg', categoriaNome: 'Controlo de Acesso' },
+        
+        // Energia Solar (15 produtos)
+        { id: 19, categoria: 'energia', icone: 'fa-solar-panel', titulo: 'Painel Solar 330W', descricao: 'Painel fotovoltaico monocristalino de alta eficiência, 24V, ideal para sistemas off grid.', specs: ['330W', 'Monocristalino', '24V'], badge: 'novo', imagem: 'images/catalogo/painel-solar.jpg', categoriaNome: 'Energia Solar' },
+        { id: 20, categoria: 'energia', icone: 'fa-solar-panel', titulo: 'Painel Solar 450W', descricao: 'Painel de alta eficiência com células PERC, 450W, 48V.', specs: ['450W', 'PERC', '48V'], badge: null, imagem: 'images/catalogo/painel-solar-450w.jpg', categoriaNome: 'Energia Solar' },
+        { id: 21, categoria: 'energia', icone: 'fa-bolt', titulo: 'Inversor Off Grid 3kW', descricao: 'Inversor de 3000W com controlador de carga MPPT integrado, para sistemas autónomos.', specs: ['3kW', 'MPPT', 'Onda pura'], badge: null, imagem: 'images/catalogo/inversor.jpg', categoriaNome: 'Energia Solar' },
+        { id: 22, categoria: 'energia', icone: 'fa-bolt', titulo: 'Inversor Off Grid 5kW', descricao: 'Inversor 5000W com controlador MPPT 80A e display LCD.', specs: ['5kW', 'MPPT 80A', 'LCD'], badge: null, imagem: 'images/catalogo/inversor-5kw.jpg', categoriaNome: 'Energia Solar' },
+        { id: 23, categoria: 'energia', icone: 'fa-battery-full', titulo: 'Bateria Estacionária 220Ah', descricao: 'Bateria de ciclo profundo 12V 220Ah para armazenamento de energia solar.', specs: ['220Ah', '12V', 'Ciclo profundo'], badge: null, imagem: 'images/catalogo/bateria.jpg', categoriaNome: 'Energia Solar' },
+        { id: 24, categoria: 'energia', icone: 'fa-battery-full', titulo: 'Bateria de Lítio 48V 100Ah', descricao: 'Bateria de lítio de alta capacidade, leve e compacta.', specs: ['48V', '100Ah', 'Lítio', 'BMS'], badge: 'novo', imagem: 'images/catalogo/bateria-litio.jpg', categoriaNome: 'Energia Solar' },
+        { id: 25, categoria: 'energia', icone: 'fa-sun', titulo: 'Controlador MPPT 60A', descricao: 'Controlador de carga MPPT 60A com display e comunicação.', specs: ['60A', 'MPPT', 'LCD'], badge: null, imagem: 'images/catalogo/controlador-mppt.jpg', categoriaNome: 'Energia Solar' },
+        
+        // Gráfica (20 produtos)
+        { id: 26, categoria: 'grafica', icone: 'fa-print', titulo: 'Impressora Digital Profissional', descricao: 'Impressora digital de alta velocidade para produção de cartões, flyers e etiquetas.', specs: ['Alta velocidade', 'Colorida'], badge: null, imagem: 'images/catalogo/impressora.jpg', categoriaNome: 'Impressão' },
+        { id: 27, categoria: 'grafica', icone: 'fa-print', titulo: 'Impressora Offset Heidelberg', descricao: 'Impressora offset para produção em larga escala.', specs: ['Offset', 'Alta tiragem'], badge: null, imagem: 'images/catalogo/offset.jpg', categoriaNome: 'Impressão' },
+        { id: 28, categoria: 'grafica', icone: 'fa-cut', titulo: 'Ploter de Recorte', descricao: 'Ploter de recorte para adesivos e vinis.', specs: ['Recorte', 'Adesivos'], badge: null, imagem: 'images/catalogo/ploter.jpg', categoriaNome: 'Impressão' },
+        { id: 29, categoria: 'grafica', icone: 'fa-pen-fancy', titulo: 'Serviço de Design Gráfico', descricao: 'Criação de logotipos, identidade visual e materiais promocionais.', specs: ['Logotipo', 'Branding'], badge: null, imagem: 'images/catalogo/design.jpg', categoriaNome: 'Design' },
+        { id: 30, categoria: 'grafica', icone: 'fa-id-card', titulo: 'Cartões de Visita Personalizados', descricao: 'Cartões de visita em papel couché 300g com laminação.', specs: ['300g', 'Laminação'], badge: null, imagem: 'images/catalogo/cartoes.jpg', categoriaNome: 'Impressão' },
+        
+        // Alarmes (12 produtos)
+        { id: 31, categoria: 'seguranca', icone: 'fa-bell', titulo: 'Central de Alarme Intelbras', descricao: 'Central de alarme com 32 zonas, comunicação via GSM e APP.', specs: ['32 zonas', 'GSM', 'APP'], badge: null, imagem: 'images/catalogo/central-alarme.jpg', categoriaNome: 'Alarmes' },
+        { id: 32, categoria: 'seguranca', icone: 'fa-bell', titulo: 'Central de Alarme Paradox', descricao: 'Central de alarme com 64 zonas, comunicação via IP e APP.', specs: ['64 zonas', 'IP', 'APP'], badge: 'novo', imagem: 'images/catalogo/central-paradox.jpg', categoriaNome: 'Alarmes' },
+        { id: 33, categoria: 'seguranca', icone: 'fa-walking', titulo: 'Sensor de Movimento PIR', descricao: 'Sensor de movimento com alcance de 12m e anti-mascara.', specs: ['12m', 'Anti-mascara'], badge: null, imagem: 'images/catalogo/sensor-pir.jpg', categoriaNome: 'Alarmes' },
+        { id: 34, categoria: 'seguranca', icone: 'fa-door-open', titulo: 'Sensor de Abertura Magnético', descricao: 'Sensor para portas e janelas com contato magnético.', specs: ['Magnético', 'Portas'], badge: null, imagem: 'images/catalogo/sensor-abertura.jpg', categoriaNome: 'Alarmes' },
+        
+        // Proteção Perimetral
+        { id: 35, categoria: 'seguranca', icone: 'fa-bolt', titulo: 'Eletrificador de Cerca 10kV', descricao: 'Eletrificador de alta potência para cerca elétrica, com sensor de corte.', specs: ['10kV', 'Sensor'], badge: null, imagem: 'images/catalogo/cerca-eletrica.jpg', categoriaNome: 'Segurança Perimetral' },
+        { id: 36, categoria: 'seguranca', icone: 'fa-bolt', titulo: 'Eletrificador de Cerca 15kV', descricao: 'Eletrificador industrial de alta potência para grandes perímetros.', specs: ['15kV', 'Sensor', 'Industrial'], badge: null, imagem: 'images/catalogo/cerca-15kv.jpg', categoriaNome: 'Segurança Perimetral' },
+        
+        // Cofres
+        { id: 37, categoria: 'seguranca', icone: 'fa-lock', titulo: 'Cofre Alta Segurança 50L', descricao: 'Cofre à prova de fogo com fechadura biométrica e digital.', specs: ['À prova de fogo', 'Biometria'], badge: null, imagem: 'images/catalogo/cofre.jpg', categoriaNome: 'Cofres' },
+        { id: 38, categoria: 'seguranca', icone: 'fa-lock', titulo: 'Cofre 100L com Chave', descricao: 'Cofre de grande capacidade com fechadura de segurança.', specs: ['100L', 'Chave', 'Forte'], badge: null, imagem: 'images/catalogo/cofre-100l.jpg', categoriaNome: 'Cofres' },
+        
+        // Rastreamento
+        { id: 39, categoria: 'automacao', icone: 'fa-map-pin', titulo: 'Rastreador GPS Moto/Carro', descricao: 'Rastreador veicular com corte de motor, cerca eletrónica e APP.', specs: ['Corte', 'APP', 'Cerca'], badge: null, imagem: 'images/catalogo/gps.jpg', categoriaNome: 'Rastreamento' },
+        { id: 40, categoria: 'automacao', icone: 'fa-map-pin', titulo: 'Rastreador GPS Portátil', descricao: 'Rastreador portátil com bateria recarregável para rastreamento pessoal.', specs: ['Portátil', 'Bateria', 'APP'], badge: 'novo', imagem: 'images/catalogo/gps-portatil.jpg', categoriaNome: 'Rastreamento' }
+    ];
+
+    let produtoSelecionado = null;
+
+    // Popular grid de produtos
+    function popularProdutos() {
+        const grid = document.getElementById('productsGrid');
+        grid.innerHTML = '';
+        
+        produtos.forEach(produto => {
+            const card = document.createElement('div');
+            card.className = 'product-card';
+            card.dataset.categoria = produto.categoria;
+            card.onclick = () => abrirModalProduto(produto);
+            
+            // Badge
+            const badgeHtml = produto.badge ? 
+                `<span class="product-badge ${produto.badge}">${produto.badge.toUpperCase()}</span>` : '';
+            
+            // Imagem com fallback
+            const imagemHtml = produto.imagem ? 
+                `style="background-image: url('${produto.imagem}');"` : 
+                `style="background: linear-gradient(135deg, #1e3a8a, #2563eb); display: flex; align-items: center; justify-content: center;"`;
+            
+            const iconHtml = produto.imagem ? 
+                `<i class="fas ${produto.icone}"></i>` : 
+                `<i class="fas ${produto.icone}" style="font-size: 4rem; color: white;"></i>`;
+            
+            // Especificações (apenas 3 primeiras)
+            const specsHtml = produto.specs.slice(0, 3).map(spec => 
+                `<span class="product-spec">${spec}</span>`
+            ).join('');
+            
+            card.innerHTML = `
+                <div class="product-image" ${imagemHtml}>
+                    ${iconHtml}
+                    ${badgeHtml}
+                </div>
+                <div class="product-info">
+                    <div class="product-category">${produto.categoriaNome}</div>
+                    <h3 class="product-title">${produto.titulo}</h3>
+                    <p class="product-desc">${produto.descricao.substring(0, 60)}...</p>
+                    <div class="product-specs">
+                        ${specsHtml}
+                    </div>
+                    <div class="product-footer">
+                        <span class="product-price">Sob consulta</span>
+                        <button class="btn-product" onclick="event.stopPropagation(); abrirModalProduto(${produto.id})">
+                            <i class="fas fa-info-circle"></i> Detalhes
+                        </button>
+                    </div>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Abrir modal com detalhes do produto
+    function abrirModalProduto(produto) {
+        // Se for ID, buscar produto
+        if (typeof produto === 'number') {
+            produto = produtos.find(p => p.id === produto);
+        }
+        
+        produtoSelecionado = produto;
+        
+        // Imagem com fallback
+        const imagemHtml = produto.imagem ? 
+            `style="background-image: url('${produto.imagem}');"` : 
+            `style="background: linear-gradient(135deg, #1e3a8a, #2563eb); display: flex; align-items: center; justify-content: center;"`;
+        
+        const iconHtml = produto.imagem ? 
+            `<i class="fas ${produto.icone}"></i>` : 
+            `<i class="fas ${produto.icone}" style="font-size: 4rem; color: white;"></i>`;
+        
+        // Especificações
+        const specsHtml = produto.specs.map(spec => 
+            `<span class="modal-spec">${spec}</span>`
+        ).join('');
+        
+        const modalContent = `
+            <div class="modal-product-image" ${imagemHtml}>
+                ${iconHtml}
+            </div>
+            <div class="modal-product-info">
+                <h3>${produto.titulo}</h3>
+                <div class="category">${produto.categoriaNome}</div>
+                <p class="description">${produto.descricao}</p>
+                <div class="modal-specs">
+                    ${specsHtml}
+                </div>
+            </div>
+            
+            <div class="modal-form">
+                <h4 style="margin-bottom: 1rem;"><i class="fas fa-calculator"></i> Solicitar orçamento</h4>
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Nome completo *</label>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="nomeCliente" placeholder="Seu nome completo" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> Telefone *</label>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="telefoneCliente" placeholder="(244) 000-000-000" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="emailCliente" placeholder="seu@email.com">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-comment"></i> Mensagem / Detalhes adicionais</label>
+                    <div class="input-group">
+                        <i class="fas fa-comment"></i>
+                        <textarea id="mensagemCliente" rows="3" placeholder="Descreva suas necessidades específicas..."></textarea>
+                    </div>
+                </div>
+
+                <div class="send-buttons">
+                    <button class="btn-send whatsapp" onclick="enviarWhatsApp()">
+                        <i class="fab fa-whatsapp"></i> WhatsApp
+                    </button>
+                    <button class="btn-send email" onclick="enviarEmail()">
+                        <i class="fas fa-envelope"></i> Email
+                    </button>
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('modalContent').innerHTML = modalContent;
+        document.getElementById('productModal').classList.add('active');
+    }
+
+    // Fechar modal
+    function fecharModal() {
+        document.getElementById('productModal').classList.remove('active');
+        produtoSelecionado = null;
+    }
+
+    // Filtrar por categoria
+    function filtrarCategoria(categoria) {
+        // Atualizar botões de filtro
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // Filtrar produtos
+        const cards = document.querySelectorAll('.product-card');
+        cards.forEach(card => {
+            if (categoria === 'todos' || card.dataset.categoria === categoria) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Gerar mensagem para WhatsApp/Email
+    function gerarMensagem() {
+        const nome = document.getElementById('nomeCliente').value;
+        const telefone = document.getElementById('telefoneCliente').value;
+        const email = document.getElementById('emailCliente').value;
+        const mensagem = document.getElementById('mensagemCliente').value;
+        
+        if (!nome || !telefone) {
+            alert('Por favor, preencha nome e telefone!');
+            return null;
+        }
+
+        let texto = `*ORÇAMENTO - CATÁLOGO - D.PEDRO SOLUÇÕES*\n\n`;
+        texto += `*Produto:* ${produtoSelecionado.titulo}\n`;
+        texto += `*Categoria:* ${produtoSelecionado.categoriaNome}\n`;
+        texto += `*Descrição:* ${produtoSelecionado.descricao}\n\n`;
+        texto += `*Dados do Cliente:*\n`;
+        texto += `Nome: ${nome}\n`;
+        texto += `Telefone: ${telefone}\n`;
+        if (email) texto += `Email: ${email}\n`;
+        if (mensagem) texto += `\n*Mensagem:*\n${mensagem}\n\n`;
+        texto += `\n*D.PEDRO SOLUÇÕES*\n`;
+        texto += `📍 Viana, Vila Flor, Luanda\n`;
+        texto += `📞 946 299 834 / 959 777 301`;
+
+        return texto;
+    }
+
+    // Enviar WhatsApp
+    function enviarWhatsApp() {
+        const mensagem = gerarMensagem();
+        if (!mensagem) return;
+        
+        const telefone = '244946299834';
+        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, '_blank');
+        fecharModal();
+    }
+
+    // Enviar Email
+    function enviarEmail() {
+        const mensagem = gerarMensagem();
+        if (!mensagem) return;
+        
+        const emailEmpresa = 'dpedroservice@gmail.com';
+        const assunto = `Orçamento - Catálogo - ${produtoSelecionado.titulo}`;
+        const url = `mailto:${emailEmpresa}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
+        window.location.href = url;
+        fecharModal();
+    }
+
+    // Mostrar cookies
+    function mostrarCookies() {
+        alert('🍪 Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de cookies.');
+    }
+
+    // Mostrar termos
+    function mostrarTermos() {
+        alert('📜 Termos e Condições de Uso:\n\n1. Ao utilizar este site, você concorda com nossos termos.\n2. Todos os direitos reservados.\n3. Proibida reprodução sem autorização.\n\nPara mais informações, contacte-nos.');
+    }
+
+    // Pesquisa
+    document.getElementById('searchInput')?.addEventListener('input', function(e) {
+        const termo = e.target.value.toLowerCase();
+        const cards = document.querySelectorAll('.product-card');
+        
+        cards.forEach(card => {
+            const titulo = card.querySelector('.product-title').textContent.toLowerCase();
+            const desc = card.querySelector('.product-desc').textContent.toLowerCase();
+            
+            if (titulo.includes(termo) || desc.includes(termo) || termo.length < 2) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    });
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+        popularProdutos();
+
+        // Fechar modal ao clicar fora
+        const modal = document.getElementById('productModal');
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                fecharModal();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1243 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.PEDRO SOLUÇÕES – Soluções</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafd;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .top-bar .contact-info span {
+            margin-right: 1.8rem;
+        }
+        .top-bar .contact-info i {
+            color: #60a5fa;
+            width: 1.2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Navegação */
+        nav {
+            background: white;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-mark {
+            background: #1e3a8a;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+        }
+
+        /* Cabeçalho da página */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        .page-header h1 i {
+            color: #2563eb;
+            margin-right: 0.5rem;
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Introdução */
+        .intro-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+            text-align: center;
+        }
+        .intro-card p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Categorias de soluções */
+        .category-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+        }
+        .category-tab {
+            background: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            border: 1px solid #e2e8f0;
+            font-weight: 600;
+            color: #475569;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .category-tab:hover,
+        .category-tab.active {
+            background: #2563eb;
+            color: white;
+            border-color: #2563eb;
+        }
+
+        /* Grid de soluções */
+        .solutions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .solution-card {
+            background: white;
+            border-radius: 2rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+        .solution-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 30px -10px rgba(37,99,235,0.2);
+            border-color: #2563eb;
+        }
+
+        .solution-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+        .solution-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5));
+        }
+        .solution-image i {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 2rem;
+            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .solution-header {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .solution-header i {
+            font-size: 2.2rem;
+            opacity: 0.9;
+        }
+        .solution-header h2 {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .solution-content {
+            padding: 1.8rem;
+        }
+
+        .solution-desc {
+            color: #475569;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .features-list {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+        .features-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .features-list li:last-child {
+            border-bottom: none;
+        }
+        .features-list li i {
+            color: #2563eb;
+            font-size: 0.9rem;
+            width: 1.2rem;
+        }
+        .features-list li span {
+            color: #334155;
+            font-size: 0.95rem;
+        }
+
+        .tech-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .tech-tag {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.75rem;
+            font-weight: 600;
+        }
+
+        .btn-solution {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+            margin-top: 1rem;
+        }
+        .btn-solution:hover {
+            background: #1d4ed8;
+        }
+
+        /* Soluções integradas */
+        .integrated-section {
+            background: white;
+            border-radius: 2rem;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        .integrated-section h2 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .integrated-section h2 i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+        .integrated-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+        .integrated-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: #f8fafc;
+            border-radius: 1.5rem;
+            border: 1px solid #e2e8f0;
+        }
+        .integrated-item i {
+            font-size: 2.5rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        .integrated-item h3 {
+            margin-bottom: 0.5rem;
+            color: #0f172a;
+        }
+        .integrated-item p {
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        /* Modal de orçamento */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .modal-header h2 i {
+            color: #2563eb;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover {
+            background: #f1f5f9;
+            color: #ef4444;
+        }
+
+        .service-info {
+            background: #e0e7ff;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid #2563eb;
+        }
+        .service-info i {
+            font-size: 2rem;
+            color: #2563eb;
+        }
+        .service-info h3 {
+            color: #0f172a;
+            margin-bottom: 0.2rem;
+        }
+        .service-info p {
+            color: #475569;
+            font-size: 0.85rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.9rem;
+        }
+        .form-group label i {
+            color: #2563eb;
+            width: 1.2rem;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            color: #64748b;
+        }
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px #2563eb20;
+        }
+
+        .send-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .btn-send {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .btn-send.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .btn-send.whatsapp:hover {
+            background: #20b859;
+            transform: translateY(-2px);
+        }
+        .btn-send.email {
+            background: #2563eb;
+            color: white;
+        }
+        .btn-send.email:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Contacto rápido */
+        .quick-contact {
+            background: linear-gradient(135deg, #2563eb, #1e3a8a);
+            border-radius: 2rem;
+            padding: 3rem;
+            margin: 4rem 0;
+            text-align: center;
+            color: white;
+        }
+        .quick-contact h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+        .quick-contact p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .contact-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .contact-btn {
+            background: white;
+            color: #2563eb;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .contact-btn:hover {
+            background: #f8fafc;
+            transform: translateY(-2px);
+        }
+        .contact-btn.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .contact-btn.whatsapp:hover {
+            background: #20b859;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 3rem;
+            border-radius: 3rem 3rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-bottom span {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .footer-bottom span:hover {
+            color: #2563eb;
+        }
+
+        /* Botões flutuantes */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            text-decoration: none;
+        }
+        .top-arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #2563eb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .top-arrow:hover {
+            opacity: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .solutions-grid {
+                grid-template-columns: 1fr;
+            }
+            .page-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 946 299 834 | 959 777 301</span>
+        <span><i class="fas fa-map-marker-alt"></i> Luanda, Viana, Vila Flor</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+    </div>
+    <div class="social-links">
+        <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin"></i></a>
+    </div>
+</div>
+
+<!-- Navegação -->
+<nav>
+    <div class="logo">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+            <div class="logo-mark">DP</div>
+            <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="mercados-verticais.html">Mercados Verticais</a>
+        <a href="solucoes.html" class="active">Soluções</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="recrutamento.html">Recrutamento</a>
+        <a href="contactos.html">Contactos</a>
+    </div>
+</nav>
+
+<main class="container">
+    <!-- Cabeçalho da página -->
+    <div class="page-header">
+        <h1><i class="fas fa-cubes"></i> Nossas Soluções</h1>
+        <p>Tecnologia de ponta para segurança, automação, energia e comunicação</p>
+    </div>
+
+    <!-- Introdução -->
+    <div class="intro-card">
+        <p>A D.PEDRO SOLUÇÕES oferece um portfólio completo de produtos e serviços para atender às mais diversas necessidades. Trabalhamos com as melhores marcas do mercado e contamos com uma equipa técnica altamente qualificada para garantir a excelência em cada projeto.</p>
+    </div>
+
+    <!-- Filtro por categoria -->
+    <div class="category-tabs">
+        <span class="category-tab active" onclick="filtrarCategoria('todas')">Todas</span>
+        <span class="category-tab" onclick="filtrarCategoria('seguranca')">Segurança</span>
+        <span class="category-tab" onclick="filtrarCategoria('acesso')">Controlo de Acesso</span>
+        <span class="category-tab" onclick="filtrarCategoria('energia')">Energia</span>
+        <span class="category-tab" onclick="filtrarCategoria('grafica')">Gráfica</span>
+        <span class="category-tab" onclick="filtrarCategoria('automacao')">Automação</span>
+    </div>
+
+    <!-- Grid de soluções -->
+    <div class="solutions-grid" id="solutionsGrid">
+        <!-- As soluções serão populadas via JavaScript -->
+    </div>
+
+    <!-- Soluções integradas -->
+    <div class="integrated-section">
+        <h2><i class="fas fa-link"></i> Soluções Integradas</h2>
+        <p style="margin-bottom: 2rem; color: #475569;">Todos os nossos sistemas podem ser integrados para um controlo total e centralizado</p>
+        <div class="integrated-grid">
+            <div class="integrated-item">
+                <i class="fas fa-video"></i>
+                <h3>CFTV + Controlo de Acesso</h3>
+                <p>Validação por imagem na entrada</p>
+            </div>
+            <div class="integrated-item">
+                <i class="fas fa-bell"></i>
+                <h3>Alarme + Monitoramento</h3>
+                <p>Alertas em tempo real 24/7</p>
+            </div>
+            <div class="integrated-item">
+                <i class="fas fa-solar-panel"></i>
+                <h3>Energia + Segurança</h3>
+                <p>Sistemas autónomos e protegidos</p>
+            </div>
+            <div class="integrated-item">
+                <i class="fas fa-mobile-alt"></i>
+                <h3>Gestão por APP</h3>
+                <p>Controlo na palma da mão</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contacto rápido -->
+    <div class="quick-contact">
+        <h2>Precisa de uma solução específica?</h2>
+        <p>Nossa equipa está preparada para desenvolver o projeto ideal para o seu negócio</p>
+        <div class="contact-buttons">
+            <a href="tel:946299834" class="contact-btn"><i class="fas fa-phone-alt"></i> 946 299 834</a>
+            <a href="https://wa.me/244946299834" class="contact-btn whatsapp"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+            <a href="mailto:dpedroservice@gmail.com" class="contact-btn"><i class="fas fa-envelope"></i> Email</a>
+        </div>
+    </div>
+</main>
+
+<!-- Modal de orçamento -->
+<div class="modal" id="budgetModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-calculator"></i> <span id="modalTitle">Pedir Orçamento</span></h2>
+            <button class="modal-close" onclick="fecharModal()"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="service-info" id="serviceInfo">
+            <i class="fas fa-tools" id="serviceIcon"></i>
+            <div>
+                <h3 id="serviceName">Serviço</h3>
+                <p id="serviceDescription">Descrição do serviço</p>
+            </div>
+        </div>
+
+        <form id="budgetForm" onsubmit="event.preventDefault();">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Nome completo *</label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nomeCliente" placeholder="Seu nome completo" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Telefone *</label>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="telefoneCliente" placeholder="(244) 000-000-000" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="emailCliente" placeholder="seu@email.com">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-comment"></i> Mensagem / Detalhes adicionais</label>
+                <div class="input-group">
+                    <i class="fas fa-comment"></i>
+                    <textarea id="mensagemCliente" rows="4" placeholder="Descreva suas necessidades específicas..."></textarea>
+                </div>
+            </div>
+
+            <div class="send-buttons">
+                <button type="button" class="btn-send whatsapp" onclick="enviarWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button type="button" class="btn-send email" onclick="enviarEmail()">
+                    <i class="fas fa-envelope"></i> Email
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <strong>D.PEDRO SOLUÇÕES</strong>
+            <p>Comércio e Prestação de Serviços, Lda.</p>
+            <p>Luanda, Angola</p>
+        </div>
+        <div class="footer-col">
+            <strong>Sede</strong>
+            <p>Viana, Vila Flor, Luanda</p>
+            <p>Rua Direita da Engevia</p>
+        </div>
+        <div class="footer-col">
+            <strong>Contactos</strong>
+            <p>+244 946 299 834<br>+244 959 777 301<br>dpedroservice@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <strong>Links rápidos</strong>
+            <a href="index.html">Início</a>
+            <a href="quem-somos.html">Quem somos</a>
+            <a href="solucoes.html">Soluções</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="contactos.html">Contactos</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
+        <div>
+            <span onclick="mostrarCookies()"><i class="fas fa-cookie-bite"></i> cookies</span> | 
+            <span onclick="mostrarTermos()"><i class="fas fa-file-contract"></i> termos</span>
+        </div>
+    </div>
+</footer>
+
+<!-- Botões flutuantes -->
+<a href="https://wa.me/244946299834" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+    // Lista de soluções com informações completas
+    const solucoes = [
+        {
+            id: 1,
+            categoria: 'seguranca',
+            icone: 'fa-video',
+            titulo: 'Câmaras CFTV',
+            descricao: 'Soluções completas em videovigilância para monitoramento 24/7, com câmaras analógicas e IP de alta definição.',
+            features: [
+                'Câmaras dome, bullet e PTZ',
+                'Visão noturna e térmica',
+                'Analítica de vídeo com IA',
+                'Gravação em DVR/NVR',
+                'Acesso remoto via app'
+            ],
+            tags: ['IP', 'Full HD', '4K', 'PTZ'],
+            imagem: 'images/solucoes/cftv.jpg', // Caminho para a imagem
+            imagemPlaceholder: 'fa-video'
+        },
+        {
+            id: 2,
+            categoria: 'seguranca',
+            icone: 'fa-bell',
+            titulo: 'Alarmes de Intrusão',
+            descricao: 'Sistemas de alarme para proteção contra invasões, com centrais programáveis e sensores de última geração.',
+            features: [
+                'Centrais de alarme com fio/sem fio',
+                'Sensores de abertura',
+                'Detetores de movimento',
+                'Sirenes internas/externas',
+                'Monitoramento 24h'
+            ],
+            tags: ['Wireless', 'Hibrido', 'APP'],
+            imagem: 'images/solucoes/alarmes.jpg',
+            imagemPlaceholder: 'fa-bell'
+        },
+        {
+            id: 3,
+            categoria: 'acesso',
+            icone: 'fa-fingerprint',
+            titulo: 'Controlo de Acesso',
+            descricao: 'Soluções para gestão de entrada e saída de pessoas, com tecnologia biométrica, cartões e senhas.',
+            features: [
+                'Biometria digital',
+                'Leitores de cartão RFID',
+                'Reconhecimento facial',
+                'Fechaduras eletrónicas',
+                'Software de gestão'
+            ],
+            tags: ['Biometria', 'RFID', 'Facial'],
+            imagem: 'images/solucoes/controlo-acesso.jpg',
+            imagemPlaceholder: 'fa-fingerprint'
+        },
+        {
+            id: 4,
+            categoria: 'acesso',
+            icone: 'fa-clock',
+            titulo: 'Assiduidade por Biometria',
+            descricao: 'Sistemas de controlo de ponto eletrónico para empresas, com registro preciso de entrada e saída de funcionários.',
+            features: [
+                'Relógios biométricos',
+                'Software de gestão de ponto',
+                'Relatórios e escalas',
+                'Integração com folha',
+                'Acesso via APP'
+            ],
+            tags: ['Biometria', 'Ponto', 'RH'],
+            imagem: 'images/solucoes/assiduidade.jpg',
+            imagemPlaceholder: 'fa-clock'
+        },
+        {
+            id: 5,
+            categoria: 'acesso',
+            icone: 'fa-phone-alt',
+            titulo: 'Vídeo-porteiros',
+            descricao: 'Sistemas de comunicação e abertura remota para condomínios e residências, com áudio e vídeo de qualidade.',
+            features: [
+                'Monitores coloridos',
+                'Abertura por APP',
+                'Interfones digitais',
+                'Integração com fechadura',
+                'Câmaras de alta definição'
+            ],
+            tags: ['APP', 'HD', 'IP'],
+            imagem: 'images/solucoes/video-porteiro.jpg',
+            imagemPlaceholder: 'fa-phone-alt'
+        },
+        {
+            id: 6,
+            categoria: 'seguranca',
+            icone: 'fa-bolt',
+            titulo: 'Cerca Elétrica',
+            descricao: 'Sistemas de proteção perimetral com cerca elétrica de alta tensão, inibindo e alertando sobre tentativas de invasão.',
+            features: [
+                'Eletrificadores de alta potência',
+                'Fios de aço inoxidável',
+                'Isoladores e acessórios',
+                'Sensores de corte',
+                'Integração com alarme'
+            ],
+            tags: ['10kV', 'Perimetral', 'Intrusão'],
+            imagem: 'images/solucoes/cerca-eletrica.jpg',
+            imagemPlaceholder: 'fa-bolt'
+        },
+        {
+            id: 7,
+            categoria: 'energia',
+            icone: 'fa-solar-panel',
+            titulo: 'Sistema Off Grid',
+            descricao: 'Soluções completas em energia solar para locais sem acesso à rede elétrica, garantindo autonomia e sustentabilidade.',
+            features: [
+                'Painéis solares fotovoltaicos',
+                'Inversores off grid',
+                'Controladores de carga',
+                'Baterias estacionárias',
+                'Geradores eólicos portáteis'
+            ],
+            tags: ['Solar', 'Eólico', 'Baterias'],
+            imagem: 'images/solucoes/off-grid.jpg',
+            imagemPlaceholder: 'fa-solar-panel'
+        },
+        {
+            id: 8,
+            categoria: 'grafica',
+            icone: 'fa-print',
+            titulo: 'Impressão Gráfica',
+            descricao: 'Serviços completos de impressão offset e digital para materiais promocionais e editoriais.',
+            features: [
+                'Impressão offset (livros, revistas)',
+                'Impressão digital (cartões, flyers)',
+                'Grandes formatos (faixas, painéis)',
+                'Acabamentos especiais',
+                'Brindes personalizados'
+            ],
+            tags: ['Offset', 'Digital', 'Grande formato'],
+            imagem: 'images/solucoes/grafica.jpg',
+            imagemPlaceholder: 'fa-print'
+        },
+        {
+            id: 9,
+            categoria: 'grafica',
+            icone: 'fa-pen-fancy',
+            titulo: 'Design Gráfico',
+            descricao: 'Criação de identidade visual e materiais gráficos para fortalecer a presença da sua marca.',
+            features: [
+                'Criação de logotipos',
+                'Identidade visual completa',
+                'Design de embalagens',
+                'Layouts para publicações',
+                'Materiais promocionais'
+            ],
+            tags: ['Logotipo', 'Branding', 'Editorial'],
+            imagem: 'images/solucoes/design.jpg',
+            imagemPlaceholder: 'fa-pen-fancy'
+        },
+        {
+            id: 10,
+            categoria: 'seguranca',
+            icone: 'fa-fire-extinguisher',
+            titulo: 'Deteção de Incêndio',
+            descricao: 'Sistemas de deteção e alarme de incêndio para proteção de vidas e património.',
+            features: [
+                'Centrais de incêndio',
+                'Detetores de fumo',
+                'Sensores de temperatura',
+                'Sirenes e sinalizadores',
+                'Botoeiras de acionamento'
+            ],
+            tags: ['Fumo', 'Calor', 'NFPA'],
+            imagem: 'images/solucoes/incendio.jpg',
+            imagemPlaceholder: 'fa-fire-extinguisher'
+        },
+        {
+            id: 11,
+            categoria: 'seguranca',
+            icone: 'fa-satellite-dish',
+            titulo: 'Monitoramento Remoto',
+            descricao: 'Acompanhamento 24/7 das suas câmaras e sensores através de centrais de monitoramento e aplicativos.',
+            features: [
+                'Acesso via APP',
+                'Central de monitoramento',
+                'Alertas em tempo real',
+                'Relatórios de eventos',
+                'Integração com segurança'
+            ],
+            tags: ['24/7', 'APP', 'Cloud'],
+            imagem: 'images/solucoes/monitoramento.jpg',
+            imagemPlaceholder: 'fa-satellite-dish'
+        },
+        {
+            id: 12,
+            categoria: 'automacao',
+            icone: 'fa-map-pin',
+            titulo: 'GPS Rastreador',
+            descricao: 'Sistemas de rastreamento veicular para motos e carros, garantindo segurança e controlo da frota.',
+            features: [
+                'Rastreadores GPS',
+                'Corte de motor remoto',
+                'Cerca eletrónica',
+                'Histórico de rotas',
+                'Alertas de velocidade'
+            ],
+            tags: ['Veicular', 'Frota', 'Localização'],
+            imagem: 'images/solucoes/gps.jpg',
+            imagemPlaceholder: 'fa-map-pin'
+        }
+    ];
+
+    let servicoSelecionado = null;
+
+    // Popular grid de soluções
+    function popularSolucoes() {
+        const grid = document.getElementById('solutionsGrid');
+        grid.innerHTML = '';
+        
+        solucoes.forEach(solucao => {
+            const card = document.createElement('div');
+            card.className = 'solution-card';
+            card.dataset.categoria = solucao.categoria;
+            
+            // Imagem com fallback para ícone
+            const imagemHtml = solucao.imagem ? 
+                `<div class="solution-image" style="background-image: url('${solucao.imagem}');"><i class="fas ${solucao.imagemPlaceholder}"></i></div>` :
+                `<div class="solution-image" style="background: linear-gradient(135deg, #1e3a8a, #2563eb); display: flex; align-items: center; justify-content: center;"><i class="fas ${solucao.imagemPlaceholder}" style="font-size: 4rem; color: white;"></i></div>`;
+            
+            // Features
+            const featuresHtml = solucao.features.map(f => 
+                `<li><i class="fas fa-check"></i> <span>${f}</span></li>`
+            ).join('');
+            
+            // Tags
+            const tagsHtml = solucao.tags.map(t => 
+                `<span class="tech-tag">${t}</span>`
+            ).join('');
+            
+            card.innerHTML = `
+                ${imagemHtml}
+                <div class="solution-content">
+                    <p class="solution-desc">${solucao.descricao}</p>
+                    <ul class="features-list">
+                        ${featuresHtml}
+                    </ul>
+                    <div class="tech-tags">
+                        ${tagsHtml}
+                    </div>
+                    <button class="btn-solution" onclick="abrirModalOrcamento('${solucao.icone}', '${solucao.titulo}', '${solucao.descricao}')">
+                        <i class="fas fa-calculator"></i> Solicitar orçamento
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Filtrar por categoria
+    function filtrarCategoria(categoria) {
+        // Atualizar tabs
+        document.querySelectorAll('.category-tab').forEach(tab => {
+            tab.classList.remove('active');
+        });
+        event.target.classList.add('active');
+        
+        // Filtrar cards
+        const cards = document.querySelectorAll('.solution-card');
+        cards.forEach(card => {
+            if (categoria === 'todas' || card.dataset.categoria === categoria) {
+                card.style.display = 'block';
+            } else {
+                card.style.display = 'none';
+            }
+        });
+    }
+
+    // Abrir modal de orçamento
+    function abrirModalOrcamento(icone, nome, descricao) {
+        servicoSelecionado = { icone, nome, descricao };
+        
+        document.getElementById('serviceIcon').className = `fas ${icone}`;
+        document.getElementById('serviceName').textContent = nome;
+        document.getElementById('serviceDescription').textContent = descricao;
+        document.getElementById('modalTitle').textContent = `Orçamento - ${nome}`;
+        
+        document.getElementById('budgetModal').classList.add('active');
+    }
+
+    // Fechar modal
+    function fecharModal() {
+        document.getElementById('budgetModal').classList.remove('active');
+        document.getElementById('budgetForm').reset();
+        servicoSelecionado = null;
+    }
+
+    // Gerar mensagem para WhatsApp/Email
+    function gerarMensagem() {
+        const nome = document.getElementById('nomeCliente').value;
+        const telefone = document.getElementById('telefoneCliente').value;
+        const email = document.getElementById('emailCliente').value;
+        const mensagem = document.getElementById('mensagemCliente').value;
+        
+        if (!nome || !telefone) {
+            alert('Por favor, preencha nome e telefone!');
+            return null;
+        }
+
+        let texto = `*ORÇAMENTO - D.PEDRO SOLUÇÕES*\n\n`;
+        texto += `*Serviço:* ${servicoSelecionado.nome}\n`;
+        texto += `*Descrição:* ${servicoSelecionado.descricao}\n\n`;
+        texto += `*Dados do Cliente:*\n`;
+        texto += `Nome: ${nome}\n`;
+        texto += `Telefone: ${telefone}\n`;
+        if (email) texto += `Email: ${email}\n`;
+        if (mensagem) texto += `\n*Mensagem:*\n${mensagem}\n\n`;
+        texto += `\n*D.PEDRO SOLUÇÕES*\n`;
+        texto += `📍 Viana, Vila Flor, Luanda\n`;
+        texto += `📞 946 299 834 / 959 777 301`;
+
+        return texto;
+    }
+
+    // Enviar WhatsApp
+    function enviarWhatsApp() {
+        const mensagem = gerarMensagem();
+        if (!mensagem) return;
+        
+        const telefone = '244946299834';
+        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, '_blank');
+        fecharModal();
+    }
+
+    // Enviar Email
+    function enviarEmail() {
+        const mensagem = gerarMensagem();
+        if (!mensagem) return;
+        
+        const emailEmpresa = 'dpedroservice@gmail.com';
+        const assunto = `Orçamento - ${servicoSelecionado.nome}`;
+        const url = `mailto:${emailEmpresa}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
+        window.location.href = url;
+        fecharModal();
+    }
+
+    // Mostrar cookies
+    function mostrarCookies() {
+        alert('🍪 Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de cookies.');
+    }
+
+    // Mostrar termos
+    function mostrarTermos() {
+        alert('📜 Termos e Condições de Uso:\n\n1. Ao utilizar este site, você concorda com nossos termos.\n2. Todos os direitos reservados.\n3. Proibida reprodução sem autorização.\n\nPara mais informações, contacte-nos.');
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+        popularSolucoes();
+
+        // Fechar modal ao clicar fora
+        const modal = document.getElementById('budgetModal');
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                fecharModal();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

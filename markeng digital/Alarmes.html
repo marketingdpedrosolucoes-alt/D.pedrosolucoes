@@ -1,0 +1,1123 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.PEDRO SOLUÇÕES – Orçamento de Alarmes</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Identity Services -->
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafd;
+            color: #1e293b;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .top-bar .contact-info span {
+            margin-right: 1.8rem;
+        }
+        .top-bar .contact-info i {
+            color: #60a5fa;
+            width: 1.2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Navegação */
+        nav {
+            background: white;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-mark {
+            background: #1e3a8a;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* User info quando logado */
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: #e0e7ff;
+            padding: 0.3rem 1rem 0.3rem 0.5rem;
+            border-radius: 40px;
+            border: 1px solid #2563eb;
+        }
+        .user-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: #2563eb;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+        .user-avatar img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+        .user-details {
+            font-size: 0.85rem;
+        }
+        .user-name {
+            font-weight: 600;
+            color: #0f172a;
+        }
+        .user-email {
+            font-size: 0.7rem;
+            color: #475569;
+        }
+        .logout-btn {
+            background: none;
+            border: none;
+            color: #64748b;
+            cursor: pointer;
+            font-size: 0.9rem;
+            margin-left: 0.3rem;
+        }
+        .logout-btn:hover {
+            color: #ef4444;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+            flex: 1;
+        }
+
+        /* Cabeçalho da página */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        .page-header h1 {
+            font-size: 2.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        .page-header h1 i {
+            color: #2563eb;
+            margin-right: 0.5rem;
+        }
+        .page-header p {
+            font-size: 1.2rem;
+            color: #475569;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Grid principal */
+        .budget-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        /* Formulário de orçamento */
+        .budget-form {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        .budget-form h2 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .budget-form h2 i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.9rem;
+        }
+        .form-group label i {
+            color: #2563eb;
+            width: 1.2rem;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            color: #64748b;
+        }
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px #2563eb20;
+        }
+
+        /* Items do alarme */
+        .alarm-items {
+            margin: 1.5rem 0;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            padding: 1rem;
+        }
+        .alarm-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .alarm-item:last-child {
+            border-bottom: none;
+        }
+        .item-info {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .item-info i {
+            color: #2563eb;
+            width: 1.5rem;
+            font-size: 1.1rem;
+        }
+        .item-controls {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .item-controls input {
+            width: 60px;
+            padding: 0.3rem;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+        }
+        .item-price {
+            min-width: 80px;
+            text-align: right;
+            font-weight: 600;
+            color: #2563eb;
+        }
+
+        /* Resumo */
+        .budget-summary {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e2e8f0;
+        }
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: #0f172a;
+            border-bottom: none;
+            margin-top: 0.5rem;
+        }
+        .summary-row i {
+            color: #2563eb;
+            margin-right: 0.3rem;
+        }
+
+        /* Botões de envio */
+        .send-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        .btn-send {
+            flex: 1;
+            min-width: 150px;
+            padding: 1rem;
+            border: none;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .btn-send.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .btn-send.whatsapp:hover {
+            background: #20b859;
+            transform: translateY(-2px);
+        }
+        .btn-send.email {
+            background: #2563eb;
+            color: white;
+        }
+        .btn-send.email:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Card de cálculo */
+        .calculation-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+        }
+        .calculation-card h2 {
+            font-size: 1.8rem;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        .calculation-card h2 i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        .formula-box {
+            background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid #cbd5e1;
+        }
+        .formula-box h3 {
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        .formula {
+            font-family: 'Courier New', monospace;
+            background: #1e293b;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.8rem;
+            font-size: 1rem;
+            margin: 1rem 0;
+        }
+        .formula-detail {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+            margin: 1rem 0;
+        }
+        .formula-item {
+            background: white;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .discount-info {
+            background: #dcfce7;
+            border: 1px solid #22c55e;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin: 1.5rem 0;
+            color: #166534;
+        }
+
+        /* Login Google */
+        .google-login-section {
+            margin-bottom: 1.5rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 2rem;
+            border-radius: 3rem 3rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Botões flutuantes */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            text-decoration: none;
+        }
+        .top-arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #2563eb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .top-arrow:hover {
+            opacity: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .budget-grid {
+                grid-template-columns: 1fr;
+            }
+            .send-buttons {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 946 299 834 | 959 777 301</span>
+        <span><i class="fas fa-map-marker-alt"></i> Luanda, Viana, Vila Flor</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+    </div>
+    <div class="social-links">
+        <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+    </div>
+</div>
+
+<!-- Navegação -->
+<nav>
+    <div class="logo">
+        <a href="nosso.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+            <div class="logo-mark">DP</div>
+            <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a href="#" onclick="alert('Página inicial (simulação)')">Início</a>
+        <a href="#" onclick="alert('Quem somos (simulação)')">Quem somos</a>
+        <a href="#" onclick="alert('Mercados Verticais (simulação)')">Mercados Verticais</a>
+        <a href="#" onclick="alert('Soluções (simulação)')">Soluções</a>
+        <a href="#" onclick="alert('Catálogo (simulação)')">Catálogo</a>
+        <a href="#" onclick="alert('Recrutamento (simulação)')">Recrutamento</a>
+        <a href="#" onclick="alert('Contactos (simulação)')">Contactos</a>
+        <a href="#" class="active">Orçamento</a>
+    </div>
+
+    <!-- Área do usuário (aparece quando logado) -->
+    <div id="userInfoArea" style="display: none;">
+        <div class="user-info">
+            <div class="user-avatar" id="userAvatar">
+                <i class="fas fa-user"></i>
+            </div>
+            <div class="user-details">
+                <div class="user-name" id="userName">Usuário</div>
+                <div class="user-email" id="userEmail">email@exemplo.com</div>
+            </div>
+            <button class="logout-btn" onclick="logout()" title="Sair"><i class="fas fa-sign-out-alt"></i></button>
+        </div>
+    </div>
+</nav>
+
+<!-- Container principal -->
+<main class="container">
+    <!-- Cabeçalho da página -->
+    <div class="page-header">
+        <h1><i class="fas fa-bell"></i> Orçamento de Alarmes</h1>
+        <p>Configure seu sistema de alarme e receba o orçamento por WhatsApp ou Email</p>
+    </div>
+
+    <!-- Login com Google (aparece apenas se não logado) -->
+    <div id="googleLoginSection" class="google-login-section">
+        <div style="display: flex; justify-content: center;">
+            <div id="g_id_onload"
+                 data-client_id="529786643397-sse74fra6vv3csedi0ddalpn2gkjua8b.apps.googleusercontent.com"
+                 data-context="signin"
+                 data-ux_mode="popup"
+                 data-callback="handleCredentialResponse"
+                 data-auto_prompt="false"
+                 data-itp_support="true">
+            </div>
+            
+            <div class="g_id_signin"
+                 data-type="standard"
+                 data-shape="rectangular"
+                 data-theme="outline"
+                 data-text="signin_with"
+                 data-size="large"
+                 data-logo_alignment="left"
+                 data-width="300">
+            </div>
+        </div>
+    </div>
+
+    <!-- Grid principal -->
+    <div class="budget-grid">
+        <!-- Formulário de orçamento -->
+        <div class="budget-form">
+            <h2><i class="fas fa-calculator"></i> Configurar Alarme</h2>
+
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Nome *</label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nomeCliente" placeholder="Seu nome completo" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Telefone *</label>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="telefoneCliente" placeholder="(244) 000-000-000" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="emailCliente" placeholder="seu@email.com">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-home"></i> Tipo de Imóvel</label>
+                <div class="input-group">
+                    <i class="fas fa-home"></i>
+                    <select id="tipoImovel" onchange="calcularOrcamento()">
+                        <option value="residencial">Residencial</option>
+                        <option value="comercial">Comercial</option>
+                        <option value="industrial">Industrial</option>
+                    </select>
+                </div>
+            </div>
+
+            <h3 style="margin: 1.5rem 0 1rem;"><i class="fas fa-list"></i> Itens do Alarme</h3>
+            <div class="alarm-items">
+                <div class="alarm-item">
+                    <div class="item-info">
+                        <i class="fas fa-microchip"></i>
+                        <span>Central de Alarme</span>
+                    </div>
+                    <div class="item-controls">
+                        <input type="number" id="qtdCentral" value="1" min="0" max="5" onchange="calcularOrcamento()">
+                        <span class="item-price" id="precoCentral">350.000 Kz</span>
+                    </div>
+                </div>
+                <div class="alarm-item">
+                    <div class="item-info">
+                        <i class="fas fa-walking"></i>
+                        <span>Sensor de Movimento</span>
+                    </div>
+                    <div class="item-controls">
+                        <input type="number" id="qtdSensor" value="2" min="0" max="20" onchange="calcularOrcamento()">
+                        <span class="item-price" id="precoSensor">85.000 Kz</span>
+                    </div>
+                </div>
+                <div class="alarm-item">
+                    <div class="item-info">
+                        <i class="fas fa-door-open"></i>
+                        <span>Sensor de Abertura</span>
+                    </div>
+                    <div class="item-controls">
+                        <input type="number" id="qtdAbertura" value="3" min="0" max="20" onchange="calcularOrcamento()">
+                        <span class="item-price" id="precoAbertura">45.000 Kz</span>
+                    </div>
+                </div>
+                <div class="alarm-item">
+                    <div class="item-info">
+                        <i class="fas fa-volume-up"></i>
+                        <span>Sirene</span>
+                    </div>
+                    <div class="item-controls">
+                        <input type="number" id="qtdSirene" value="1" min="0" max="5" onchange="calcularOrcamento()">
+                        <span class="item-price" id="precoSirene">65.000 Kz</span>
+                    </div>
+                </div>
+                <div class="alarm-item">
+                    <div class="item-info">
+                        <i class="fas fa-key"></i>
+                        <span>Controle Remoto</span>
+                    </div>
+                    <div class="item-controls">
+                        <input type="number" id="qtdControle" value="2" min="0" max="10" onchange="calcularOrcamento()">
+                        <span class="item-price" id="precoControle">25.000 Kz</span>
+                    </div>
+                </div>
+                <div class="alarm-item">
+                    <div class="item-info">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Bateria Reserva</span>
+                    </div>
+                    <div class="item-controls">
+                        <input type="number" id="qtdBateria" value="1" min="0" max="5" onchange="calcularOrcamento()">
+                        <span class="item-price" id="precoBateria">95.000 Kz</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="budget-summary">
+                <div class="summary-row">
+                    <span><i class="fas fa-calculator"></i> Subtotal</span>
+                    <span id="subtotal">0 Kz</span>
+                </div>
+                <div class="summary-row">
+                    <span><i class="fas fa-truck"></i> Instalação</span>
+                    <span id="instalacao">0 Kz</span>
+                </div>
+                <div class="summary-row">
+                    <span><i class="fas fa-tag"></i> Desconto</span>
+                    <span id="desconto">0 Kz</span>
+                </div>
+                <div class="summary-row total">
+                    <span><i class="fas fa-coins"></i> TOTAL</span>
+                    <span id="total">0 Kz</span>
+                </div>
+            </div>
+
+            <div class="send-buttons">
+                <button class="btn-send whatsapp" onclick="enviarWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> Enviar WhatsApp
+                </button>
+                <button class="btn-send email" onclick="enviarEmail()">
+                    <i class="fas fa-envelope"></i> Enviar Email
+                </button>
+            </div>
+        </div>
+
+        <!-- Card de cálculo e fórmula -->
+        <div class="calculation-card">
+            <h2><i class="fas fa-square-root-alt"></i> Fórmula de Cálculo</h2>
+            
+            <div class="formula-box">
+                <h3><i class="fas fa-chart-line"></i> Como calculamos</h3>
+                <div class="formula">
+                    <strong>TOTAL = (∑ Itens) + Instalação - Desconto</strong>
+                </div>
+                
+                <div class="formula-detail">
+                    <div class="formula-item">
+                        <strong>Central:</strong> 350.000 Kz
+                    </div>
+                    <div class="formula-item">
+                        <strong>Sensor Movimento:</strong> 85.000 Kz
+                    </div>
+                    <div class="formula-item">
+                        <strong>Sensor Abertura:</strong> 45.000 Kz
+                    </div>
+                    <div class="formula-item">
+                        <strong>Sirene:</strong> 65.000 Kz
+                    </div>
+                    <div class="formula-item">
+                        <strong>Controle:</strong> 25.000 Kz
+                    </div>
+                    <div class="formula-item">
+                        <strong>Bateria:</strong> 95.000 Kz
+                    </div>
+                </div>
+
+                <h4 style="margin: 1rem 0 0.5rem;">Instalação:</h4>
+                <div class="formula-item">
+                    Residencial: 50.000 Kz<br>
+                    Comercial: 75.000 Kz<br>
+                    Industrial: 100.000 Kz
+                </div>
+
+                <h4 style="margin: 1rem 0 0.5rem;">Descontos:</h4>
+                <div class="formula-item">
+                    • Acima de 1.000.000 Kz: 10%<br>
+                    • Acima de 1.500.000 Kz: 15%<br>
+                    • Cliente fidelidade: +5%
+                </div>
+            </div>
+
+            <div class="discount-info" id="discountInfo">
+                <i class="fas fa-gift"></i>
+                <span>Adicione mais itens para ganhar descontos!</span>
+            </div>
+
+            <div style="margin-top: 1.5rem; padding: 1rem; background: #f8fafc; border-radius: 1rem;">
+                <h4><i class="fas fa-history"></i> Últimos cálculos:</h4>
+                <div id="historicoCalculos">
+                    <!-- Histórico será preenchido via JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <strong>D.PEDRO SOLUÇÕES</strong>
+            <p>Comércio e Prestação de Serviços, Lda.</p>
+            <p>Luanda, Angola</p>
+        </div>
+        <div class="footer-col">
+            <strong>Sede</strong>
+            <p>Viana, Vila Flor, Luanda</p>
+            <p>Rua Direita da Engevia</p>
+        </div>
+        <div class="footer-col">
+            <strong>Contactos</strong>
+            <p>+244 946 299 834</p>
+            <p>+244 959 777 301</p>
+            <p>dpedroservice@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <strong>Links rápidos</strong>
+            <a href="#" onclick="alert('Quem somos')">Quem somos</a>
+            <a href="#" onclick="alert('Soluções')">Soluções</a>
+            <a href="#" onclick="alert('Catálogo')">Catálogo</a>
+            <a href="#" onclick="alert('Orçamento')">Orçamento</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
+        <div><i class="fas fa-cookie-bite"></i> cookies | <i class="fas fa-file-contract"></i> termos</div>
+    </div>
+</footer>
+
+<!-- Botões flutuantes -->
+<a href="https://wa.me/244946299834" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+    // Preços base
+    const precos = {
+        central: 350000,
+        sensor: 85000,
+        abertura: 45000,
+        sirene: 65000,
+        controle: 25000,
+        bateria: 95000
+    };
+
+    const instalacaoPreco = {
+        residencial: 50000,
+        comercial: 75000,
+        industrial: 100000
+    };
+
+    // Dados do usuário logado
+    let usuarioLogado = null;
+
+    // Callback do Google (quando o login é bem-sucedido)
+    function handleCredentialResponse(response) {
+        // Decodificar o token JWT
+        const data = parseJwt(response.credential);
+        
+        console.log("Login com Google bem-sucedido!");
+        console.log("Dados do usuário:", data);
+        
+        // Salvar dados do usuário
+        usuarioLogado = {
+            name: data.name,
+            email: data.email,
+            picture: data.picture,
+            given_name: data.given_name
+        };
+        
+        // Atualizar interface
+        atualizarInterfaceUsuario();
+        
+        // Preencher formulário automaticamente
+        document.getElementById('nomeCliente').value = data.name || '';
+        document.getElementById('emailCliente').value = data.email || '';
+        
+        // Mensagem de boas-vindas personalizada
+        alert(`✅ Bem-vindo(a) ${data.given_name || data.name || 'Usuário'}!\n\nSeus dados foram carregados automaticamente.`);
+        
+        // Esconder botão do Google
+        document.getElementById('googleLoginSection').style.display = 'none';
+    }
+
+    // Função auxiliar para decodificar JWT
+    function parseJwt(token) {
+        try {
+            const base64Url = token.split('.')[1];
+            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+            const jsonPayload = decodeURIComponent(atob(base64).split('').map(function(c) {
+                return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+            }).join(''));
+            return JSON.parse(jsonPayload);
+        } catch (e) {
+            return { name: 'Usuário Google', email: 'usuario@gmail.com', given_name: 'Usuário' };
+        }
+    }
+
+    // Atualizar interface com dados do usuário
+    function atualizarInterfaceUsuario() {
+        if (usuarioLogado) {
+            // Mostrar área do usuário
+            document.getElementById('userInfoArea').style.display = 'block';
+            document.getElementById('userName').textContent = usuarioLogado.name || 'Usuário';
+            document.getElementById('userEmail').textContent = usuarioLogado.email || '';
+            
+            // Se tiver foto, mostrar
+            if (usuarioLogado.picture) {
+                document.getElementById('userAvatar').innerHTML = `<img src="${usuarioLogado.picture}" alt="Avatar">`;
+            }
+        }
+    }
+
+    // Logout
+    function logout() {
+        usuarioLogado = null;
+        document.getElementById('userInfoArea').style.display = 'none';
+        document.getElementById('googleLoginSection').style.display = 'block';
+        
+        // Limpar campos
+        document.getElementById('nomeCliente').value = '';
+        document.getElementById('emailCliente').value = '';
+        
+        alert('👋 Logout realizado com sucesso!');
+    }
+
+    // Calcular orçamento
+    function calcularOrcamento() {
+        // Obter quantidades
+        const qtdCentral = parseInt(document.getElementById('qtdCentral').value) || 0;
+        const qtdSensor = parseInt(document.getElementById('qtdSensor').value) || 0;
+        const qtdAbertura = parseInt(document.getElementById('qtdAbertura').value) || 0;
+        const qtdSirene = parseInt(document.getElementById('qtdSirene').value) || 0;
+        const qtdControle = parseInt(document.getElementById('qtdControle').value) || 0;
+        const qtdBateria = parseInt(document.getElementById('qtdBateria').value) || 0;
+
+        // Calcular subtotal
+        const subtotal = (qtdCentral * precos.central) +
+                         (qtdSensor * precos.sensor) +
+                         (qtdAbertura * precos.abertura) +
+                         (qtdSirene * precos.sirene) +
+                         (qtdControle * precos.controle) +
+                         (qtdBateria * precos.bateria);
+
+        // Tipo de imóvel
+        const tipoImovel = document.getElementById('tipoImovel').value;
+        const instalacao = instalacaoPreco[tipoImovel];
+
+        // Calcular desconto
+        let desconto = 0;
+        let descontoPercentual = 0;
+        
+        if (subtotal > 1500000) {
+            descontoPercentual = 15;
+        } else if (subtotal > 1000000) {
+            descontoPercentual = 10;
+        }
+        
+        // Desconto adicional para usuário logado
+        if (usuarioLogado) {
+            descontoPercentual += 5;
+        }
+        
+        desconto = subtotal * (descontoPercentual / 100);
+
+        // Total
+        const total = subtotal + instalacao - desconto;
+
+        // Atualizar display
+        document.getElementById('subtotal').textContent = formatarMoeda(subtotal);
+        document.getElementById('instalacao').textContent = formatarMoeda(instalacao);
+        document.getElementById('desconto').textContent = `-${formatarMoeda(desconto)} (${descontoPercentual}%)`;
+        document.getElementById('total').textContent = formatarMoeda(total);
+
+        // Atualizar info de desconto
+        const discountInfo = document.getElementById('discountInfo');
+        if (descontoPercentual > 0) {
+            discountInfo.innerHTML = `<i class="fas fa-gift"></i> <span>🎉 Parabéns! Você ganhou ${descontoPercentual}% de desconto!</span>`;
+            discountInfo.style.background = '#dcfce7';
+        } else {
+            discountInfo.innerHTML = `<i class="fas fa-gift"></i> <span>Adicione mais itens para ganhar descontos!</span>`;
+            discountInfo.style.background = '#dcfce7';
+        }
+
+        // Adicionar ao histórico
+        adicionarHistorico(total, descontoPercentual);
+
+        return {
+            subtotal,
+            instalacao,
+            desconto,
+            descontoPercentual,
+            total,
+            itens: {
+                central: qtdCentral,
+                sensor: qtdSensor,
+                abertura: qtdAbertura,
+                sirene: qtdSirene,
+                controle: qtdControle,
+                bateria: qtdBateria
+            }
+        };
+    }
+
+    // Formatar moeda
+    function formatarMoeda(valor) {
+        return valor.toLocaleString('pt-AO', { minimumFractionDigits: 0, maximumFractionDigits: 0 }) + ' Kz';
+    }
+
+    // Adicionar ao histórico
+    function adicionarHistorico(total, desconto) {
+        const historico = document.getElementById('historicoCalculos');
+        const item = document.createElement('div');
+        item.style.padding = '0.5rem';
+        item.style.borderBottom = '1px dashed #e2e8f0';
+        item.style.fontSize = '0.9rem';
+        item.innerHTML = `
+            <div style="display: flex; justify-content: space-between;">
+                <span>${new Date().toLocaleTimeString()}</span>
+                <span style="font-weight: 600; color: #2563eb;">${formatarMoeda(total)}</span>
+            </div>
+            <div style="font-size: 0.8rem; color: ${desconto > 0 ? '#22c55e' : '#64748b'};">
+                Desconto: ${desconto}%
+            </div>
+        `;
+        historico.prepend(item);
+        
+        // Manter apenas 5 itens
+        while (historico.children.length > 5) {
+            historico.removeChild(historico.lastChild);
+        }
+    }
+
+    // Gerar mensagem para WhatsApp
+    function gerarMensagem() {
+        const nome = document.getElementById('nomeCliente').value;
+        const telefone = document.getElementById('telefoneCliente').value;
+        const email = document.getElementById('emailCliente').value;
+        const tipoImovel = document.getElementById('tipoImovel').value;
+        
+        const valores = calcularOrcamento();
+        
+        let mensagem = `*ORÇAMENTO DE ALARME - D.PEDRO SOLUÇÕES*\n\n`;
+        mensagem += `*Cliente:* ${nome || 'Não informado'}\n`;
+        mensagem += `*Telefone:* ${telefone || 'Não informado'}\n`;
+        if (email) mensagem += `*Email:* ${email}\n`;
+        mensagem += `*Tipo de Imóvel:* ${tipoImovel}\n\n`;
+        
+        mensagem += `*ITENS SOLICITADOS:*\n`;
+        if (valores.itens.central > 0) mensagem += `- Central: ${valores.itens.central}x\n`;
+        if (valores.itens.sensor > 0) mensagem += `- Sensor Movimento: ${valores.itens.sensor}x\n`;
+        if (valores.itens.abertura > 0) mensagem += `- Sensor Abertura: ${valores.itens.abertura}x\n`;
+        if (valores.itens.sirene > 0) mensagem += `- Sirene: ${valores.itens.sirene}x\n`;
+        if (valores.itens.controle > 0) mensagem += `- Controle: ${valores.itens.controle}x\n`;
+        if (valores.itens.bateria > 0) mensagem += `- Bateria: ${valores.itens.bateria}x\n\n`;
+        
+        mensagem += `*VALORES:*\n`;
+        mensagem += `Subtotal: ${formatarMoeda(valores.subtotal)}\n`;
+        mensagem += `Instalação: ${formatarMoeda(valores.instalacao)}\n`;
+        mensagem += `Desconto: -${formatarMoeda(valores.desconto)} (${valores.descontoPercentual}%)\n`;
+        mensagem += `*TOTAL: ${formatarMoeda(valores.total)}*\n\n`;
+        
+        mensagem += `*D.PEDRO SOLUÇÕES*\n`;
+        mensagem += `📍 Viana, Vila Flor, Luanda\n`;
+        mensagem += `📞 946 299 834 / 959 777 301\n`;
+        
+        return mensagem;
+    }
+
+    // Enviar WhatsApp
+    function enviarWhatsApp() {
+        const telefone = document.getElementById('telefoneCliente').value;
+        if (!telefone) {
+            alert('Por favor, informe seu telefone!');
+            return;
+        }
+        
+        const mensagem = gerarMensagem();
+        const telefoneCodificado = telefone.replace(/\D/g, '');
+        const url = `https://wa.me/${telefoneCodificado}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, '_blank');
+    }
+
+    // Enviar Email
+    function enviarEmail() {
+        const email = document.getElementById('emailCliente').value;
+        if (!email) {
+            alert('Por favor, informe seu email!');
+            return;
+        }
+        
+        const mensagem = gerarMensagem();
+        const assunto = 'Orçamento de Alarme - D.PEDRO SOLUÇÕES';
+        const url = `mailto:${email}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
+        window.location.href = url;
+    }
+
+    // Inicializar cálculo
+    calcularOrcamento();
+</script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿RELATÓRIO DE IMAGENS - PARCEIROS E APLICAÇÕES
+==============================================
+Data: 19/03/2026 15:42:25
+Pasta base: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital
+
+PARCEIROS (10):
+------------------------
+ Sony - sony.png
+ Panasonic - panasonic.png
+ Vivotek - vivotek.png
+ Mobotix - mobotix.png
+ Intelbras - intelbras.png
+ Dahua - dahua.png
+ HIKVISION - hikvision.png
+ Axis - axis.png
+ JVC - jvc.png
+ Bosch - bosch.png
+
+APLICAÇÕES (7):
+------------------------
+ Comércio - comercio.jpg
+   Tags: Anti-furto, PDV, CFTV
+ Energia Off Grid - offgrid.jpg
+   Tags: Solar, Eólico, Baterias
+ Gráfica - grafica.jpg
+   Tags: Offset, Digital, Design
+ Saúde - saude.jpg
+   Tags: Biossegurança, Acesso, Gases
+ Infraestruturas Críticas - infraestruturas.jpg
+   Tags: CFTV, Perimetral, Biometria
+ Condomínios - condominios.jpg
+   Tags: Portaria, Acesso, CFTV
+ Indústria - industria.jpg
+   Tags: Produção, Acesso, PTZ

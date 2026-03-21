@@ -1,0 +1,59 @@
+﻿RELATÓRIO DE VERIFICAÇÃO DE IMAGENS
+====================================
+Data: 19/03/2026 15:15:17
+Pasta base: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital
+
+ESTATÍSTICAS GERAIS:
+-------------------
+Total de imagens esperadas: 20
+Imagens encontradas: 0
+Imagens faltando: 20
+
+IMAGENS ENCONTRADAS (0):
+-------------------
+
+IMAGENS FALTANDO (20):
+-------------------
+ alarmes.jpg
+ antena.jpg
+ biosseguranca.jpg
+ cerca-eletrica.jpg
+ cftv.jpg
+ cofres.jpg
+ controlo-acesso.jpg
+ design.jpg
+ gases.jpg
+ gps.jpg
+ grafica.jpg
+ gravadores.jpg
+ hardware.jpg
+ incendio.jpg
+ monitoramento.jpg
+ off-grid.jpg
+ protecao-perimetral.jpg
+ sensores.jpg
+ video-porteiro.jpg
+ vms.jpg
+
+LISTA COMPLETA PARA USAR NO HTML:
+=================================
+'images/servicos/alarmes.jpg',
+'images/servicos/antena.jpg',
+'images/servicos/biosseguranca.jpg',
+'images/servicos/cerca-eletrica.jpg',
+'images/servicos/cftv.jpg',
+'images/servicos/cofres.jpg',
+'images/servicos/controlo-acesso.jpg',
+'images/servicos/design.jpg',
+'images/servicos/gases.jpg',
+'images/servicos/gps.jpg',
+'images/servicos/grafica.jpg',
+'images/servicos/gravadores.jpg',
+'images/servicos/hardware.jpg',
+'images/servicos/incendio.jpg',
+'images/servicos/monitoramento.jpg',
+'images/servicos/off-grid.jpg',
+'images/servicos/protecao-perimetral.jpg',
+'images/servicos/sensores.jpg',
+'images/servicos/video-porteiro.jpg',
+'images/servicos/vms.jpg',

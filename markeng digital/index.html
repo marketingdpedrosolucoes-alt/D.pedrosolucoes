@@ -1,0 +1,1807 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.PEDRO SOLUÇÕES – Tecnologia, Segurança & Energia</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafd;
+            color: #1e293b;
+            line-height: 1.5;
+        }
+
+        /* Top bar compacto */
+        .top-bar {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .top-bar .contact-info span {
+            margin-right: 1.8rem;
+        }
+        .top-bar .contact-info i {
+            color: #60a5fa;
+            width: 1.2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Navegação */
+        nav {
+            background: white;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-mark {
+            background: #1e3a8a;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a, .nav-links button {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 0.95rem;
+        }
+        .nav-links a:hover,
+        .nav-links button:hover,
+        .nav-links a.active {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+        .btn-app {
+            background: #22c55e !important;
+            color: white !important;
+        }
+        .btn-app:hover {
+            background: #16a34a !important;
+            color: white !important;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 5%;
+        }
+
+        /* Hero */
+        .hero {
+            background: linear-gradient(145deg, #ffffff, #f1f5f9);
+            border-radius: 2.5rem;
+            padding: 2rem 2.5rem;
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 25px -5px rgba(0,0,0,0.05);
+        }
+        .hero-content {
+            flex: 1 1 300px;
+        }
+        .hero-badge {
+            background: #1e3a8a;
+            color: white;
+            padding: 0.25rem 1.2rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .hero h1 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            line-height: 1.2;
+            margin-bottom: 0.75rem;
+        }
+        .hero p {
+            color: #475569;
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            box-shadow: 0 4px 6px -2px #2563eb50;
+        }
+        .btn-primary:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+        .hero-visual {
+            flex: 0 0 280px;
+            height: 200px;
+            border-radius: 2rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .hero-slider {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .hero-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+        }
+        .hero-slide.active {
+            opacity: 1;
+        }
+        .hero-slide i {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;
+            font-size: 4rem;
+            color: white;
+            background: rgba(37, 99, 235, 0.3);
+            backdrop-filter: blur(2px);
+        }
+
+        /* Títulos */
+        .section-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin: 2.5rem 0 1.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .section-title i {
+            color: #2563eb;
+            background: #e0e7ff;
+            padding: 0.5rem;
+            border-radius: 50%;
+        }
+
+        /* Grade de serviços com imagens */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+        .service-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+        }
+        .service-card:hover {
+            border-color: #2563eb;
+            box-shadow: 0 10px 20px -10px #2563eb30;
+            transform: translateY(-4px);
+        }
+
+        .service-image {
+            height: 180px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            background-color: #f1f5f9;
+        }
+        .service-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.5));
+        }
+        .service-image i {
+            position: absolute;
+            bottom: 1rem;
+            right: 1rem;
+            color: white;
+            font-size: 2rem;
+            z-index: 2;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        }
+
+        .service-content {
+            padding: 1.2rem;
+            display: flex;
+            flex-direction: column;
+            flex: 1;
+        }
+        .service-content h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+            color: #0f172a;
+        }
+        .service-desc {
+            font-size: 0.85rem;
+            color: #475569;
+            margin-bottom: 1rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+        .service-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        .service-feature {
+            background: #e0e7ff;
+            color: #2563eb;
+            padding: 0.2rem 0.8rem;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+        .btn-budget {
+            background: #22c55e;
+            color: white;
+            border: none;
+            padding: 0.7rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.3rem;
+            transition: 0.2s;
+            margin-top: auto;
+        }
+        .btn-budget:hover {
+            background: #16a34a;
+        }
+
+        /* Player de vídeo YouTube - com autoplay e loop */
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 1rem;
+            margin: 1rem 0;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        .video-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 1rem;
+        }
+
+        /* Parceiros com carrossel */
+        .partners-carousel {
+            position: relative;
+            width: 100%;
+            height: 120px;
+            margin: 2rem 0 2.5rem;
+            overflow: hidden;
+            border-radius: 2rem;
+            background: transparent;
+        }
+        .partners-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .partners-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            pointer-events: none;
+        }
+        .partners-slide.active {
+            opacity: 1;
+            pointer-events: auto;
+        }
+        .partner-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            width: 100px;
+        }
+        .partner-logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+            margin-bottom: 0.3rem;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+            transition: transform 0.3s;
+        }
+        .partner-logo-img:hover {
+            transform: scale(1.1);
+        }
+        .partner-name {
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #334155;
+        }
+        .partner-logo-dp {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: transparent;
+        }
+        .dp-logo-img {
+            width: 60px;
+            height: 60px;
+            background: #0f172a;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+            margin-bottom: 0.3rem;
+            transition: transform 0.3s;
+        }
+        .dp-logo-img:hover {
+            transform: scale(1.1);
+            background: #2563eb;
+        }
+
+        /* Vantagens integradas com informações expandidas */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+        .benefit-item {
+            background: white;
+            padding: 1.8rem 1.5rem;
+            border-radius: 1.8rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+        }
+        .benefit-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(37, 99, 235, 0.05), transparent);
+            transition: left 0.5s;
+        }
+        .benefit-item:hover {
+            border-color: #2563eb;
+            background: #f8fafc;
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(37, 99, 235, 0.1);
+        }
+        .benefit-item:hover::before {
+            left: 100%;
+        }
+
+        .benefit-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .benefit-icon {
+            width: 60px;
+            height: 60px;
+            background: #e0e7ff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            color: #2563eb;
+            transition: all 0.3s;
+        }
+        .benefit-item:hover .benefit-icon {
+            background: #2563eb;
+            color: white;
+            transform: rotate(360deg);
+        }
+        .benefit-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0f172a;
+        }
+
+        .benefit-description {
+            color: #475569;
+            margin-bottom: 1.2rem;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        .benefit-stats {
+            display: flex;
+            gap: 1rem;
+            margin: 1.2rem 0;
+            padding: 1rem 0;
+            border-top: 1px solid #e2e8f0;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .stat {
+            flex: 1;
+            text-align: center;
+        }
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #2563eb;
+        }
+        .stat-label {
+            font-size: 0.8rem;
+            color: #64748b;
+        }
+
+        .benefit-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+        .benefit-feature {
+            background: #f1f5f9;
+            color: #334155;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Aplicações práticas com carrossel */
+        .applications-carousel {
+            position: relative;
+            width: 100%;
+            height: 320px;
+            margin: 2rem 0;
+            overflow: hidden;
+            border-radius: 2rem;
+        }
+        .applications-slider {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .application-slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            opacity: 0;
+            transition: opacity 1s ease-in-out;
+            display: flex;
+            align-items: flex-end;
+            padding: 2.5rem;
+        }
+        .application-slide.active {
+            opacity: 1;
+        }
+        .application-slide::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+        }
+        .application-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            max-width: 700px;
+        }
+        .application-content h3 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .application-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.2rem;
+            opacity: 0.95;
+            line-height: 1.5;
+        }
+        .application-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+        .application-tag {
+            background: rgba(37, 99, 235, 0.9);
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            backdrop-filter: blur(5px);
+        }
+
+        .carousel-indicators {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 2.5rem;
+            display: flex;
+            gap: 0.5rem;
+            z-index: 3;
+        }
+        .indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .indicator.active {
+            background: #2563eb;
+            transform: scale(1.3);
+        }
+
+        /* Bloco de contacto */
+        .contact-block {
+            background: #dbeafe;
+            border-radius: 2.5rem;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .contact-highlight {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* Modal de orçamento */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+            backdrop-filter: blur(5px);
+        }
+        .modal.active {
+            display: flex;
+        }
+        .modal-content {
+            background: white;
+            width: 90%;
+            max-width: 500px;
+            border-radius: 2rem;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            max-height: 90vh;
+            overflow-y: auto;
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: #0f172a;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .modal-header h2 i {
+            color: #2563eb;
+        }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #64748b;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .modal-close:hover {
+            background: #f1f5f9;
+            color: #ef4444;
+        }
+
+        .service-info {
+            background: #e0e7ff;
+            padding: 1rem;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border: 1px solid #2563eb;
+        }
+        .service-info i {
+            font-size: 2rem;
+            color: #2563eb;
+        }
+        .service-info h3 {
+            color: #0f172a;
+            margin-bottom: 0.2rem;
+        }
+        .service-info p {
+            color: #475569;
+            font-size: 0.85rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.9rem;
+        }
+        .form-group label i {
+            color: #2563eb;
+            width: 1.2rem;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            color: #64748b;
+        }
+        .input-group input,
+        .input-group select,
+        .input-group textarea {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+        .input-group input:focus,
+        .input-group select:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px #2563eb20;
+        }
+
+        .send-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        .btn-send {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+        }
+        .btn-send.whatsapp {
+            background: #25D366;
+            color: white;
+        }
+        .btn-send.whatsapp:hover {
+            background: #20b859;
+            transform: translateY(-2px);
+        }
+        .btn-send.email {
+            background: #2563eb;
+            color: white;
+        }
+        .btn-send.email:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 3rem;
+            border-radius: 3rem 3rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-bottom span {
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+        .footer-bottom span:hover {
+            color: #2563eb;
+        }
+
+        /* Botões flutuantes */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            text-decoration: none;
+            transition: transform 0.3s;
+        }
+        .whatsapp-float:hover {
+            transform: scale(1.1) rotate(10deg);
+        }
+        .top-arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #2563eb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .top-arrow:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero-visual {
+                flex: 0 0 100%;
+                height: 200px;
+            }
+            .partners-slide {
+                gap: 1rem;
+            }
+            .partner-item {
+                width: 70px;
+            }
+            .services-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+            .applications-carousel {
+                height: 400px;
+            }
+            .application-content h3 {
+                font-size: 1.8rem;
+            }
+            .application-content p {
+                font-size: 1rem;
+            }
+            .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+            .benefit-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 946 299 834 | 959 777 301</span>
+        <span><i class="fas fa-map-marker-alt"></i> Luanda, Viana, Vila Flor</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+    </div>
+    <div class="social-links">
+        <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="https://www.linkedin.com/in/daniel-pedro-bb03872b5/"><i class="fab fa-linkedin"></i></a>
+        <a href="https://www.instagram.com/dpedro_solucoes/"><i class="fab fa-instagram"></i></a>
+    </div>
+</div>
+
+<!-- Navegação -->
+<nav>
+    <div class="logo">
+        <a href="index.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+            <div class="logo-mark">DP</div>
+            <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html" class="active">Início</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="mercados-verticais.html">Mercados Verticais</a>
+        <a href="solucoes.html">Soluções</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="recrutamento.html">Recrutamento</a>
+        <a href="contactos.html">Contactos</a>
+        <a href="login.html" class="btn-app"><i class="fas fa-user"></i> Login</a>
+    </div>
+</nav>
+
+<main class="container">
+    <!-- Hero com carrossel de imagens -->
+    <div class="hero">
+        <div class="hero-content">
+            <div class="hero-badge"><i class="fas fa-certificate"></i> Especialistas em soluções integradas</div>
+            <h1>D.PEDRO SOLUÇÕES</h1>
+            <p>Comércio e prestação de serviços em segurança eletrónica, CFTV, controlo de acessos, deteção de incêndio, energia off grid, gráfica e muito mais.</p>
+            <p><strong>Sede:</strong> Viana, Vila Flor, Luanda</p>
+            <button class="btn-primary" id="btnOrcamento"><i class="fas fa-calculator"></i> Pedir orçamento</button>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-slider" id="heroSlider">
+                <!-- Slides serão adicionados via JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Câmaras IP com vídeo do YouTube em loop e autoplay -->
+    <h2 class="section-title"><i class="fas fa-video"></i> Câmaras IP</h2>
+    <div class="video-container">
+        <iframe 
+            width="560" 
+            height="315" 
+            src="https://www.youtube-nocookie.com/embed/YaVfnptcz9c?si=Lg3koBLfYcrPkrcz&amp;start=83&autoplay=1&mute=1&loop=1&playlist=YaVfnptcz9c&controls=1&modestbranding=1&rel=0" 
+            title="Demonstração de Câmaras IP - D.PEDRO SOLUÇÕES" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen>
+        </iframe>
+    </div>
+    <p style="text-align: center; margin-bottom: 2rem;">Demonstração de Sistema de Segurança - O vídeo inicia automaticamente e se repete em loop</p>
+
+    <!-- Grade de serviços -->
+    <h2 class="section-title"><i class="fas fa-cube"></i> Soluções disponíveis</h2>
+    <p style="margin-bottom: 0.5rem;">Clique em "Peça orçamento" para solicitar um orçamento personalizado:</p>
+    <div class="services-grid" id="servicesGrid">
+        <!-- Os cards serão populados via JavaScript -->
+    </div>
+
+    <!-- Parceiros com carrossel -->
+    <h2 class="section-title"><i class="fas fa-handshake"></i> Principais Parceiros</h2>
+    <div class="partners-carousel">
+        <div class="partners-slider" id="partnersSlider">
+            <!-- Slides serão adicionados via JavaScript -->
+        </div>
+    </div>
+
+    <!-- Vantagens integradas com informações expandidas -->
+    <h2 class="section-title"><i class="fas fa-chart-line"></i> Vantagens integradas</h2>
+    <div class="benefits-grid" id="benefitsGrid">
+        <!-- Benefícios serão populados via JavaScript -->
+    </div>
+
+    <!-- Aplicações práticas com carrossel -->
+    <h2 class="section-title"><i class="fas fa-building"></i> Aplicações práticas</h2>
+    <div class="applications-carousel" id="applicationsCarousel">
+        <div class="applications-slider" id="applicationsSlider">
+            <!-- Slides serão adicionados via JavaScript -->
+        </div>
+        <div class="carousel-indicators" id="carouselIndicators"></div>
+    </div>
+
+    <!-- Contacto direto -->
+    <div class="contact-block">
+        <span class="contact-highlight"><i class="fas fa-phone-alt"></i> 946 299 834 / 959 777 301</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+        <span><i class="fas fa-globe"></i> www.dpedrosolucoes.shop</span>
+    </div>
+</main>
+
+<!-- Modal de orçamento -->
+<div class="modal" id="budgetModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2><i class="fas fa-calculator"></i> <span id="modalTitle">Pedir Orçamento</span></h2>
+            <button class="modal-close" onclick="fecharModal()"><i class="fas fa-times"></i></button>
+        </div>
+        
+        <div class="service-info" id="serviceInfo">
+            <i class="fas fa-tools" id="serviceIcon"></i>
+            <div>
+                <h3 id="serviceName">Serviço</h3>
+                <p id="serviceDescription">Descrição do serviço</p>
+            </div>
+        </div>
+
+        <form id="budgetForm" onsubmit="event.preventDefault();">
+            <div class="form-group">
+                <label><i class="fas fa-user"></i> Nome completo *</label>
+                <div class="input-group">
+                    <i class="fas fa-user"></i>
+                    <input type="text" id="nomeCliente" placeholder="Seu nome completo" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-phone"></i> Telefone *</label>
+                <div class="input-group">
+                    <i class="fas fa-phone"></i>
+                    <input type="tel" id="telefoneCliente" placeholder="(244) 000-000-000" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-envelope"></i> Email</label>
+                <div class="input-group">
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" id="emailCliente" placeholder="seu@email.com">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label><i class="fas fa-comment"></i> Mensagem / Detalhes adicionais</label>
+                <div class="input-group">
+                    <i class="fas fa-comment"></i>
+                    <textarea id="mensagemCliente" rows="4" placeholder="Descreva suas necessidades específicas..."></textarea>
+                </div>
+            </div>
+
+            <div class="send-buttons">
+                <button type="button" class="btn-send whatsapp" onclick="enviarWhatsApp()">
+                    <i class="fab fa-whatsapp"></i> WhatsApp
+                </button>
+                <button type="button" class="btn-send email" onclick="enviarEmail()">
+                    <i class="fas fa-envelope"></i> Email
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <strong>D.PEDRO SOLUÇÕES</strong>
+            <p>Comércio e Prestação de Serviços, Lda.</p>
+            <p>Luanda, Angola</p>
+        </div>
+        <div class="footer-col">
+            <strong>Sede</strong>
+            <p>Viana, Vila Flor, Luanda</p>
+            <p>Rua Direita da Engevia</p>
+        </div>
+        <div class="footer-col">
+            <strong>Contactos</strong>
+            <p>+244 946 299 834</p>
+            <p>+244 959 777 301</p>
+            <p>dpedroservice@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <strong>Links</strong>
+            <a href="index.html">Início</a>
+            <a href="quem-somos.html">Quem somos</a>
+            <a href="solucoes.html">Soluções</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="contactos.html">Contactos</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
+        <div>
+            <span onclick="mostrarCookies()"><i class="fas fa-cookie-bite"></i> cookies</span> | 
+            <span onclick="mostrarTermos()"><i class="fas fa-file-contract"></i> termos</span>
+        </div>
+    </div>
+</footer>
+
+<!-- Botões flutuantes -->
+<a href="https://wa.me/244946299834" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+    // Lista de serviços com imagens e informações detalhadas
+    // Lista de serviços com imagens da pasta images/servicos/ e links
+const servicos = [
+    { 
+        icone: 'fa-video', 
+        nome: 'Câmaras CFTV', 
+        descricao: 'Sistemas de videovigilância com tecnologia IP e analógica para monitoramento 24/7.',
+        features: ['4K', 'Visão noturna', 'IA', 'PoE'],
+        imagem: 'images/servicos/cftv.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/camaras-cftv'
+    },
+    { 
+        icone: 'fa-bell', 
+        nome: 'Alarmes intrusão', 
+        descricao: 'Sistemas de alarme com deteção perimetral, sensores de abertura e movimento.',
+        features: ['Wireless', 'APP', 'GSM'],
+        imagem: 'images/servicos/alarmes.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/alarmes'
+    },
+    { 
+        icone: 'fa-walking', 
+        nome: 'Sensores presença', 
+        descricao: 'Sensores de movimento com tecnologia PIR e micro-ondas para ambientes internos e externos.',
+        features: ['12m', 'Anti-mascara', 'Pet friendly'],
+        imagem: 'images/servicos/sensores.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/sensores'
+    },
+    { 
+        icone: 'fa-fingerprint', 
+        nome: 'Controlo acesso', 
+        descricao: 'Soluções biométricas, RFID e cartão de proximidade para gestão de entradas.',
+        features: ['Biometria', 'RFID', 'Facial'],
+        imagem: 'images/servicos/controlo-acesso.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/controlo-acesso'
+    },
+    { 
+        icone: 'fa-phone-alt', 
+        nome: 'Vídeo-porteiros', 
+        descricao: 'Sistemas de comunicação com vídeo e abertura remota para condomínios.',
+        features: ['7"', 'APP', 'IP67'],
+        imagem: 'images/servicos/video-porteiro.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/video-porteiros'
+    },
+    { 
+        icone: 'fa-fire-extinguisher', 
+        nome: 'Detecção incêndio', 
+        descricao: 'Centrais de incêndio, detetores de fumo, temperatura e CO.',
+        features: ['Fumo', 'Calor', 'CO'],
+        imagem: 'images/servicos/incendio.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/deteccao-incendio'
+    },
+    { 
+        icone: 'fa-bolt', 
+        nome: 'Cerca elétrica', 
+        descricao: 'Cercas elétricas de alta tensão com sensores de corte e alarme.',
+        features: ['10kV', 'Sensor', 'Perimetral'],
+        imagem: 'images/servicos/cerca-eletrica.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/cerca-eletrica'
+    },
+    { 
+        icone: 'fa-shield-alt', 
+        nome: 'Proteção perimetral', 
+        descricao: 'Barreiras de infravermelhos, sensores de vibração e concertina.',
+        features: ['IV', 'Vibração', 'Concertina'],
+        imagem: 'images/servicos/protecao-perimetral.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/protecao-perimetral'
+    },
+    { 
+        icone: 'fa-wind', 
+        nome: 'Detecção gases', 
+        descricao: 'Sensores para deteção de GLP, GN, CO e outros gases tóxicos.',
+        features: ['GLP', 'GN', 'CO'],
+        imagem: 'images/servicos/gases.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/deteccao-gases'
+    },
+    { 
+        icone: 'fa-hdd', 
+        nome: 'Gravadores digitais', 
+        descricao: 'DVR e NVR com suporte para múltiplas câmaras e análise inteligente.',
+        features: ['16 canais', '4K', 'H.265'],
+        imagem: 'images/servicos/gravadores.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/gravadores'
+    },
+    { 
+        icone: 'fa-satellite-dish', 
+        nome: 'Monitoramento remoto', 
+        descricao: 'Acesso remoto via aplicativo para visualização de câmaras e receção de alertas.',
+        features: ['APP', 'Alertas', 'Cloud'],
+        imagem: 'images/servicos/monitoramento.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/monitoramento'
+    },
+    { 
+        icone: 'fa-image', 
+        nome: 'Gestão imagens VMS', 
+        descricao: 'Software de gestão de vídeo com análise inteligente e integração.',
+        features: ['VMS', 'IA', 'Relatórios'],
+        imagem: 'images/servicos/vms.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/vms'
+    },
+    { 
+        icone: 'fa-satellite', 
+        nome: 'Antena parabólica', 
+        descricao: 'Instalação e alinhamento de antenas para TV e internet rural.',
+        features: ['TV', 'Internet', 'Alinhamento'],
+        imagem: 'images/servicos/antena.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/antena'
+    },
+    { 
+        icone: 'fa-solar-panel', 
+        nome: 'Sistema Off Grid', 
+        descricao: 'Painéis solares, inversores e baterias para independência energética.',
+        features: ['Solar', 'Inversor', 'Bateria'],
+        imagem: 'images/servicos/off-grid.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/off-grid'
+    },
+    { 
+        icone: 'fa-print', 
+        nome: 'Gráfica & Brindes', 
+        descricao: 'Impressão offset/digital, cartões, flyers, faixas e brindes personalizados.',
+        features: ['Offset', 'Digital', 'Brindes'],
+        imagem: 'images/servicos/grafica.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/grafica'
+    },
+    { 
+        icone: 'fa-map-pin', 
+        nome: 'GPS Moto/Carro', 
+        descricao: 'Rastreadores veiculares com corte de motor e cerca eletrónica.',
+        features: ['Corte', 'Cerca', 'APP'],
+        imagem: 'images/servicos/gps.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/gps'
+    },
+    { 
+        icone: 'fa-microchip', 
+        nome: 'Hardware/Software', 
+        descricao: 'Venda de equipamentos e desenvolvimento de software personalizado.',
+        features: ['Hardware', 'Software', 'Sistemas'],
+        imagem: 'images/servicos/hardware.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/hardware-software'
+    },
+    { 
+        icone: 'fa-shield-virus', 
+        nome: 'Biossegurança', 
+        descricao: 'Equipamentos de proteção e controlo de acesso sanitário.',
+        features: ['EPI', 'Controlo', 'Higiene'],
+        imagem: 'images/servicos/biosseguranca.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/biosseguranca'
+    },
+    { 
+        icone: 'fa-lock', 
+        nome: 'Cofres alta segurança', 
+        descricao: 'Cofres à prova de fogo e arrombamento com fechadura biométrica.',
+        features: ['Fogo', 'Biometria', 'Digital'],
+        imagem: 'images/servicos/cofres.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/cofres'
+    },
+    { 
+        icone: 'fa-pen-fancy', 
+        nome: 'Design gráfico', 
+        descricao: 'Criação de logotipos, identidade visual e materiais promocionais.',
+        features: ['Logotipo', 'Branding', 'Editorial'],
+        imagem: 'images/servicos/design.jpg',
+        link: 'https://www.dpedrosolucoes.com/servicos/design'
+    }
+];
+
+    // Lista de vantagens com informações expandidas
+    const vantagens = [
+        {
+            icone: 'fa-users',
+            titulo: 'Contagem de Pessoas',
+            descricao: 'Sistema avançado de contagem e análise de fluxo de pessoas em tempo real, ideal para lojas, shoppings e eventos.',
+            features: ['Precisão 98%', 'Multi-direcional', 'Relatórios'],
+            stats: [
+                { valor: '98%', label: 'Precisão' },
+                { valor: '1k/s', label: 'Capacidade' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-bell',
+            titulo: 'Integração com Alarmes',
+            descricao: 'Integração total com centrais de alarme, permitindo acionamento automático e notificações em tempo real.',
+            features: ['Sem fio', 'APP', '24/7'],
+            stats: [
+                { valor: '0.5s', label: 'Resposta' },
+                { valor: '32', label: 'Zonas' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-robot',
+            titulo: 'Reconhecimento IA',
+            descricao: 'Tecnologia de inteligência artificial para reconhecimento facial, de objetos e comportamentos suspeitos.',
+            features: ['Facial', 'Placas', 'Objetos'],
+            stats: [
+                { valor: '99%', label: 'Precisão' },
+                { valor: '100ms', label: 'Detecção' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-ban',
+            titulo: 'Deteção de Intrusão',
+            descricao: 'Sistema perimetral inteligente que detecta e alerta sobre invasões em áreas restritas.',
+            features: ['Perimetral', 'Zonas', 'Alertas'],
+            stats: [
+                { valor: '100m', label: 'Alcance' },
+                { valor: '24/7', label: 'Monitoramento' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-exclamation-triangle',
+            titulo: 'Alertas Automáticos',
+            descricao: 'Notificações automáticas via SMS, WhatsApp, email e APP para eventos críticos de segurança.',
+            features: ['SMS', 'WhatsApp', 'Email'],
+            stats: [
+                { valor: '3s', label: 'Entrega' },
+                { valor: '99%', label: 'Confiabilidade' }
+            ],
+            cor: '#2563eb'
+        },
+        {
+            icone: 'fa-shield-alt',
+            titulo: 'Segurança 24/7',
+            descricao: 'Monitoramento contínuo com equipamentos redundantes e central de monitoramento operando ininterruptamente.',
+            features: ['Redundância', 'Backup', 'Tempo real'],
+            stats: [
+                { valor: '24h', label: 'Cobertura' },
+                { valor: '365d', label: 'Ano todo' }
+            ],
+            cor: '#2563eb'
+        }
+    ];
+
+    // Lista de parceiros
+    const parceiros = [
+        { nome: 'HIKVISION', logo: 'images/parceiros/hikvision.png', fallback: 'HIK' },
+        { nome: 'Dahua', logo: 'images/parceiros/dahua.png', fallback: 'Dahua' },
+        { nome: 'Axis', logo: 'images/parceiros/axis.png', fallback: 'Axis' },
+        { nome: 'Bosch', logo: 'images/parceiros/bosch.png', fallback: 'Bosch' },
+        { nome: 'JVC', logo: 'images/parceiros/jvc.png', fallback: 'JVC' },
+        { nome: 'Panasonic', logo: 'images/parceiros/panasonic.png', fallback: 'Panasonic' },
+        { nome: 'Sony', logo: 'images/parceiros/sony.png', fallback: 'Sony' },
+        { nome: 'Vivotek', logo: 'images/parceiros/vivotek.png', fallback: 'Vivotek' },
+        { nome: 'Intelbras', logo: 'images/parceiros/intelbras.png', fallback: 'Intelbras' },
+        { nome: 'Mobotix', logo: 'images/parceiros/mobotix.png', fallback: 'Mobotix' }
+    ];
+
+    // Lista de aplicações práticas para o carrossel
+    const aplicacoes = [
+        {
+            titulo: 'Infraestruturas Críticas',
+            descricao: 'Soluções de alta segurança para aeroportos, portos, barragens e centrais elétricas com monitoramento 24/7 e redundância total.',
+            tags: ['CFTV', 'Perimetral', 'Biometria'],
+            imagem: 'images/aplicacoes/infraestruturas.jpg'
+        },
+        {
+            titulo: 'Condomínios',
+            descricao: 'Segurança residencial completa com controle de acesso, câmaras, porteiros eletrónicos e automação.',
+            tags: ['Portaria', 'Acesso', 'CFTV'],
+            imagem: 'images/aplicacoes/condominios.jpg'
+        },
+        {
+            titulo: 'Indústria',
+            descricao: 'Monitoramento de produção, controle de acesso de funcionários e segurança patrimonial industrial.',
+            tags: ['Produção', 'Acesso', 'PTZ'],
+            imagem: 'images/aplicacoes/industria.jpg'
+        },
+        {
+            titulo: 'Saúde',
+            descricao: 'Soluções para hospitais e clínicas com biossegurança, controle de acesso e deteção de gases.',
+            tags: ['Biossegurança', 'Acesso', 'Gases'],
+            imagem: 'images/aplicacoes/saude.jpg'
+        },
+        {
+            titulo: 'Comércio',
+            descricao: 'Proteção contra furtos, gestão de clientes, contagem de pessoas e monitoramento de lojas.',
+            tags: ['Anti-furto', 'PDV', 'CFTV'],
+            imagem: 'images/aplicacoes/comercio.jpg'
+        },
+        {
+            titulo: 'Energia Off Grid',
+            descricao: 'Sistemas solares e eólicos para locais remotos sem acesso à rede elétrica, com autonomia total.',
+            tags: ['Solar', 'Eólico', 'Baterias'],
+            imagem: 'images/aplicacoes/offgrid.jpg'
+        },
+        {
+            titulo: 'Gráfica',
+            descricao: 'Impressão de materiais promocionais, livros, revistas e comunicação visual para empresas.',
+            tags: ['Offset', 'Digital', 'Design'],
+            imagem: 'images/aplicacoes/grafica.jpg'
+        }
+    ];
+
+    // Lista de imagens para o carrossel do hero
+    const heroImages = [
+        'url("images/hero/seguranca.jpg")',
+        'url("images/hero/energia.jpg")',
+        'url("images/hero/automacao.jpg")',
+        'url("images/hero/grafica.jpg")',
+        'url("images/hero/cftv.jpg")'
+    ];
+
+    let servicoSelecionado = null;
+
+    // Popular grade de serviços com imagens e informações
+    function popularServicos() {
+        const grid = document.getElementById('servicesGrid');
+        grid.innerHTML = '';
+        
+        servicos.forEach(servico => {
+            const card = document.createElement('div');
+            card.className = 'service-card';
+            
+            // Imagem com fallback
+            const imagemHtml = servico.imagem ? 
+                `style="background-image: url('${servico.imagem}');"` : 
+                `style="background: linear-gradient(135deg, #1e3a8a, #2563eb);"`;
+            
+            const iconHtml = servico.imagem ? 
+                `<i class="fas ${servico.icone}"></i>` : 
+                `<i class="fas ${servico.icone}" style="font-size: 3rem; color: white;"></i>`;
+            
+            // Features
+            const featuresHtml = servico.features.map(f => 
+                `<span class="service-feature">${f}</span>`
+            ).join('');
+            
+            card.innerHTML = `
+                <div class="service-image" ${imagemHtml}>
+                    ${iconHtml}
+                </div>
+                <div class="service-content">
+                    <h3>${servico.nome}</h3>
+                    <div class="service-desc">${servico.descricao}</div>
+                    <div class="service-features">
+                        ${featuresHtml}
+                    </div>
+                    <button class="btn-budget" onclick="abrirModalOrcamento('${servico.icone}', '${servico.nome}', '${servico.descricao}')">
+                        <i class="fas fa-calculator"></i> Peça orçamento
+                    </button>
+                </div>
+            `;
+            grid.appendChild(card);
+        });
+    }
+
+    // Popular grid de vantagens
+    function popularVantagens() {
+        const grid = document.getElementById('benefitsGrid');
+        grid.innerHTML = '';
+        
+        vantagens.forEach(vantagem => {
+            const item = document.createElement('div');
+            item.className = 'benefit-item';
+            item.onclick = () => mostrarDetalheVantagem(vantagem.titulo, vantagem.descricao);
+            
+            const statsHtml = vantagem.stats.map(stat => 
+                `<div class="stat">
+                    <div class="stat-value">${stat.valor}</div>
+                    <div class="stat-label">${stat.label}</div>
+                </div>`
+            ).join('');
+            
+            const featuresHtml = vantagem.features.map(f => 
+                `<span class="benefit-feature">${f}</span>`
+            ).join('');
+            
+            item.innerHTML = `
+                <div class="benefit-header">
+                    <div class="benefit-icon">
+                        <i class="fas ${vantagem.icone}"></i>
+                    </div>
+                    <h3 class="benefit-title">${vantagem.titulo}</h3>
+                </div>
+                <p class="benefit-description">${vantagem.descricao}</p>
+                <div class="benefit-stats">
+                    ${statsHtml}
+                </div>
+                <div class="benefit-features">
+                    ${featuresHtml}
+                </div>
+            `;
+            grid.appendChild(item);
+        });
+    }
+
+    // Mostrar detalhe da vantagem
+    function mostrarDetalheVantagem(titulo, descricao) {
+        alert(`📊 ${titulo}\n\n${descricao}\n\nEntre em contacto para saber mais!`);
+    }
+
+    // Popular carrossel de aplicações práticas
+    function popularAplicacoesCarrossel() {
+        const slider = document.getElementById('applicationsSlider');
+        const indicators = document.getElementById('carouselIndicators');
+        slider.innerHTML = '';
+        indicators.innerHTML = '';
+        
+        aplicacoes.forEach((app, index) => {
+            // Slide
+            const slide = document.createElement('div');
+            slide.className = `application-slide${index === 0 ? ' active' : ''}`;
+            
+            // Imagem com fallback
+            const imagem = app.imagem || `url("https://images.unsplash.com/photo-1557597774-9d273d0c0c0c?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80")`;
+            slide.style.backgroundImage = imagem;
+            
+            // Tags
+            const tagsHtml = app.tags.map(t => 
+                `<span class="application-tag">${t}</span>`
+            ).join('');
+            
+            slide.innerHTML = `
+                <div class="application-content">
+                    <h3>${app.titulo}</h3>
+                    <p>${app.descricao}</p>
+                    <div class="application-tags">
+                        ${tagsHtml}
+                    </div>
+                </div>
+            `;
+            slider.appendChild(slide);
+            
+            // Indicador
+            const indicator = document.createElement('span');
+            indicator.className = `indicator${index === 0 ? ' active' : ''}`;
+            indicator.onclick = () => irParaSlide(index);
+            indicators.appendChild(indicator);
+        });
+
+        // Iniciar carrossel de aplicações (2 segundos)
+        let currentAppIndex = 0;
+        setInterval(() => {
+            const slides = document.querySelectorAll('.application-slide');
+            const inds = document.querySelectorAll('.indicator');
+            
+            slides[currentAppIndex].classList.remove('active');
+            inds[currentAppIndex].classList.remove('active');
+            
+            currentAppIndex = (currentAppIndex + 1) % slides.length;
+            
+            slides[currentAppIndex].classList.add('active');
+            inds[currentAppIndex].classList.add('active');
+        }, 2000);
+    }
+
+    // Ir para slide específico
+    function irParaSlide(index) {
+        const slides = document.querySelectorAll('.application-slide');
+        const inds = document.querySelectorAll('.indicator');
+        
+        slides.forEach(s => s.classList.remove('active'));
+        inds.forEach(i => i.classList.remove('active'));
+        
+        slides[index].classList.add('active');
+        inds[index].classList.add('active');
+    }
+
+    // Popular carrossel do hero
+    function popularHeroCarrossel() {
+        const slider = document.getElementById('heroSlider');
+        slider.innerHTML = '';
+        
+        heroImages.forEach((img, index) => {
+            const slide = document.createElement('div');
+            slide.className = `hero-slide${index === 0 ? ' active' : ''}`;
+            slide.style.backgroundImage = img;
+            slide.innerHTML = '<i class="fas fa-camera"></i>';
+            slider.appendChild(slide);
+        });
+
+        // Iniciar carrossel
+        let currentHeroIndex = 0;
+        setInterval(() => {
+            const slides = document.querySelectorAll('.hero-slide');
+            slides[currentHeroIndex].classList.remove('active');
+            currentHeroIndex = (currentHeroIndex + 1) % slides.length;
+            slides[currentHeroIndex].classList.add('active');
+        }, 3000);
+    }
+
+    // Popular carrossel de parceiros
+    function popularParceirosCarrossel() {
+        const slider = document.getElementById('partnersSlider');
+        slider.innerHTML = '';
+        
+        // Criar 3 slides com diferentes combinações de parceiros
+        for (let i = 0; i < 3; i++) {
+            const slide = document.createElement('div');
+            slide.className = `partners-slide${i === 0 ? ' active' : ''}`;
+            
+            // Distribuir parceiros nos slides
+            const startIndex = i * 4;
+            for (let j = 0; j < 4; j++) {
+                const index = (startIndex + j) % parceiros.length;
+                const parceiro = parceiros[index];
+                
+                const item = document.createElement('div');
+                item.className = 'partner-item';
+                item.innerHTML = `
+                    <img class="partner-logo-img" src="${parceiro.logo}" alt="${parceiro.nome}" 
+                         onerror="this.src='https://placehold.co/60x60/2563eb/white?text=${parceiro.fallback}'">
+                    <span class="partner-name">${parceiro.nome}</span>
+                `;
+                slide.appendChild(item);
+            }
+            
+            // Adicionar D.PEDRO
+            const dpItem = document.createElement('div');
+            dpItem.className = 'partner-item partner-logo-dp';
+            dpItem.innerHTML = `
+                <div class="dp-logo-img">DP</div>
+                <span class="partner-name">D.PEDRO</span>
+            `;
+            slide.appendChild(dpItem);
+            
+            slider.appendChild(slide);
+        }
+
+        // Iniciar carrossel de parceiros
+        let currentPartnerIndex = 0;
+        setInterval(() => {
+            const slides = document.querySelectorAll('.partners-slide');
+            slides[currentPartnerIndex].classList.remove('active');
+            currentPartnerIndex = (currentPartnerIndex + 1) % slides.length;
+            slides[currentPartnerIndex].classList.add('active');
+        }, 3000);
+    }
+
+    // Abrir modal de orçamento
+    function abrirModalOrcamento(icone, nome, descricao) {
+        servicoSelecionado = { icone, nome, descricao };
+        
+        document.getElementById('serviceIcon').className = `fas ${icone}`;
+        document.getElementById('serviceName').textContent = nome;
+        document.getElementById('serviceDescription').textContent = descricao;
+        document.getElementById('modalTitle').textContent = `Orçamento - ${nome}`;
+        
+        document.getElementById('budgetModal').classList.add('active');
+    }
+
+    // Fechar modal
+    function fecharModal() {
+        document.getElementById('budgetModal').classList.remove('active');
+        document.getElementById('budgetForm').reset();
+        servicoSelecionado = null;
+    }
+
+    // Gerar mensagem para WhatsApp/Email
+    function gerarMensagem() {
+        const nome = document.getElementById('nomeCliente').value;
+        const telefone = document.getElementById('telefoneCliente').value;
+        const email = document.getElementById('emailCliente').value;
+        const mensagem = document.getElementById('mensagemCliente').value;
+        
+        if (!nome || !telefone) {
+            alert('Por favor, preencha nome e telefone!');
+            return null;
+        }
+
+        let texto = `*ORÇAMENTO - D.PEDRO SOLUÇÕES*\n\n`;
+        texto += `*Serviço:* ${servicoSelecionado.nome}\n`;
+        texto += `*Descrição:* ${servicoSelecionado.descricao}\n\n`;
+        texto += `*Dados do Cliente:*\n`;
+        texto += `Nome: ${nome}\n`;
+        texto += `Telefone: ${telefone}\n`;
+        if (email) texto += `Email: ${email}\n`;
+        if (mensagem) texto += `\n*Mensagem:*\n${mensagem}\n\n`;
+        texto += `\n*D.PEDRO SOLUÇÕES*\n`;
+        texto += `📍 Viana, Vila Flor, Luanda\n`;
+        texto += `📞 946 299 834 / 959 777 301`;
+
+        return texto;
+    }
+
+    // Enviar WhatsApp
+    function enviarWhatsApp() {
+        const mensagem = gerarMensagem();
+        if (!mensagem) return;
+        
+        const telefone = '244946299834';
+        const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+        window.open(url, '_blank');
+        fecharModal();
+    }
+
+    // Enviar Email
+    function enviarEmail() {
+        const mensagem = gerarMensagem();
+        if (!mensagem) return;
+        
+        const emailEmpresa = 'dpedroservice@gmail.com';
+        const assunto = `Orçamento - ${servicoSelecionado.nome}`;
+        const url = `mailto:${emailEmpresa}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(mensagem)}`;
+        window.location.href = url;
+        fecharModal();
+    }
+
+    // Mostrar cookies
+    function mostrarCookies() {
+        alert('🍪 Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de cookies.');
+    }
+
+    // Mostrar termos
+    function mostrarTermos() {
+        alert('📜 Termos e Condições de Uso:\n\n1. Ao utilizar este site, você concorda com nossos termos.\n2. Todos os direitos reservados.\n3. Proibida reprodução sem autorização.\n\nPara mais informações, contacte-nos.');
+    }
+
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+        popularServicos();
+        popularHeroCarrossel();
+        popularParceirosCarrossel();
+        popularAplicacoesCarrossel();
+        popularVantagens();
+
+        // Modal do botão principal
+        const modal = document.getElementById('budgetModal');
+        const btn = document.getElementById('btnOrcamento');
+        btn.onclick = () => {
+            servicoSelecionado = { icone: 'fa-tools', nome: 'Orçamento Geral', descricao: 'Solicitação de orçamento personalizado' };
+            document.getElementById('serviceIcon').className = 'fas fa-tools';
+            document.getElementById('serviceName').textContent = 'Orçamento Geral';
+            document.getElementById('serviceDescription').textContent = 'Solicitação de orçamento personalizado';
+            document.getElementById('modalTitle').textContent = 'Pedir Orçamento';
+            modal.classList.add('active');
+        };
+
+        // Fechar modal ao clicar fora
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                fecharModal();
+            }
+        });
+    });
+</script>
+
+</body>
+</html>

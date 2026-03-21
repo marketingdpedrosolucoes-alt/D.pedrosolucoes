@@ -1,0 +1,165 @@
+﻿LISTA COMPLETA DE CAMINHOS E LINKS
+===================================
+Gerado em: 19/03/2026 14:47:46
+Pasta base: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital
+
+SERVIÇO: Câmaras CFTV
+
+ Pasta: cftv
+ Imagem: cftv.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\cftv\cftv.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/camaras-cftv
+ URL Download: https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?w=800&auto=format
+
+SERVIÇO: Alarmes intrusão
+
+ Pasta: alarmes
+ Imagem: alarmes.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\alarmes\alarmes.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/alarmes
+ URL Download: https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800&auto=format
+
+SERVIÇO: Sensores presença
+
+ Pasta: sensores
+ Imagem: sensores.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\sensores\sensores.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/sensores
+ URL Download: https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800&auto=format
+
+SERVIÇO: Controlo acesso
+
+ Pasta: controlo-acesso
+ Imagem: controlo-acesso.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\controlo-acesso\controlo-acesso.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/controlo-acesso
+ URL Download: https://images.unsplash.com/photo-1614064548237-096d735bf80c?w=800&auto=format
+
+SERVIÇO: Vídeo-porteiros
+
+ Pasta: video-porteiro
+ Imagem: video-porteiro.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\video-porteiro\video-porteiro.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/video-porteiros
+ URL Download: https://images.unsplash.com/photo-1558002038-1055907df827?w=800&auto=format
+
+SERVIÇO: Detecção incêndio
+
+ Pasta: incendio
+ Imagem: incendio.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\incendio\incendio.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/deteccao-incendio
+ URL Download: https://images.unsplash.com/photo-1582139329536-e7284fece509?w=800&auto=format
+
+SERVIÇO: Cerca elétrica
+
+ Pasta: cerca-eletrica
+ Imagem: cerca-eletrica.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\cerca-eletrica\cerca-eletrica.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/cerca-eletrica
+ URL Download: https://images.unsplash.com/photo-1620342036211-9566c3f2026c?w=800&auto=format
+
+SERVIÇO: Proteção perimetral
+
+ Pasta: protecao-perimetral
+ Imagem: protecao-perimetral.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\protecao-perimetral\protecao-perimetral.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/protecao-perimetral
+ URL Download: https://images.unsplash.com/photo-1582131504805-4e7a9c7931f0?w=800&auto=format
+
+SERVIÇO: Detecção gases
+
+ Pasta: gases
+ Imagem: gases.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\gases\gases.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/deteccao-gases
+ URL Download: https://images.unsplash.com/photo-1581092335871-4c7c9f65872c?w=800&auto=format
+
+SERVIÇO: Gravadores digitais
+
+ Pasta: gravadores
+ Imagem: gravadores.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\gravadores\gravadores.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/gravadores
+ URL Download: https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800&auto=format
+
+SERVIÇO: Monitoramento remoto
+
+ Pasta: monitoramento
+ Imagem: monitoramento.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\monitoramento\monitoramento.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/monitoramento
+ URL Download: https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&auto=format
+
+SERVIÇO: Gestão imagens VMS
+
+ Pasta: vms
+ Imagem: vms.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\vms\vms.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/vms
+ URL Download: https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&auto=format
+
+SERVIÇO: Antena parabólica
+
+ Pasta: antena
+ Imagem: antena.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\antena\antena.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/antena
+ URL Download: https://images.unsplash.com/photo-1631544799803-0a2828339268?w=800&auto=format
+
+SERVIÇO: Sistema Off Grid
+
+ Pasta: off-grid
+ Imagem: off-grid.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\off-grid\off-grid.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/off-grid
+ URL Download: https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800&auto=format
+
+SERVIÇO: Gráfica & Brindes
+
+ Pasta: grafica
+ Imagem: grafica.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\grafica\grafica.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/grafica
+ URL Download: https://images.unsplash.com/photo-1563461660947-507ef49e9c47?w=800&auto=format
+
+SERVIÇO: GPS Moto/Carro
+
+ Pasta: gps
+ Imagem: gps.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\gps\gps.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/gps
+ URL Download: https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800&auto=format
+
+SERVIÇO: Hardware/Software
+
+ Pasta: hardware
+ Imagem: hardware.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\hardware\hardware.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/hardware-software
+ URL Download: https://images.unsplash.com/photo-1555617778-25c0fa1321bb?w=800&auto=format
+
+SERVIÇO: Biossegurança
+
+ Pasta: biosseguranca
+ Imagem: biosseguranca.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\biosseguranca\biosseguranca.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/biosseguranca
+ URL Download: https://images.unsplash.com/photo-1584634731339-252c581abfc5?w=800&auto=format
+
+SERVIÇO: Cofres alta segurança
+
+ Pasta: cofres
+ Imagem: cofres.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\cofres\cofres.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/cofres
+ URL Download: https://images.unsplash.com/photo-1601564922797-f6e8a6c6f2bc?w=800&auto=format
+
+SERVIÇO: Design gráfico
+
+ Pasta: design
+ Imagem: design.jpg
+ Caminho completo: C:\Users\D.PEDRO  SOLUÇÕES\Documents\D.PEDRO SOLUÇÕES\ADMINISTRAÇÕES\markeng digital\design\design.jpg
+ Link: https://www.dpedrosolucoes.com/servicos/design
+ URL Download: https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&auto=format
+

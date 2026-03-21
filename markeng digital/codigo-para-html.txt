@@ -1,0 +1,28 @@
+﻿// CÓDIGO ATUALIZADO PARA O SEU HTML
+// ====================================
+
+// LISTA DE PARCEIROS COM CAMINHOS CORRETOS:
+const parceiros = [
+    { nome: 'Sony', logo: 'images/parceiros/sony.png', fallback: 'Sony' }, // FALTANDO
+    { nome: 'Panasonic', logo: 'images/parceiros/panasonic.png', fallback: 'Panasonic' }, // FALTANDO
+    { nome: 'Vivotek', logo: 'images/parceiros/vivotek.png', fallback: 'Vivotek' }, // FALTANDO
+    { nome: 'Mobotix', logo: 'images/parceiros/mobotix.png', fallback: 'Mobotix' }, // FALTANDO
+    { nome: 'Intelbras', logo: 'images/parceiros/intelbras.png', fallback: 'Intelbras' }, // FALTANDO
+    { nome: 'Dahua', logo: 'images/parceiros/dahua.png', fallback: 'Dahua' }, // FALTANDO
+    { nome: 'HIKVISION', logo: 'images/parceiros/hikvision.png', fallback: 'HIK' }, // FALTANDO
+    { nome: 'Axis', logo: 'images/parceiros/axis.png', fallback: 'Axis' }, // FALTANDO
+    { nome: 'JVC', logo: 'images/parceiros/jvc.png', fallback: 'JVC' }, // FALTANDO
+    { nome: 'Bosch', logo: 'images/parceiros/bosch.png', fallback: 'Bosch' }, // FALTANDO
+];
+
+// LISTA DE APLICAÇÕES COM CAMINHOS CORRETOS:
+const aplicacoes = [
+    { titulo: 'Comércio', descricao: 'Proteção contra furtos e gestão de clientes', imagem: 'images/aplicacoes/comercio.jpg', tags: ['Anti-furto', 'PDV', 'CFTV'] }, // FALTANDO
+    { titulo: 'Energia Off Grid', descricao: 'Sistemas solares e eólicos para locais remotos', imagem: 'images/aplicacoes/offgrid.jpg', tags: ['Solar', 'Eólico', 'Baterias'] }, // FALTANDO
+    { titulo: 'Gráfica', descricao: 'Impressão de materiais promocionais e comunicação visual', imagem: 'images/aplicacoes/grafica.jpg', tags: ['Offset', 'Digital', 'Design'] }, // FALTANDO
+    { titulo: 'Saúde', descricao: 'Soluções para hospitais e clínicas com biossegurança', imagem: 'images/aplicacoes/saude.jpg', tags: ['Biossegurança', 'Acesso', 'Gases'] }, // FALTANDO
+    { titulo: 'Infraestruturas Críticas', descricao: 'Soluções para aeroportos, portos, barragens e centrais elétricas', imagem: 'images/aplicacoes/infraestruturas.jpg', tags: ['CFTV', 'Perimetral', 'Biometria'] }, // FALTANDO
+    { titulo: 'Condomínios', descricao: 'Segurança residencial com controle de acesso e câmaras', imagem: 'images/aplicacoes/condominios.jpg', tags: ['Portaria', 'Acesso', 'CFTV'] }, // FALTANDO
+    { titulo: 'Indústria', descricao: 'Monitoramento de produção e segurança patrimonial industrial', imagem: 'images/aplicacoes/industria.jpg', tags: ['Produção', 'Acesso', 'PTZ'] }, // FALTANDO];
+
+// Para usar no seu HTML, substitua as listas existentes por estas acima.

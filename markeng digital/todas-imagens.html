@@ -1,0 +1,64 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>Todas as Imagens - D.PEDRO SOLUÇÕES</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', sans-serif; }
+        body { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; }
+        .container { max-width: 1400px; margin: 0 auto; }
+        h1 { color: white; text-align: center; margin: 30px 0; font-size: 2.5em; text-shadow: 2px 2px 4px rgba(0,0,0,0.2); }
+        h2 { color: white; margin: 40px 0 20px; font-size: 2em; border-bottom: 2px solid white; padding-bottom: 10px; }
+        .stats { background: white; border-radius: 15px; padding: 20px; margin-bottom: 30px; display: flex; gap: 20px; flex-wrap: wrap; }
+        .stat-item { flex: 1; min-width: 150px; text-align: center; }
+        .stat-value { font-size: 2.5em; font-weight: bold; color: #667eea; }
+        .stat-label { color: #666; font-size: 0.9em; text-transform: uppercase; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; margin-bottom: 30px; }
+        .card { background: white; border-radius: 15px; overflow: hidden; box-shadow: 0 10px 30px rgba(0,0,0,0.2); transition: transform 0.3s; }
+        .card:hover { transform: translateY(-10px); }
+        .card img { width: 100%; height: 150px; object-fit: cover; }
+        .card .info { padding: 15px; text-align: center; }
+        .card .nome { font-weight: bold; color: #333; margin-bottom: 5px; }
+        .card .caminho { font-size: 11px; color: #666; word-break: break-all; background: #f0f0f0; padding: 5px; border-radius: 5px; }
+        .badge { display: inline-block; padding: 3px 10px; border-radius: 12px; font-size: 10px; font-weight: bold; margin: 5px 2px; }
+        .badge.success { background: #d4edda; color: #155724; }
+        .badge.warning { background: #fff3cd; color: #856404; }
+        .section { margin-bottom: 40px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1> TODAS AS IMAGENS - D.PEDRO SOLUÇÕES</h1>
+        
+        <div class="stats">
+            <div class="stat-item">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Serviços</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Hero</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Parceiros</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-value">0</div>
+                <div class="stat-label">Aplicações</div>
+            </div>
+        </div>
+
+        <h2> SERVIÇOS (20 imagens)</h2>
+        <div class="grid">        </div>
+
+        <h2> HERO (5 imagens)</h2>
+        <div class="grid">        </div>
+
+        <h2> PARCEIROS (10 logos)</h2>
+        <div class="grid">        </div>
+
+        <h2> APLICAÇÕES (7 imagens)</h2>
+        <div class="grid">        </div>
+    </div>
+</body>
+</html>

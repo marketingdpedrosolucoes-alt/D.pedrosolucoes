@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>D.PEDRO SOLUÇÕES – Login e Registro</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            background: #f8fafd;
+            color: #1e293b;
+            line-height: 1.5;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top bar */
+        .top-bar {
+            background: #0f172a;
+            color: white;
+            padding: 0.5rem 5%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.85rem;
+            border-bottom: 2px solid #2563eb;
+        }
+        .top-bar .contact-info span {
+            margin-right: 1.8rem;
+        }
+        .top-bar .contact-info i {
+            color: #60a5fa;
+            width: 1.2rem;
+        }
+        .social-links a {
+            color: #cbd5e1;
+            margin-left: 1rem;
+            font-size: 1rem;
+            transition: 0.2s;
+        }
+        .social-links a:hover {
+            color: #fbbf24;
+        }
+
+        /* Navegação */
+        nav {
+            background: white;
+            padding: 0.8rem 5%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 50;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+        .logo-mark {
+            background: #1e3a8a;
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .logo-text {
+            font-weight: 700;
+            font-size: 1.4rem;
+            color: #0f172a;
+            line-height: 1.2;
+        }
+        .logo-text small {
+            display: block;
+            font-size: 0.6rem;
+            font-weight: 400;
+            color: #475569;
+        }
+        .nav-links {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+        .nav-links a {
+            padding: 0.5rem 1.2rem;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #334155;
+            font-weight: 500;
+            transition: 0.2s;
+        }
+        .nav-links a:hover,
+        .nav-links a.active {
+            background: #eef2ff;
+            color: #2563eb;
+        }
+
+        /* Container principal */
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 2rem 5%;
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Card de login/registro */
+        .auth-card {
+            background: white;
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.15);
+            border: 1px solid #e2e8f0;
+        }
+
+        .auth-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .auth-header h1 {
+            font-size: 2rem;
+            color: #0f172a;
+            margin-bottom: 0.5rem;
+        }
+        .auth-header p {
+            color: #475569;
+        }
+        .auth-header i {
+            color: #2563eb;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Tabs de alternância */
+        .auth-tabs {
+            display: flex;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            background: #f1f5f9;
+            padding: 0.5rem;
+            border-radius: 3rem;
+        }
+        .auth-tab {
+            flex: 1;
+            text-align: center;
+            padding: 0.8rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .auth-tab.active {
+            background: white;
+            color: #2563eb;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+        .auth-tab i {
+            margin-right: 0.3rem;
+        }
+
+        /* Formulários */
+        .auth-form {
+            display: none;
+        }
+        .auth-form.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        .form-group label {
+            display: block;
+            margin-bottom: 0.3rem;
+            font-weight: 600;
+            color: #0f172a;
+            font-size: 0.9rem;
+        }
+        .form-group label i {
+            color: #2563eb;
+            width: 1.2rem;
+        }
+
+        .input-group {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+        .input-group i {
+            position: absolute;
+            left: 1rem;
+            color: #64748b;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 0.8rem 1rem 0.8rem 2.8rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            transition: 0.2s;
+            background: #f8fafc;
+        }
+        .input-group input:focus {
+            outline: none;
+            border-color: #2563eb;
+            background: white;
+            box-shadow: 0 0 0 3px #2563eb20;
+        }
+
+        .password-toggle {
+            position: absolute;
+            right: 1rem;
+            cursor: pointer;
+            color: #64748b;
+        }
+
+        .form-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+        .forgot-password {
+            color: #2563eb;
+            text-decoration: none;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn-auth {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 3rem;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+            margin: 1.5rem 0 1rem;
+        }
+        .btn-auth:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        /* Botão Google personalizado (sem API oficial) */
+        .btn-google-custom {
+            width: 100%;
+            background: white;
+            color: #1e293b;
+            border: 1px solid #e2e8f0;
+            padding: 0.8rem;
+            border-radius: 3rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: 0.2s;
+            margin: 0.5rem 0;
+        }
+        .btn-google-custom:hover {
+            background: #f8fafc;
+            border-color: #2563eb;
+        }
+        .btn-google-custom img {
+            width: 20px;
+        }
+
+        .auth-divider {
+            position: relative;
+            text-align: center;
+            margin: 1.5rem 0;
+        }
+        .auth-divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: #e2e8f0;
+        }
+        .auth-divider span {
+            position: relative;
+            background: white;
+            padding: 0 1rem;
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .terms {
+            font-size: 0.8rem;
+            color: #64748b;
+            text-align: center;
+            margin-top: 1rem;
+        }
+        .terms a {
+            color: #2563eb;
+            text-decoration: none;
+        }
+
+        /* Benefícios do registro */
+        .benefits-box {
+            background: linear-gradient(135deg, #e0e7ff, #f8fafc);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            margin-top: 2rem;
+            border: 1px solid #cbd5e1;
+        }
+        .benefits-box h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #0f172a;
+            margin-bottom: 1rem;
+        }
+        .benefits-list {
+            list-style: none;
+        }
+        .benefits-list li {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            color: #475569;
+        }
+        .benefits-list li i {
+            color: #2563eb;
+        }
+
+        /* Footer */
+        footer {
+            background: #0f172a;
+            color: #94a3b8;
+            padding: 3rem 5% 1.5rem;
+            margin-top: 2rem;
+            border-radius: 3rem 3rem 0 0;
+        }
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2rem;
+        }
+        .footer-col p, .footer-col a {
+            color: #94a3b8;
+            text-decoration: none;
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+            display: block;
+        }
+        .footer-col a:hover {
+            color: white;
+        }
+        .footer-bottom {
+            border-top: 1px solid #1e293b;
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        /* Botões flutuantes */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background: #25D366;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2rem;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+            z-index: 100;
+            text-decoration: none;
+        }
+        .top-arrow {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: #2563eb;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            z-index: 99;
+            opacity: 0.8;
+            transition: 0.2s;
+        }
+        .top-arrow:hover {
+            opacity: 1;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .auth-card {
+                padding: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Top bar -->
+<div class="top-bar">
+    <div class="contact-info">
+        <span><i class="fas fa-phone-alt"></i> 946 299 834 | 959 777 301</span>
+        <span><i class="fas fa-map-marker-alt"></i> Luanda, Viana, Vila Flor</span>
+        <span><i class="fas fa-envelope"></i> dpedroservice@gmail.com</span>
+    </div>
+    <div class="social-links">
+        <a href="https://wa.me/244946299834" target="_blank"><i class="fab fa-whatsapp"></i></a>
+        <a href="mailto:dpedroservice@gmail.com"><i class="fas fa-envelope"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+    </div>
+</div>
+
+<!-- Navegação -->
+<nav>
+    <div class="logo">
+        <a href="nosso.html" style="text-decoration: none; display: flex; align-items: center; gap: 0.75rem;">
+            <div class="logo-mark">DP</div>
+            <div class="logo-text">D.PEDRO SOLUÇÕES <small>COMÉRCIO E PRESTAÇÃO DE SERVIÇOS</small></div>
+        </a>
+    </div>
+    <div class="nav-links">
+        <a href="index.html">Início</a>
+        <a href="quem-somos.html">Quem somos</a>
+        <a href="mercados-verticais.html">Mercados Verticais</a>
+        <a href="solucoes.html">Soluções</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="recrutamento.html">Recrutamento</a>
+        <a href="contactos.html">Contactos</a>
+        <a href="#" class="active">Login</a>
+    </div>
+</nav>
+
+<!-- Container principal -->
+<main class="container">
+    <div class="auth-card">
+        <!-- Cabeçalho -->
+        <div class="auth-header">
+            <i class="fas fa-user-circle"></i>
+            <h1>Bem-vindo</h1>
+            <p>Acesse sua conta ou registre-se</p>
+        </div>
+
+        <!-- Tabs de alternância -->
+        <div class="auth-tabs">
+            <div class="auth-tab active" onclick="switchTab('login')">
+                <i class="fas fa-sign-in-alt"></i> Login
+            </div>
+            <div class="auth-tab" onclick="switchTab('register')">
+                <i class="fas fa-user-plus"></i> Registrar
+            </div>
+        </div>
+
+        <!-- Formulário de Login -->
+        <div class="auth-form active" id="loginForm">
+            <form onsubmit="event.preventDefault(); fazerLogin()">
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="loginEmail" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Senha</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="loginPassword" placeholder="••••••••" required>
+                        <i class="fas fa-eye password-toggle" onclick="togglePassword('loginPassword')"></i>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="rememberMe"> Lembrar-me
+                    </label>
+                    <a href="#" class="forgot-password" onclick="recuperarSenha()">Esqueceu a senha?</a>
+                </div>
+
+                <button type="submit" class="btn-auth">
+                    <i class="fas fa-sign-in-alt"></i> Entrar
+                </button>
+
+                <div class="auth-divider">
+                    <span>ou</span>
+                </div>
+
+                <!-- Botão de login com Google simplificado (sem API oficial) -->
+                <button type="button" class="btn-google-custom" onclick="simularGoogleLogin()">
+                    <img src="https://www.google.com/favicon.ico" alt="Google"> Continuar com Google
+                </button>
+
+                <p class="terms">
+                    Ao continuar, você concorda com nossos 
+                    <a href="#" onclick="alert('Termos de uso')">Termos</a> e 
+                    <a href="#" onclick="alert('Política de privacidade')">Privacidade</a>
+                </p>
+            </form>
+        </div>
+
+        <!-- Formulário de Registro -->
+        <div class="auth-form" id="registerForm">
+            <form onsubmit="event.preventDefault(); fazerRegistro()">
+                <div class="form-group">
+                    <label><i class="fas fa-user"></i> Nome completo</label>
+                    <div class="input-group">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="registerName" placeholder="Seu nome" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> Email</label>
+                    <div class="input-group">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="registerEmail" placeholder="seu@email.com" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> Telefone</label>
+                    <div class="input-group">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="registerPhone" placeholder="(244) 000-000-000">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Senha</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="registerPassword" placeholder="Mínimo 8 caracteres" required>
+                        <i class="fas fa-eye password-toggle" onclick="togglePassword('registerPassword')"></i>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-lock"></i> Confirmar senha</label>
+                    <div class="input-group">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirmPassword" placeholder="Digite novamente" required>
+                        <i class="fas fa-eye password-toggle" onclick="togglePassword('confirmPassword')"></i>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" id="acceptTerms" required> Aceito os <a href="#" onclick="alert('Termos de uso')">termos</a>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-auth">
+                    <i class="fas fa-user-plus"></i> Criar conta
+                </button>
+
+                <div class="auth-divider">
+                    <span>ou</span>
+                </div>
+
+                <!-- Botão de registro com Google simplificado -->
+                <button type="button" class="btn-google-custom" onclick="simularGoogleLogin()">
+                    <img src="https://www.google.com/favicon.ico" alt="Google"> Registrar com Google
+                </button>
+            </form>
+
+            <!-- Benefícios do registro -->
+            <div class="benefits-box">
+                <h3><i class="fas fa-gift"></i> Benefícios de ser membro</h3>
+                <ul class="benefits-list">
+                    <li><i class="fas fa-check-circle"></i> Acesso a preços exclusivos</li>
+                    <li><i class="fas fa-check-circle"></i> Histórico de pedidos</li>
+                    <li><i class="fas fa-check-circle"></i> Orçamentos rápidos</li>
+                    <li><i class="fas fa-check-circle"></i> Suporte prioritário</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</main>
+
+<!-- Footer -->
+<footer>
+    <div class="footer-grid">
+        <div class="footer-col">
+            <strong>D.PEDRO SOLUÇÕES</strong>
+            <p>Comércio e Prestação de Serviços, Lda.</p>
+            <p>Luanda, Angola</p>
+        </div>
+        <div class="footer-col">
+            <strong>Sede</strong>
+            <p>Viana, Vila Flor, Luanda</p>
+            <p>Rua Direita da Engevia</p>
+        </div>
+        <div class="footer-col">
+            <strong>Contactos</strong>
+            <p>+244 946 299 834</p>
+            <p>+244 959 777 301</p>
+            <p>dpedroservice@gmail.com</p>
+        </div>
+        <div class="footer-col">
+            <strong>Links rápidos</strong>
+            <a href="index.html">Início</a>
+            <a href="quem-somos.html">Quem somos</a>
+            <a href="solucoes.html">Soluções</a>
+            <a href="catalogo.html">Catálogo</a>
+            <a href="recrutamento.html">Recrutamento</a>
+            <a href="login.html">Login</a>
+            <a href="contactos.html">Contactos</a>
+        </div>
+    </div>
+    <div class="footer-bottom">
+        <div>© 2026 D.PEDRO SOLUÇÕES – Todos os direitos reservados</div>
+        <div>
+            <span onclick="mostrarCookies()"><i class="fas fa-cookie-bite"></i> cookies</span> | 
+            <span onclick="mostrarTermos()"><i class="fas fa-file-contract"></i> termos</span>
+        </div>
+    </div>
+</footer>
+
+<!-- Botões flutuantes -->
+<a href="https://wa.me/244946299834" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="top-arrow" onclick="window.scrollTo({top:0,behavior:'smooth'})"><i class="fas fa-arrow-up"></i></div>
+
+<script>
+    // Alternar entre Login e Registro
+    function switchTab(tab) {
+        const tabs = document.querySelectorAll('.auth-tab');
+        const forms = document.querySelectorAll('.auth-form');
+        
+        tabs.forEach(t => t.classList.remove('active'));
+        forms.forEach(f => f.classList.remove('active'));
+        
+        if (tab === 'login') {
+            tabs[0].classList.add('active');
+            document.getElementById('loginForm').classList.add('active');
+        } else {
+            tabs[1].classList.add('active');
+            document.getElementById('registerForm').classList.add('active');
+        }
+    }
+
+    // Mostrar/ocultar senha
+    function togglePassword(inputId) {
+        const input = document.getElementById(inputId);
+        const icon = event.target;
+        
+        if (input.type === 'password') {
+            input.type = 'text';
+            icon.classList.remove('fa-eye');
+            icon.classList.add('fa-eye-slash');
+        } else {
+            input.type = 'password';
+            icon.classList.remove('fa-eye-slash');
+            icon.classList.add('fa-eye');
+        }
+    }
+
+    // Simulação de login com Google (sem erro 400)
+    function simularGoogleLogin() {
+        // Simular dados do Google
+        const googleUser = {
+            name: "Usuário Google",
+            email: "usuario@gmail.com",
+            picture: "https://lh3.googleusercontent.com/a-/AOh14Gg..."
+        };
+        
+        alert(`✅ Login com Google simulado!\n\nBem-vindo(a) ${googleUser.name}!\n\nEmail: ${googleUser.email}\n\n(Modo de simulação - API oficial desabilitada)`);
+        
+        // Aqui você pode redirecionar para a área do cliente
+        console.log("Dados do usuário Google:", googleUser);
+        
+        // Redirecionar para área do cliente (simulado)
+        setTimeout(() => {
+            window.location.href = '#'; // Manter na mesma página
+        }, 1000);
+    }
+
+    // Simulação de login (email/senha)
+    function fazerLogin() {
+        const email = document.getElementById('loginEmail').value;
+        const senha = document.getElementById('loginPassword').value;
+        
+        if (!email || !senha) {
+            alert('Preencha todos os campos!');
+            return;
+        }
+        
+        alert(`✅ Login realizado com sucesso! (Simulação)\n\nBem-vindo à área de cliente.`);
+        window.location.href = '#';
+    }
+
+    // Simulação de registro
+    function fazerRegistro() {
+        // Validar campos
+        const nome = document.getElementById('registerName').value;
+        const email = document.getElementById('registerEmail').value;
+        const senha = document.getElementById('registerPassword').value;
+        const confirmar = document.getElementById('confirmPassword').value;
+        const termos = document.getElementById('acceptTerms').checked;
+        
+        if (!nome || !email || !senha) {
+            alert('Preencha todos os campos obrigatórios!');
+            return;
+        }
+        
+        if (senha !== confirmar) {
+            alert('As senhas não coincidem!');
+            return;
+        }
+        
+        if (senha.length < 8) {
+            alert('A senha deve ter pelo menos 8 caracteres!');
+            return;
+        }
+        
+        if (!termos) {
+            alert('Você deve aceitar os termos de uso!');
+            return;
+        }
+        
+        alert('✅ Registro realizado com sucesso! (Simulação)\n\nVerifique seu email para ativar a conta.');
+        switchTab('login');
+    }
+
+    // Simulação de recuperação de senha
+    function recuperarSenha() {
+        const email = document.getElementById('loginEmail').value || 'seu@email.com';
+        alert(`📧 Instruções de recuperação enviadas para ${email} (simulação)`);
+    }
+
+    // Mostrar cookies
+    function mostrarCookies() {
+        alert('🍪 Este site utiliza cookies para melhorar sua experiência. Ao continuar navegando, você concorda com nossa política de cookies.');
+    }
+
+    // Mostrar termos
+    function mostrarTermos() {
+        alert('📜 Termos e Condições de Uso:\n\n1. Ao utilizar este site, você concorda com nossos termos.\n2. Todos os direitos reservados.\n3. Proibida reprodução sem autorização.\n\nPara mais informações, contacte-nos.');
+    }
+
+    // Prevenir comportamento padrão dos links
+    document.querySelectorAll('.forgot-password, .terms a, .benefits-box a').forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+        });
+    });
+</script>
+
+</body>
+</html>

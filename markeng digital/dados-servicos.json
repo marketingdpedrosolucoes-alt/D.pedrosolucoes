@@ -1,0 +1,283 @@
+﻿[
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1557324232-b8917d3c3dcb?w=800\u0026auto=format",
+        "features":  [
+                         "4K",
+                         "Visão noturna",
+                         "IA",
+                         "PoE"
+                     ],
+        "pasta":  "cftv",
+        "imagem":  "cftv.jpg",
+        "descricao":  "Sistemas de videovigilância com tecnologia IP e analógica para monitoramento 24/7.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/camaras-cftv",
+        "icone":  "fa-video",
+        "nome":  "Câmaras CFTV"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?w=800\u0026auto=format",
+        "features":  [
+                         "Wireless",
+                         "APP",
+                         "GSM"
+                     ],
+        "pasta":  "alarmes",
+        "imagem":  "alarmes.jpg",
+        "descricao":  "Sistemas de alarme com deteção perimetral, sensores de abertura e movimento.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/alarmes",
+        "icone":  "fa-bell",
+        "nome":  "Alarmes intrusão"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=800\u0026auto=format",
+        "features":  [
+                         "12m",
+                         "Anti-mascara",
+                         "Pet friendly"
+                     ],
+        "pasta":  "sensores",
+        "imagem":  "sensores.jpg",
+        "descricao":  "Sensores de movimento com tecnologia PIR e micro-ondas para ambientes internos e externos.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/sensores",
+        "icone":  "fa-walking",
+        "nome":  "Sensores presença"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1614064548237-096d735bf80c?w=800\u0026auto=format",
+        "features":  [
+                         "Biometria",
+                         "RFID",
+                         "Facial"
+                     ],
+        "pasta":  "controlo-acesso",
+        "imagem":  "controlo-acesso.jpg",
+        "descricao":  "Soluções biométricas, RFID e cartão de proximidade para gestão de entradas.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/controlo-acesso",
+        "icone":  "fa-fingerprint",
+        "nome":  "Controlo acesso"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1558002038-1055907df827?w=800\u0026auto=format",
+        "features":  [
+                         "7\"",
+                         "APP",
+                         "IP67"
+                     ],
+        "pasta":  "video-porteiro",
+        "imagem":  "video-porteiro.jpg",
+        "descricao":  "Sistemas de comunicação com vídeo e abertura remota para condomínios.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/video-porteiros",
+        "icone":  "fa-phone-alt",
+        "nome":  "Vídeo-porteiros"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1582139329536-e7284fece509?w=800\u0026auto=format",
+        "features":  [
+                         "Fumo",
+                         "Calor",
+                         "CO"
+                     ],
+        "pasta":  "incendio",
+        "imagem":  "incendio.jpg",
+        "descricao":  "Centrais de incêndio, detetores de fumo, temperatura e CO.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/deteccao-incendio",
+        "icone":  "fa-fire-extinguisher",
+        "nome":  "Detecção incêndio"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1620342036211-9566c3f2026c?w=800\u0026auto=format",
+        "features":  [
+                         "10kV",
+                         "Sensor",
+                         "Perimetral"
+                     ],
+        "pasta":  "cerca-eletrica",
+        "imagem":  "cerca-eletrica.jpg",
+        "descricao":  "Cercas elétricas de alta tensão com sensores de corte e alarme.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/cerca-eletrica",
+        "icone":  "fa-bolt",
+        "nome":  "Cerca elétrica"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1582131504805-4e7a9c7931f0?w=800\u0026auto=format",
+        "features":  [
+                         "IV",
+                         "Vibração",
+                         "Concertina"
+                     ],
+        "pasta":  "protecao-perimetral",
+        "imagem":  "protecao-perimetral.jpg",
+        "descricao":  "Barreiras de infravermelhos, sensores de vibração e concertina.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/protecao-perimetral",
+        "icone":  "fa-shield-alt",
+        "nome":  "Proteção perimetral"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1581092335871-4c7c9f65872c?w=800\u0026auto=format",
+        "features":  [
+                         "GLP",
+                         "GN",
+                         "CO"
+                     ],
+        "pasta":  "gases",
+        "imagem":  "gases.jpg",
+        "descricao":  "Sensores para deteção de GLP, GN, CO e outros gases tóxicos.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/deteccao-gases",
+        "icone":  "fa-wind",
+        "nome":  "Detecção gases"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1597872200969-2b65d56bd16b?w=800\u0026auto=format",
+        "features":  [
+                         "16 canais",
+                         "4K",
+                         "H.265"
+                     ],
+        "pasta":  "gravadores",
+        "imagem":  "gravadores.jpg",
+        "descricao":  "DVR e NVR com suporte para múltiplas câmaras e análise inteligente.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/gravadores",
+        "icone":  "fa-hdd",
+        "nome":  "Gravadores digitais"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800\u0026auto=format",
+        "features":  [
+                         "APP",
+                         "Alertas",
+                         "Cloud"
+                     ],
+        "pasta":  "monitoramento",
+        "imagem":  "monitoramento.jpg",
+        "descricao":  "Acesso remoto via aplicativo para visualização de câmaras e receção de alertas.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/monitoramento",
+        "icone":  "fa-satellite-dish",
+        "nome":  "Monitoramento remoto"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800\u0026auto=format",
+        "features":  [
+                         "VMS",
+                         "IA",
+                         "Relatórios"
+                     ],
+        "pasta":  "vms",
+        "imagem":  "vms.jpg",
+        "descricao":  "Software de gestão de vídeo com análise inteligente e integração.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/vms",
+        "icone":  "fa-image",
+        "nome":  "Gestão imagens VMS"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1631544799803-0a2828339268?w=800\u0026auto=format",
+        "features":  [
+                         "TV",
+                         "Internet",
+                         "Alinhamento"
+                     ],
+        "pasta":  "antena",
+        "imagem":  "antena.jpg",
+        "descricao":  "Instalação e alinhamento de antenas para TV e internet rural.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/antena",
+        "icone":  "fa-satellite",
+        "nome":  "Antena parabólica"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1509391366360-2e959784a276?w=800\u0026auto=format",
+        "features":  [
+                         "Solar",
+                         "Inversor",
+                         "Bateria"
+                     ],
+        "pasta":  "off-grid",
+        "imagem":  "off-grid.jpg",
+        "descricao":  "Painéis solares, inversores e baterias para independência energética.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/off-grid",
+        "icone":  "fa-solar-panel",
+        "nome":  "Sistema Off Grid"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1563461660947-507ef49e9c47?w=800\u0026auto=format",
+        "features":  [
+                         "Offset",
+                         "Digital",
+                         "Brindes"
+                     ],
+        "pasta":  "grafica",
+        "imagem":  "grafica.jpg",
+        "descricao":  "Impressão offset/digital, cartões, flyers, faixas e brindes personalizados.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/grafica",
+        "icone":  "fa-print",
+        "nome":  "Gráfica \u0026 Brindes"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?w=800\u0026auto=format",
+        "features":  [
+                         "Corte",
+                         "Cerca",
+                         "APP"
+                     ],
+        "pasta":  "gps",
+        "imagem":  "gps.jpg",
+        "descricao":  "Rastreadores veiculares com corte de motor e cerca eletrónica.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/gps",
+        "icone":  "fa-map-pin",
+        "nome":  "GPS Moto/Carro"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1555617778-25c0fa1321bb?w=800\u0026auto=format",
+        "features":  [
+                         "Hardware",
+                         "Software",
+                         "Sistemas"
+                     ],
+        "pasta":  "hardware",
+        "imagem":  "hardware.jpg",
+        "descricao":  "Venda de equipamentos e desenvolvimento de software personalizado.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/hardware-software",
+        "icone":  "fa-microchip",
+        "nome":  "Hardware/Software"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1584634731339-252c581abfc5?w=800\u0026auto=format",
+        "features":  [
+                         "EPI",
+                         "Controlo",
+                         "Higiene"
+                     ],
+        "pasta":  "biosseguranca",
+        "imagem":  "biosseguranca.jpg",
+        "descricao":  "Equipamentos de proteção e controlo de acesso sanitário.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/biosseguranca",
+        "icone":  "fa-shield-virus",
+        "nome":  "Biossegurança"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1601564922797-f6e8a6c6f2bc?w=800\u0026auto=format",
+        "features":  [
+                         "Fogo",
+                         "Biometria",
+                         "Digital"
+                     ],
+        "pasta":  "cofres",
+        "imagem":  "cofres.jpg",
+        "descricao":  "Cofres à prova de fogo e arrombamento com fechadura biométrica.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/cofres",
+        "icone":  "fa-lock",
+        "nome":  "Cofres alta segurança"
+    },
+    {
+        "urlDownload":  "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800\u0026auto=format",
+        "features":  [
+                         "Logotipo",
+                         "Branding",
+                         "Editorial"
+                     ],
+        "pasta":  "design",
+        "imagem":  "design.jpg",
+        "descricao":  "Criação de logotipos, identidade visual e materiais promocionais.",
+        "link":  "https://www.dpedrosolucoes.com/servicos/design",
+        "icone":  "fa-pen-fancy",
+        "nome":  "Design gráfico"
+    }
+]
